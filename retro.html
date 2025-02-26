@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>90s Full QWERTY Keyboard</title>
+</head>
+<body>
+  <div class="keyboard">
+    <div class="row">
+      <button class="key">~</button>
+      <button class="key">1</button>
+      <button class="key">2</button>
+      <button class="key">3</button>
+      <button class="key">4</button>
+      <button class="key">5</button>
+      <button class="key">6</button>
+      <button class="key">7</button>
+      <button class="key">8</button>
+      <button class="key">9</button>
+      <button class="key">0</button>
+      <button class="key">-</button>
+      <button class="key">=</button>
+      <button class="key wide">Backspace</button>
+    </div>
+    <div class="row">
+      <button class="key wide">Tab</button>
+      <button class="key">Q</button>
+      <button class="key">W</button>
+      <button class="key">E</button>
+      <button class="key">R</button>
+      <button class="key">T</button>
+      <button class="key">Y</button>
+      <button class="key">U</button>
+      <button class="key">I</button>
+      <button class="key">O</button>
+      <button class="key">P</button>
+      <button class="key">[</button>
+      <button class="key">]</button>
+      <button class="key wide">\\</button>
+    </div>
+    <div class="row">
+      <button class="key wide">Caps Lock</button>
+      <button class="key">A</button>
+      <button class="key">S</button>
+      <button class="key">D</button>
+      <button class="key">F</button>
+      <button class="key">G</button>
+      <button class="key">H</button>
+      <button class="key">J</button>
+      <button class="key">K</button>
+      <button class="key">L</button>
+      <button class="key">;</button>
+      <button class="key">'</button>
+      <button class="key wide">Enter</button>
+    </div>
+    <div class="row">
+      <button class="key wide">Shift</button>
+      <button class="key">Z</button>
+      <button class="key">X</button>
+      <button class="key">C</button>
+      <button class="key">V</button>
+      <button class="key">B</button>
+      <button class="key">N</button>
+      <button class="key">M</button>
+      <button class="key">,</button>
+      <button class="key">.</button>
+      <button class="key">/</button>
+      <button class="key wide">Shift</button>
+    </div>
+    <div class="row">
+      <button class="key extra-wide">Ctrl</button>
+      <button class="key extra-wide">Alt</button>
+      <button class="key extra-extra-wide">Space</button>
+      <button class="key extra-wide">Alt</button>
+      <button class="key extra-wide">Ctrl</button>
+    </div>
+  </div>
+</body>
+</html>
+
+<style>
+body {
+  background-color: #e0e0e0; /* Light gray background */
+  font-family: Arial, sans-serif; /* Standard font */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.keyboard {
+  display: grid;
+  gap: 6px;
+  padding: 20px;
+  background: #f7f7f7; /* Off-white for the keyboard body */
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.key {
+  width: 40px;
+  height: 40px;
+  background-color: #f0f0f0; /* Light gray keys */
+  color: #333333; /* Dark gray text */
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 2px 0 #d9d9d9, 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.key.wide {
+  width: 70px;
+}
+
+.key.extra-wide {
+  width: 80px;
+}
+
+.key.extra-extra-wide {
+  width: 200px;
+}
+
+.key:active {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #e0e0e0; /* Darker gray when pressed */
+}
+
+.key:hover {
+  background-color: #eaeaea; /* Subtle hover effect */
+}
+
+</style>

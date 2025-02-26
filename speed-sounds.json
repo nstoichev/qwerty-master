@@ -1,0 +1,22 @@
+{
+  "speed20": [
+    "./sounds/speed-20/voicy_emotional-damage.mp3",
+    "./sounds/speed-20/voicy_gordon-ramsay-what-the-fuck-is-that.mp3",
+    "./sounds/speed-20/voicy_ha-gay.mp3",
+    "./sounds/speed-20/voicy_look-at-that-hes-making-me-cry.mp3",
+    "./sounds/speed-20/voicy_sad-violin.mp3",
+    "./sounds/speed-20/voicy_welcome-to-the-internet-my-friend.mp3",
+    "./sounds/speed-20/voicy_you-are-pukes.mp3"
+  ],
+  "speed30": [
+    "./sounds/speed-30/voicy_dude-wtf.mp3",
+    "./sounds/speed-30/voicy_english-mf.mp3",
+    "./sounds/speed-30/voicy_no-god-please-no.mp3"
+  ],
+  "speed60": [
+    "./sounds/speed-60/voicy_king-kong-aint-got-sh_t-on-me.mp3",
+    "./sounds/speed-60/voicy_this-is-sparta.mp3",
+    "./sounds/speed-60/voicy_toodooloo.mp3"
+  ],
+  "speed100": ["./sounds/speed-100/voicy_you-are-fake-news.mp3"]
+}

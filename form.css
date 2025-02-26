@@ -1,0 +1,74 @@
+.settings {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  padding: 10px;
+  width: calc(100% - 20px);
+}
+
+.settings__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+.settings__field input {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.settings .text {
+  display: block;
+  margin: 5px 0;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.settings .switch {
+  display: block;
+  width: 70px;
+  height: 32px;
+  border-radius: 20px;
+  border: 2px solid;
+  background: #ccc;
+  font-size: 0;
+  line-height: 0;
+  padding: 1px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.settings .tick:before {
+  content: "";
+  width: 27px;
+  height: 27px;
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(1px);
+  transition: all 0.3s;
+  z-index: 2;
+}
+
+.settings .switch .tick {
+  height: 100%;
+  width: 100%;
+  background: #007bff;
+  position: absolute;
+  top: 0;
+  right: 100%;
+  transition: all 0.3s;
+  border-radius: 20px;
+  transform: translateX(26px);
+}
+
+.settings input:checked ~ .switch .tick {
+  right: 0;
+  transform: translateX(0);
+}

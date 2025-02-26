@@ -1,0 +1,43 @@
+body {
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #222;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.container {
+  max-width: 996px;
+  margin: 0 auto;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+  border: 2px solid #000;
+}
+
+.button:hover {
+  text-shadow: -1px 1px 1px #fff;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

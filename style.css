@@ -1,0 +1,334 @@
+@font-face {
+  font-family: "Droid Sans Mono";
+  src: url("./fonts/DroidSansMono.eot");
+  src: url("./fonts/DroidSansMono.eot?#iefix") format("embedded-opentype"),
+    url("./fonts/DroidSansMono.woff2") format("woff2"),
+    url("./fonts/DroidSansMono.woff") format("woff"),
+    url("./fonts/DroidSansMono.ttf") format("truetype"),
+    url("./fonts/DroidSansMono.svg#DroidSansMono") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "Droid Sans Mono", sans-serif;
+}
+
+qwerty-keyboard {
+  display: block;
+  padding: 20px 0;
+  position: relative;
+  min-height: 100vh;
+}
+
+.textarea-container {
+  background-color: #fff;
+}
+
+.textarea-container__head {
+  padding: 5px 10px;
+  background-color: #07ff41;
+}
+
+.typing-area {
+  display: block;
+  margin: 0 0 20px;
+  width: 100%;
+  font-size: 20px;
+  line-height: 1.5;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+}
+
+.actions {
+  margin: 50px 0;
+  text-align: center;
+}
+
+.keyboard {
+  display: block;
+  background: #ccc;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.keyboard__legend {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  position: absolute;
+  gap: 10px;
+  padding: 10px;
+  top: 100%;
+  left: 0;
+  width: 100%;
+}
+
+.keyboard__legend-item {
+  flex: 1;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+.keyboard__legend-item--left {
+  background-color: #d10519;
+}
+
+.keyboard__legend-item--right {
+  background-color: #007bff;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.key {
+  background: #eee;
+  min-width: 50px;
+  min-height: 50px;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  color: #000;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 4px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s;
+  -webkit-box-shadow: -2px 2px 0px 3px #000;
+  -moz-box-shadow: -2px 2px 0px 3px #000;
+  box-shadow: -2px 2px 0px 3px #000;
+}
+
+.key.left {
+  text-align: left;
+}
+
+.key.right {
+  text-align: right;
+}
+
+.key.dark {
+  background-color: #9e9e9e;
+}
+
+.key.wide {
+  flex: 1.5;
+}
+
+.key.extra-wide {
+  flex: 2.5;
+}
+
+.key.space {
+  flex: 6;
+}
+
+.key:hover {
+  background: #555;
+  border-color: #666;
+}
+
+/* ------------------------------------------------------------ *\
+  Preview
+\* ------------------------------------------------------------ */
+
+.textarea-preview {
+  margin: 20px 0;
+  font-size: 30px;
+  line-height: 1.6;
+  background: #222;
+  padding: 10px;
+  white-space: pre-wrap;
+  vertical-align: bottom;
+  height: 300px;
+  overflow: hidden;
+}
+
+.textarea-preview span {
+  display: inline-block;
+  transition: color 0.2s, background 0.2s;
+  margin: 0 0 15px;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: center;
+  /* height: 45px; */
+  line-height: 1;
+  min-height: 30px;
+  vertical-align: middle;
+  color: #fff;
+}
+
+.textarea-preview span[data-code="Space"] {
+  min-width: 18px;
+}
+
+.textarea-preview span.typed {
+  background-color: #c7c7c7;
+  opacity: 0.2;
+}
+
+.textarea-preview span.current {
+  text-decoration-color: #fff;
+  text-underline-offset: 10px;
+  position: relative;
+}
+
+.textarea-preview span.current:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: -8px;
+  width: 8px;
+  background-color: #fff;
+  z-index: 2;
+  animation: blink 0.5s infinite;
+  animation-delay: 0.5s;
+}
+
+.textarea-preview span.error {
+  background-color: #dc3545;
+}
+
+.keyboard .key.expected {
+  -webkit-box-shadow: -1px 1px 0px 1px #000;
+  -moz-box-shadow: -1px 1px 0px 1px #000;
+  box-shadow: -1px 1px 0px 1px #000;
+  animation: expected 0.5s infinite;
+}
+
+@keyframes expected {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.keyboard .key.highlight {
+  background: #007bff;
+  color: #fff;
+  border-color: #0056b3;
+}
+
+.keyboard .key--left.highlight {
+  background-color: #d10519;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(40, 40, 40, 0.8);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.modal__inner {
+  width: 1200px;
+  color: #fff;
+  background-color: #333;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.75);
+}
+
+.modal__content {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.modal--text .modal__inner {
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.modal--text .modal__content {
+  padding: 0;
+}
+
+.modal.modal--text {
+  background-color: rgba(40, 40, 40, 0.8);
+}
+
+.modal-text__textarea {
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font-size: 20px;
+  display: block;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  padding: 10px;
+  resize: none;
+}
+
+.modal-text__actions {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox_label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s;
+  opacity: 0.5;
+}
+
+input:checked + .checkbox_label {
+  opacity: 1;
+}
+
+.checkbox_label svg {
+  width: 60px;
+  height: auto;
+}

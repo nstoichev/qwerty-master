@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QWERTY Keyboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="qwerty-keyboard.js" defer="defer"></script>
+
+    <link rel="stylesheet" href="reset.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="base.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="form.css" type="text/css" media="all" />
+  </head>
+  <body>
+    <!--
+    The Astronaut Wives Club is a 2015 American period drama television series developed by Stephanie Savage for ABC. It is based on Lily Koppel's 2013 book of the same name. The series tells the story of the wives of the Mercury Seven – America's first group of astronauts – who together formed the Astronaut Wives Club. Actresses Dominique McElligott, Yvonne Strahovski, JoAnna Garcia, Erin Cummings, Azure Parsons, Zoe Boyle, and Odette Annable play the roles of the astronauts' wives. -->
+
+    <qwerty-keyboard>
+      <div class="container">
+        <textarea class="hidden" rows="5" data-text></textarea>
+
+        <form action="" method="post" class="settings" data-settings>
+          <div class="settings__container">
+            <div class="settings__field">
+              <div class="checkbox">
+                <input
+                  type="checkbox"
+                  id="sounds"
+                  name="sounds"
+                  value="on"
+                  class="checkbox"
+                />
+
+                <label for="sounds" class="checkbox_label">
+                  <svg
+                    fill="#000000"
+                    width="800px"
+                    height="800px"
+                    viewBox="0 0 24 24"
+                    id="sound-max"
+                    data-name="Flat Line"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon flat-line"
+                  >
+                    <path
+                      id="secondary"
+                      d="M11,5V19L7,15H4a1,1,0,0,1-1-1V10A1,1,0,0,1,4,9H7Z"
+                      style="fill: transparent; stroke-width: 1"
+                    ></path>
+                    <path
+                      id="primary"
+                      d="M18.36,5.64a9,9,0,0,1,0,12.72"
+                      style="
+                        fill: none;
+                        stroke: #fff;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        stroke-width: 2;
+                      "
+                    ></path>
+                    <path
+                      id="primary-2"
+                      data-name="primary"
+                      d="M15.54,8.46a5,5,0,0,1,0,7.08"
+                      style="
+                        fill: none;
+                        stroke: #fff;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        stroke-width: 2;
+                      "
+                    ></path>
+                    <path
+                      id="primary-3"
+                      data-name="primary"
+                      d="M11,5V19L7,15H4a1,1,0,0,1-1-1V10A1,1,0,0,1,4,9H7Z"
+                      style="
+                        fill: none;
+                        stroke: #fff;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        stroke-width: 2;
+                      "
+                    ></path>
+                  </svg>
+                </label>
+              </div>
+            </div>
+
+            <div class="settings__field">
+              <div class="checkbox">
+                <input
+                  type="checkbox"
+                  id="keyboard"
+                  name="keyboard"
+                  value="on"
+                />
+
+                <label for="keyboard" class="checkbox_label">
+                  <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                  <svg
+                    width="800px"
+                    height="800px"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10 13C9.44772 13 9 13.4477 9 14C9 14.5523 9.44772 15 10 15H14C14.5523 15 15 14.5523 15 14C15 13.4477 14.5523 13 14 13H10Z"
+                      fill="#fff"
+                    />
+                    <path
+                      d="M17 14C17 13.4477 17.4477 13 18 13C18.5523 13 19 13.4477 19 14C19 14.5523 18.5523 15 18 15C17.4477 15 17 14.5523 17 14Z"
+                      fill="#fff"
+                    />
+                    <path
+                      d="M6 13C5.44772 13 5 13.4477 5 14C5 14.5523 5.44772 15 6 15C6.55229 15 7 14.5523 7 14C7 13.4477 6.55229 13 6 13Z"
+                      fill="#fff"
+                    />
+                    <path
+                      d="M5 10C5 9.44772 5.44772 9 6 9C6.55229 9 7 9.44772 7 10C7 10.5523 6.55229 11 6 11C5.44772 11 5 10.5523 5 10Z"
+                      fill="#fff"
+                    />
+                    <path
+                      d="M10 9C9.44771 9 9 9.44772 9 10C9 10.5523 9.44771 11 10 11C10.5523 11 11 10.5523 11 10C11 9.44772 10.5523 9 10 9Z"
+                      fill="#fff"
+                    />
+                    <path
+                      d="M13 10C13 9.44772 13.4477 9 14 9C14.5523 9 15 9.44772 15 10C15 10.5523 14.5523 11 14 11C13.4477 11 13 10.5523 13 10Z"
+                      fill="#fff"
+                    />
+                    <path
+                      d="M18 9C17.4477 9 17 9.44772 17 10C17 10.5523 17.4477 11 18 11C18.5523 11 19 10.5523 19 10C19 9.44772 18.5523 9 18 9Z"
+                      fill="#fff"
+                    />
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M20 5C21.6569 5 23 6.34315 23 8V16C23 17.6569 21.6569 19 20 19H4C2.34315 19 1 17.6569 1 16V8C1 6.34315 2.34315 5 4 5H20ZM20 7C20.5523 7 21 7.44772 21 8V16C21 16.5523 20.5523 17 20 17H4C3.44772 17 3 16.5523 3 16V8C3 7.44772 3.44772 7 4 7H20Z"
+                      fill="#fff"
+                    />
+                  </svg>
+                </label>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="textarea-preview" data-preview></div>
+        <!-- /.textarea-preview -->
+
+        <div class="actions">
+          <button class="button" data-random>Random text</button>
+          <button class="button" data-target="custom-text">Custom text</button>
+        </div>
+
+        <div class="keyboard hidden" data-keyboard>
+          <!-- Row 1 -->
+          <div class="row">
+            <div data-code="Backquote" class="key dark left">~<br />`</div>
+            <div data-code="Digit1" class="key key--left">!<br />1</div>
+            <div data-code="Digit2" class="key key--left">@<br />2</div>
+            <div data-code="Digit3" class="key key--left">#<br />3</div>
+            <div data-code="Digit4" class="key key--left">$<br />4</div>
+            <div data-code="Digit5" class="key key--left">%<br />5</div>
+            <div data-code="Digit6" class="key">^<br />6</div>
+            <div data-code="Digit7" class="key">&<br />7</div>
+            <div data-code="Digit8" class="key">*<br />8</div>
+            <div data-code="Digit9" class="key">(<br />9</div>
+            <div data-code="Digit0" class="key">)<br />0</div>
+            <div data-code="Minus" class="key">_<br />-</div>
+            <div data-code="Equal" class="key">+<br />=</div>
+            <div data-code="Backspace" class="key wide dark right">
+              Backspace <br />←
+            </div>
+          </div>
+          <!-- Row 2 -->
+          <div class="row">
+            <div data-code="Tab" class="key wide dark left">Tab</div>
+            <div data-code="KeyQ" class="key key--left">Q</div>
+            <div data-code="KeyW" class="key key--left">W</div>
+            <div data-code="KeyE" class="key key--left">E</div>
+            <div data-code="KeyR" class="key key--left">R</div>
+            <div data-code="KeyT" class="key key--left">T</div>
+            <div data-code="KeyY" class="key">Y</div>
+            <div data-code="KeyU" class="key">U</div>
+            <div data-code="KeyI" class="key">I</div>
+            <div data-code="KeyO" class="key">O</div>
+            <div data-code="KeyP" class="key">P</div>
+            <div data-code="BracketLeft" class="key">{<br />[</div>
+            <div data-code="BracketRight" class="key">}<br />]</div>
+            <div data-code="Backslash" class="key wide dark left">|<br />\</div>
+          </div>
+          <!-- Row 3 -->
+          <div class="row">
+            <div data-code="CapsLock" class="key wide dark left">Caps Lock</div>
+            <div data-code="KeyA" class="key key--left">A</div>
+            <div data-code="KeyS" class="key key--left">S</div>
+            <div data-code="KeyD" class="key key--left">D</div>
+            <div data-code="KeyF" class="key key--left">F</div>
+            <div data-code="KeyG" class="key key--left">G</div>
+            <div data-code="KeyH" class="key">H</div>
+            <div data-code="KeyJ" class="key">J</div>
+            <div data-code="KeyK" class="key">K</div>
+            <div data-code="KeyL" class="key">L</div>
+            <div data-code="Semicolon" class="key">:<br />;</div>
+            <div data-code="Quote" class="key">"<br />'</div>
+            <div data-code="Enter" class="key wide dark right">Enter</div>
+          </div>
+          <!-- Row 4 -->
+          <div class="row">
+            <div data-code="ShiftLeft" class="key extra-wide dark key--left">
+              Shift
+            </div>
+            <div data-code="KeyZ" class="key key--left">Z</div>
+            <div data-code="KeyX" class="key key--left">X</div>
+            <div data-code="KeyC" class="key key--left">C</div>
+            <div data-code="KeyV" class="key key--left">V</div>
+            <div data-code="KeyB" class="key key--left">B</div>
+            <div data-code="KeyN" class="key">N</div>
+            <div data-code="KeyM" class="key">M</div>
+            <div data-code="Comma" class="key">&lt;<br />,</div>
+            <div data-code="Period" class="key">&gt;<br />.</div>
+            <div data-code="Slash" class="key">?<br />/</div>
+            <div data-code="ShiftRight" class="key extra-wide dark right">
+              Shift
+            </div>
+          </div>
+          <!-- Row 5 -->
+          <div class="row">
+            <div data-code="ControlLeft" class="key extra-wide dark left">
+              Ctrl
+            </div>
+            <div data-code="AltLeft" class="key dark left">Alt</div>
+            <div data-code="Space" class="key space">Space</div>
+            <div data-code="AltRight" class="key dark">Alt</div>
+            <div data-code="ControlRight" class="key extra-wide dark right">
+              Ctrl
+            </div>
+          </div>
+
+          <div class="keyboard__legend">
+            <div class="keyboard__legend-item keyboard__legend-item--left">
+              Left hand keys
+            </div>
+            <div class="keyboard__legend-item keyboard__legend-item--right">
+              Right hand keys
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal modal--end hidden" data-modal>
+        <div class="modal__inner">
+          <div class="modal__content">
+            <p>Your accuracy is <span data-accuracy></span></p>
+
+            <p>Your speed is <span data-speed></span></p>
+
+            <p>Your overall score is <span data-score></span></p>
+
+            <button class="button" data-random>Try again (random text)</button>
+
+            <button class="button" data-start>
+              Try again (with the custom text)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal modal--text hidden" data-modal-text id="custom-text">
+        <div class="modal__inner">
+          <div class="modal__content">
+            <textarea
+              class="modal-text__textarea"
+              rows="5"
+              data-custom
+              placeholder="Type or place some custom text of your own here, and press START button."
+            ></textarea>
+
+            <div class="modal-text__actions">
+              <button class="button" data-start>Start</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </qwerty-keyboard>
+  </body>
+</html>
