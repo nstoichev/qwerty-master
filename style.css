@@ -44,7 +44,7 @@ qwerty-keyboard {
 }
 
 .actions {
-  margin: 50px 0;
+  margin: 20px 0;
   text-align: center;
 }
 
@@ -156,6 +156,8 @@ qwerty-keyboard {
   vertical-align: bottom;
   height: 300px;
   overflow: hidden;
+  position: relative;
+  z-index: 10;
 }
 
 .textarea-preview span {
@@ -328,23 +330,19 @@ input:checked + .checkbox_label {
 }
 
 .image-container {
-  background-color: #333;
-  border: 1px solid #fff;
-  border-radius: 10px;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 999;
-  width: 300px;
+  width: 0;
+  height: 0;
+  pointer-events: none;
 }
 
 .image-preview {
   background-color: #333;
-  border: 1px solid #fff;
-  border-radius: 10px;
   position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 999;
+  top: 20px;
+  right: 20px;
   width: 300px;
 }

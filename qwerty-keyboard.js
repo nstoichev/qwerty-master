@@ -6,7 +6,6 @@ class QwertyKeyboard extends HTMLElement {
     this.customText = this.querySelector("[data-custom]");
     this.previewArea = this.querySelector("[data-preview]");
     this.keyboard = this.querySelector("[data-keyboard]");
-    this.imageContainer = this.querySelector("[data-image-container]");
     this.startButtons = this.querySelectorAll("[data-start]");
     this.randomTextButtons = this.querySelectorAll("[data-random]");
     this.modal = this.querySelector("[data-modal]");
@@ -100,11 +99,10 @@ class QwertyKeyboard extends HTMLElement {
     this.startButtons.forEach((startButton) => {
       startButton.addEventListener("click", (event) => {
         event.preventDefault();
-
         // Close any open modals
         this.closeModals();
 
-        this.start();
+        this.initializeTyping(this.customText);
       });
     });
 
@@ -114,10 +112,10 @@ class QwertyKeyboard extends HTMLElement {
         event.preventDefault();
         // Close any open modals
         this.closeModals();
-        // Fetch new content and use data-custom textarea
-        this.getContent();
-        // Reset the keyboard
-        this.reset();
+        
+        this.insertContent();
+        
+        this.initializeTyping(this.textArea);
       });
     });
 
@@ -135,7 +133,7 @@ class QwertyKeyboard extends HTMLElement {
   }
 
   initializePreview(textarea) {
-    const currentTextArea = this.getTextarea(textarea);
+    const currentTextArea = textarea;
 
     if (currentTextArea && this.previewArea) {
       this.previewArea.innerHTML = "";
@@ -174,42 +172,6 @@ class QwertyKeyboard extends HTMLElement {
     enter.setAttribute("data-code", "Enter");
     this.previewArea.appendChild(enter);
     this.previewArea.appendChild(document.createElement("br"));
-  }
-
-  // highlight Only Single/Next key
-  highlightKey() {
-    if (!this.previewArea || !this.keyboard) return;
-
-    this.keyboard.querySelectorAll(".highlight").forEach((key) => {
-      key.classList.remove("highlight");
-    });
-
-    const expectedChar = this.previewArea.querySelector("span:not(.typed)");
-    if (!expectedChar) return;
-
-    const char = expectedChar.textContent;
-    const keyCode = expectedChar.getAttribute("data-code");
-
-    const keyElement = this.keyboard.querySelector(`[data-code="${keyCode}"]`);
-    if (keyElement) {
-      keyElement.classList.add("highlight");
-    }
-
-    const isUpperCase =
-      char === char.toUpperCase() && char !== char.toLowerCase();
-    const requiresShift = /[~!@#$%^&*()_+{}|:"<>?]/.test(char);
-
-    if (isUpperCase || requiresShift) {
-      const shiftKey = /[QWERTASDFGZXCV!@#$%]/.test(char.toUpperCase())
-        ? this.keyboard.querySelector('[data-code="ShiftRight"]')
-        : this.keyboard.querySelector('[data-code="ShiftLeft"]');
-
-      if (shiftKey) {
-        shiftKey.classList.add("highlight");
-      }
-    }
-
-    this.highlightCurernt();
   }
 
   // highlight All word keys
@@ -364,7 +326,6 @@ class QwertyKeyboard extends HTMLElement {
       this.previewArea.querySelectorAll("span.typed").length;
     const isSoundsEnabled = this.soundsEnabled();
 
-    // this.highlightKey();
     this.highlightWord();
 
     this.scrollToCurrentElement();
@@ -529,18 +490,6 @@ class QwertyKeyboard extends HTMLElement {
     }
   }
 
-  reset() {
-    this.insertContent();
-    this.initializeTyping(this.textArea);
-    this.startButtons.forEach(startButton => {
-      startButton.blur();
-    });
-  }
-
-  start() {
-    this.initializeTyping(this.customText);
-  }
-
   initializeTyping(textAreaElement) {
     this.initializePreview(textAreaElement);
     this.highlightWord();
@@ -576,9 +525,10 @@ class QwertyKeyboard extends HTMLElement {
     // this.contentFromJson();
 
     // Quotes from Ninja API
-    this.getContent();
+    // this.contentFromNinja();
 
-    this.getImagePreview().innerHTML = this.getImageContainer().innerHTML;
+    // Quotes from Wikipedia API
+    this.contentFromWikipedia();
   }
 
   contentFormArray() {
@@ -625,56 +575,42 @@ class QwertyKeyboard extends HTMLElement {
     });
   }
 
-  getContent() {
-    // const url2 = `https://api.api-ninjas.com/v1/quotes?category=${randomCategory}`;
+  contentFromNinja() {
     const url = `https://api.api-ninjas.com/v1/quotes`;
 
-    // fetch(url, {
-    //   headers: { "X-Api-Key": "f6B2Gy5HYShGhsKzvsMlyw==f3Qb4CqANCGNDqUe" },
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     if (this.textArea) {
-    //       this.textArea.value = data[0].quote + "\n- " + data[0].author;
-    //     }
-    //   })
-    //   .catch((error) => console.error("Error:", error));
-
-    const isValidText = (text) => {
-      // Regular expression to match only standard keyboard characters
-      const validChars = /^[a-zA-Z0-9\s.,!?'"()\-_+=\[\]{}\\|;:<>@#$%^&*~/`\n]+$/;
-      return validChars.test(text);
-    };
-
-    const fetchWikipediaArticle = () => {
-      fetch("https://en.wikipedia.org/api/rest_v1/page/random/summary")
-        .then(response => response.json())
-        .then(data => {
-          if (isValidText(data.extract)) {
-            // this.textArea.value = data.title + "\n" + data.extract;
-            this.textArea.value = data.extract;
-            this.imageContainer.innerHTML = `<img src="${data.originalimage.source}" alt="${data.title}" />`;
-          } else {
-            // If invalid characters found, try fetching again
-            fetchWikipediaArticle();
-          }
-        })
-        .catch(error => console.error("Error fetching Wikipedia data:", error));
-    };
-
-    fetchWikipediaArticle();
+    fetch(url, {
+      headers: { "X-Api-Key": "f6B2Gy5HYShGhsKzvsMlyw==f3Qb4CqANCGNDqUe" },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (this.textArea) {
+          this.textArea.value = data[0].quote + "\n- " + data[0].author;
+        }
+      })
+      .catch((error) => console.error("Error:", error));
   }
 
-  getImageContainer() {
-    return this.querySelector("[data-image-container]");
+  async contentFromWikipedia() {
+    try {
+      const response = await fetch("https://en.wikipedia.org/api/rest_v1/page/random/summary");
+      const data = await response.json();
+      
+      if (this.isValidText(data.extract)) {
+        this.textArea.value = data.extract;
+        this.linkContainer.innerHTML = `Read more about ${data.title} on  <a class="link" href="${data.content_urls.desktop.page}" target="_blank">Wikipedia</a>`;
+      } else {
+        // If text is invalid, try again
+        return this.contentFromWikipedia();
+      }
+    } catch (error) {
+      console.error("Error fetching Wikipedia data:", error);
+    }
   }
 
-  getImagePreview() {
-    return this.querySelector("[data-image-preview]");
-  }
-
-  getTextarea(textarea) {
-    return textarea;
+  isValidText(text) {
+    // Regular expression to match only standard keyboard characters
+    const validChars = /^[a-zA-Z0-9\s.,!?'"()\-_+=\[\]{}\\|;:<>@#$%^&*~/`\n]+$/;
+    return validChars.test(text);
   }
 
   playKeySound(keyCode, isCorrect) {
