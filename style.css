@@ -111,7 +111,6 @@ qwerty-keyboard {
   border-radius: 8px;
   padding: 10px;
   margin: 4px;
-  cursor: pointer;
   user-select: none;
   transition: all 0.2s;
   -webkit-box-shadow: -2px 2px 0px 3px #000;
@@ -141,11 +140,6 @@ qwerty-keyboard {
 
 .key.space {
   flex: 6;
-}
-
-.key:hover {
-  background: #555;
-  border-color: #666;
 }
 
 /* ------------------------------------------------------------ *\
@@ -331,4 +325,26 @@ input:checked + .checkbox_label {
 .checkbox_label svg {
   width: 60px;
   height: auto;
+}
+
+.image-container {
+  background-color: #333;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 300px;
+}
+
+.image-preview {
+  background-color: #333;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  width: 300px;
 }

@@ -20,11 +20,10 @@
     <link rel="stylesheet" href="form.css" type="text/css" media="all" />
   </head>
   <body>
-    <!--
-    The Astronaut Wives Club is a 2015 American period drama television series developed by Stephanie Savage for ABC. It is based on Lily Koppel's 2013 book of the same name. The series tells the story of the wives of the Mercury Seven – America's first group of astronauts – who together formed the Astronaut Wives Club. Actresses Dominique McElligott, Yvonne Strahovski, JoAnna Garcia, Erin Cummings, Azure Parsons, Zoe Boyle, and Odette Annable play the roles of the astronauts' wives. -->
-
     <qwerty-keyboard>
       <div class="container">
+        <textarea class="hidden" rows="5" data-default-text>Hello World!</textarea>
+
         <textarea class="hidden" rows="5" data-text></textarea>
 
         <form action="" method="post" class="settings" data-settings>
@@ -37,6 +36,7 @@
                   name="sounds"
                   value="on"
                   class="checkbox"
+                  checked
                 />
 
                 <label for="sounds" class="checkbox_label">
@@ -102,6 +102,7 @@
                   id="keyboard"
                   name="keyboard"
                   value="on"
+                  checked
                 />
 
                 <label for="keyboard" class="checkbox_label">
@@ -156,6 +157,9 @@
 
         <div class="textarea-preview" data-preview></div>
         <!-- /.textarea-preview -->
+
+        <div class="image-container" data-image-container></div>
+        <div class="image-preview" data-image-preview></div>
 
         <div class="actions">
           <button class="button" data-random>Random text</button>

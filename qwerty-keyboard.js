@@ -2,9 +2,11 @@ class QwertyKeyboard extends HTMLElement {
   constructor() {
     super();
     this.textArea = this.querySelector("[data-text]");
+    this.defaultText = this.querySelector("[data-default-text]");
     this.customText = this.querySelector("[data-custom]");
     this.previewArea = this.querySelector("[data-preview]");
     this.keyboard = this.querySelector("[data-keyboard]");
+    this.imageContainer = this.querySelector("[data-image-container]");
     this.startButtons = this.querySelectorAll("[data-start]");
     this.randomTextButtons = this.querySelectorAll("[data-random]");
     this.modal = this.querySelector("[data-modal]");
@@ -68,14 +70,20 @@ class QwertyKeyboard extends HTMLElement {
       for (const [category, paths] of Object.entries(speedSoundsData)) {
         this.speedSounds[category] = paths.map((path) => new Audio(path));
       }
+
+      // Initialize typing after all data is loaded
+      this.initializeTyping(this.defaultText);
+      // Insert content after all data is loaded
+      this.insertContent();
     } catch (error) {
       console.error("Error loading data:", error);
     }
   }
 
   connectedCallback() {
-    this.insertContent();
-
+    this.keyboard.classList.toggle("hidden", !this.keyboardEnabled());
+    
+    // data-keyboard
     // Add click handler for buttons with data-target attribute
     this.querySelectorAll('[data-target]').forEach(button => {
       button.addEventListener('click', (event) => {
@@ -229,6 +237,7 @@ class QwertyKeyboard extends HTMLElement {
     const expectedKey = this.keyboard.querySelector(
       `[data-code="${expectedChar.dataset.code}"]`
     );
+    if (!expectedKey) return;
     expectedKey.classList.add("expected");
 
     // Add expected class to Shift key if character is uppercase
@@ -568,6 +577,8 @@ class QwertyKeyboard extends HTMLElement {
 
     // Quotes from Ninja API
     this.getContent();
+
+    this.getImagePreview().innerHTML = this.getImageContainer().innerHTML;
   }
 
   contentFormArray() {
@@ -642,6 +653,7 @@ class QwertyKeyboard extends HTMLElement {
           if (isValidText(data.extract)) {
             // this.textArea.value = data.title + "\n" + data.extract;
             this.textArea.value = data.extract;
+            this.imageContainer.innerHTML = `<img src="${data.originalimage.source}" alt="${data.title}" />`;
           } else {
             // If invalid characters found, try fetching again
             fetchWikipediaArticle();
@@ -651,6 +663,14 @@ class QwertyKeyboard extends HTMLElement {
     };
 
     fetchWikipediaArticle();
+  }
+
+  getImageContainer() {
+    return this.querySelector("[data-image-container]");
+  }
+
+  getImagePreview() {
+    return this.querySelector("[data-image-preview]");
   }
 
   getTextarea(textarea) {
