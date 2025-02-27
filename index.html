@@ -22,12 +22,12 @@
   <body>
     <qwerty-keyboard>
       <div class="container">
-        <textarea class="hidden" rows="5" data-default-text>Hello World!</textarea>
-        <textarea class="hidden" rows="5" data-text></textarea>
+        <textarea class="textarea-placeholder hidden" rows="5" data-default-text>Hello World!</textarea>
+        <textarea class="textarea-placeholder hidden" rows="5" data-random-text></textarea>
         <div class="textarea-preview" data-preview></div>
 
         <div class="actions">
-          <button class="button" data-random>Random text</button>
+          <button class="button" data-init data-random data-source="data-random-text">Random text</button>
 
           <button class="button" data-target="custom-text">Custom text</button>
         </div>
@@ -137,12 +137,12 @@
 
             <p>Your overall score is <span data-score></span></p>
 
-            <button class="button" data-random>Try again (random text)</button>
+            <button class="button" data-init data-random data-source="data-random-text">
+              Try again (random text)
+            </button>
 
-            <div class="hidden" data-wiki-link></div>
-
-            <button class="button" data-start>
-              Try again (with the custom text)
+            <button class="button" data-same>
+              Try again (with the same text)
             </button>
           </div>
         </div>
@@ -154,12 +154,12 @@
             <textarea
               class="modal-text__textarea"
               rows="5"
-              data-custom
+              data-custom-text
               placeholder="Type or place some custom text of your own here, and press START button."
             ></textarea>
 
             <div class="modal-text__actions">
-              <button class="button" data-start>Start</button>
+              <button class="button" data-init data-start data-source="data-custom-text">Start</button>
             </div>
           </div>
         </div>
@@ -289,6 +289,28 @@
                   />
                 </svg>
               </label>
+            </div>
+          </div>
+
+          <div class="radio-group">
+            <div class="radio">
+              <input type="radio" id="array" name="source" value="array" />
+              <label for="array">Array</label>
+            </div>
+
+            <div class="radio">
+              <input type="radio" id="json" name="source" value="json" />
+              <label for="json">JSON</label>
+            </div>
+
+            <div class="radio">
+              <input type="radio" id="ninja" name="source" value="ninja" />
+              <label for="ninja">Ninja</label>
+            </div>
+
+            <div class="radio">
+              <input type="radio" id="wikipedia" name="source" value="wikipedia" checked />
+              <label for="wikipedia">Wikipedia</label>
             </div>
           </div>
         </div>

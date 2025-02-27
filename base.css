@@ -12,7 +12,7 @@ body {
 }
 
 .container {
-  max-width: 996px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -42,11 +42,13 @@ body {
   }
 }
 
-textarea[data-text] {
+.textarea-placeholder {
   border: none;
   display: block;
   width: 100%;
   padding: 20px;
+  margin: 10px 0;
+  height: 50px;
 }
 
 .link {

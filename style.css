@@ -46,6 +46,10 @@ qwerty-keyboard {
 .actions {
   margin: 20px 0;
   text-align: center;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
 }
 
 .keyboard {
@@ -57,6 +61,7 @@ qwerty-keyboard {
   max-width: 900px;
   margin: 0 auto;
   position: relative;
+  margin-top: 50px;
 }
 
 .keyboard__legend {
@@ -345,4 +350,23 @@ input:checked + .checkbox_label {
   top: 20px;
   right: 20px;
   width: 300px;
+}
+
+.modal__video {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  padding-bottom: 400px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.modal__video iframe {
+  border: none;
+  pointer-events: none;
+  position: absolute;
+  top: -20%;
+  right: -20%;  
+  left: -20%;
+  bottom: -20%;
 }

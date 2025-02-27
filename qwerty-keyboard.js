@@ -1,13 +1,15 @@
 class QwertyKeyboard extends HTMLElement {
   constructor() {
     super();
-    this.textArea = this.querySelector("[data-text]");
-    this.defaultText = this.querySelector("[data-default-text]");
-    this.customText = this.querySelector("[data-custom]");
+    this.textAreaRandom = this.querySelector("[data-random-text]");
+    this.textAreaDefault = this.querySelector("[data-default-text]");
+    this.textAreaCustom = this.querySelector("[data-custom-text]");
+    
     this.previewArea = this.querySelector("[data-preview]");
     this.keyboard = this.querySelector("[data-keyboard]");
-    this.startButtons = this.querySelectorAll("[data-start]");
-    this.randomTextButtons = this.querySelectorAll("[data-random]");
+
+    this.initButtons = this.querySelectorAll("[data-init]");
+
     this.modal = this.querySelector("[data-modal]");
     this.accuracy = this.querySelector("[data-accuracy]");
     this.speed = this.querySelector("[data-speed]");
@@ -22,6 +24,9 @@ class QwertyKeyboard extends HTMLElement {
     // Initialize other properties
     this.keyCodeMap = {};
     this.wordsArray = [];
+
+    // Add new property to store last used text
+    this.lastUsedText = '';
 
     // Load all data
     this.loadData();
@@ -71,7 +76,7 @@ class QwertyKeyboard extends HTMLElement {
       }
 
       // Initialize typing after all data is loaded
-      this.initializeTyping(this.defaultText);
+      this.initializeTyping(this.textAreaDefault);
       // Insert content after all data is loaded
       this.insertContent();
     } catch (error) {
@@ -82,7 +87,6 @@ class QwertyKeyboard extends HTMLElement {
   connectedCallback() {
     this.keyboard.classList.toggle("hidden", !this.keyboardEnabled());
     
-    // data-keyboard
     // Add click handler for buttons with data-target attribute
     this.querySelectorAll('[data-target]').forEach(button => {
       button.addEventListener('click', (event) => {
@@ -95,31 +99,18 @@ class QwertyKeyboard extends HTMLElement {
       });
     });
 
-    // Update start button handler
-    this.startButtons.forEach((startButton) => {
-      startButton.addEventListener("click", (event) => {
+    // Update init button handler
+    this.initButtons.forEach((initButton) => {
+      initButton.addEventListener("click", (event) => {
         event.preventDefault();
-        // Close any open modals
-        this.closeModals();
 
-        this.initializeTyping(this.customText);
+        const source = this.querySelector(`[${initButton.getAttribute("data-source")}]`);
+        
+        this.initializeTyping(source);
       });
     });
-
-    // Update random text button handler
-    this.randomTextButtons.forEach((randomTextButton) => {
-      randomTextButton.addEventListener("click", (event) => {
-        event.preventDefault();
-        // Close any open modals
-        this.closeModals();
-        
-        this.insertContent();
-        
-        this.initializeTyping(this.textArea);
-      });
-    });
-
-    this.customText.addEventListener("click", (event) => {
+    
+    this.textAreaCustom.addEventListener("click", (event) => {
       this.previewArea.classList.remove("active");
     });
 
@@ -129,7 +120,27 @@ class QwertyKeyboard extends HTMLElement {
       });
     });
 
+    this.querySelectorAll("form input[name='source']").forEach((input) => {
+      input.addEventListener("change", () => {
+        this.insertContent();
+      });
+    });
+
     document.addEventListener("keydown", this.handleKeydown.bind(this));
+
+    // Add handler for "Try again (with the same text)" button
+    const sameTextButton = this.querySelector('[data-same]');
+    if (sameTextButton) {
+      sameTextButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        
+        // Create temporary textarea with last used text
+        const tempTextArea = document.createElement('textarea');
+        tempTextArea.value = this.lastUsedText;
+        
+        this.initializeTyping(tempTextArea);
+      });
+    }
   }
 
   initializePreview(textarea) {
@@ -449,12 +460,6 @@ class QwertyKeyboard extends HTMLElement {
       "[data-accuracy]"
     ).textContent = `${accuracyPercentage.toFixed(2)}%`;
 
-    // Hide custom text button if textarea is empty
-    const customTextButton = this.modal.querySelector('[data-start]');
-    if (customTextButton) {
-      customTextButton.style.display = this.customText.value.trim() ? 'inline-block' : 'none';
-    }
-
     this.modal.classList.remove("hidden");
     this.startTime = null;
 
@@ -491,6 +496,10 @@ class QwertyKeyboard extends HTMLElement {
   }
 
   initializeTyping(textAreaElement) {
+    // Store the text content before initializing
+    this.lastUsedText = textAreaElement.value;
+    
+    this.insertContent();
     this.initializePreview(textAreaElement);
     this.highlightWord();
     this.previewArea.classList.add("active");
@@ -518,9 +527,17 @@ class QwertyKeyboard extends HTMLElement {
   }
 
   insertContent() {
-    // Content from words array ( from 10 fast fingers)
-    // this.contentFormArray();
+    const source = this.getSource();
 
+    if (source === "array") {
+      this.contentFormArray();
+    } else if (source === "json") {
+      this.contentFromJson();
+    } else if (source === "ninja") {
+      this.contentFromNinja();
+    } else if (source === "wikipedia") {
+      this.contentFromWikipedia();
+    }
     // Paragraphs from json files
     // this.contentFromJson();
 
@@ -528,7 +545,11 @@ class QwertyKeyboard extends HTMLElement {
     // this.contentFromNinja();
 
     // Quotes from Wikipedia API
-    this.contentFromWikipedia();
+    // this.contentFromWikipedia();
+  }
+
+  getSource() {
+    return this.querySelector("form input[name='source']:checked").value;
   }
 
   contentFormArray() {
@@ -557,37 +578,51 @@ class QwertyKeyboard extends HTMLElement {
       paragraph = tempParagraph;
     }
 
-    if (this.textArea) {
-      this.textArea.value = paragraph;
+    if (this.textAreaRandom) {
+      this.textAreaRandom.value = paragraph;
     }
+
+    return paragraph;
   }
 
-  contentFromJson() {
-    this.fetchParagraphs().then((paragraphs) => {
-      if (paragraphs.length === 0) return;
+  async contentFromJson() {
+    try {
+      const paragraphs = await this.fetchParagraphs();
+      if (paragraphs.length === 0) return null;
 
       const randomIndex = Math.floor(Math.random() * paragraphs.length);
       const selectedParagraph = paragraphs[randomIndex].text;
 
-      if (this.textArea) {
-        this.textArea.value = selectedParagraph;
+      if (this.textAreaRandom) {
+        this.textAreaRandom.value = selectedParagraph;
       }
-    });
+
+      return selectedParagraph;
+    } catch (error) {
+      console.error("Error in contentFromJson:", error);
+      return null;
+    }
   }
 
-  contentFromNinja() {
+  async contentFromNinja() {
     const url = `https://api.api-ninjas.com/v1/quotes`;
 
-    fetch(url, {
-      headers: { "X-Api-Key": "f6B2Gy5HYShGhsKzvsMlyw==f3Qb4CqANCGNDqUe" },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (this.textArea) {
-          this.textArea.value = data[0].quote + "\n- " + data[0].author;
-        }
-      })
-      .catch((error) => console.error("Error:", error));
+    try {
+      const response = await fetch(url, {
+        headers: { "X-Api-Key": "f6B2Gy5HYShGhsKzvsMlyw==f3Qb4CqANCGNDqUe" },
+      });
+      const data = await response.json();
+      const quote = data[0].quote + "\n- " + data[0].author;
+      
+      if (this.textAreaRandom) {
+        this.textAreaRandom.value = quote;
+      }
+      
+      return quote;
+    } catch (error) {
+      console.error("Error:", error);
+      return null;
+    }
   }
 
   async contentFromWikipedia() {
@@ -596,8 +631,7 @@ class QwertyKeyboard extends HTMLElement {
       const data = await response.json();
       
       if (this.isValidText(data.extract)) {
-        this.textArea.value = data.extract;
-        this.linkContainer.innerHTML = `Read more about ${data.title} on  <a class="link" href="${data.content_urls.desktop.page}" target="_blank">Wikipedia</a>`;
+        this.textAreaRandom.value = data.extract;
       } else {
         // If text is invalid, try again
         return this.contentFromWikipedia();
@@ -634,7 +668,7 @@ class QwertyKeyboard extends HTMLElement {
     }
   }
 
-  formatTextWithLineBreaks(container, maxLineLength = 53) {
+  formatTextWithLineBreaks(container, maxLineLength = 46) {
     if (!container) return;
 
     // Convert spans and br elements into an array
