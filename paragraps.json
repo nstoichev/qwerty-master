@@ -1,146 +1,643 @@
 [
-  { "id": 1, "text": "The quick brown fox jumps over the lazy dog. This is a well-known sentence in the world of typing. It contains all the letters of the English alphabet." },
-  { "id": 2, "text": "Learning how to type without looking at the keyboard is one of the most valuable skills a person can have in today's digital age." },
-  { "id": 3, "text": "Efficient typing allows people to communicate more quickly and complete tasks with ease, making them more productive and effective." },
-  { "id": 4, "text": "The ability to type quickly without errors can significantly improve a person's workflow, especially in a professional environment." },
-  { "id": 5, "text": "While typing, it's important to maintain a comfortable posture to avoid strain and injury to your wrists and hands." },
-  { "id": 6, "text": "The keyboard layout we use today, called QWERTY, was designed in the 19th century to reduce key jamming on mechanical typewriters." },
-  { "id": 7, "text": "Touch typing, which involves typing without looking at the keys, is a skill that takes practice but can drastically improve your speed." },
-  { "id": 8, "text": "Keyboard shortcuts are great for speeding up tasks. Learning common shortcuts for your operating system can save a lot of time." },
-  { "id": 9, "text": "Effective typing involves not just speed but also accuracy. Focusing on both will help you become a better typist in the long run." },
-  { "id": 10, "text": "A good typing technique can prevent fatigue and discomfort. Proper hand placement and posture are key to maintaining long-term comfort." },
-  { "id": 11, "text": "Typing tests are often used to evaluate speed and accuracy. They are a fun way to challenge yourself and track your progress." },
-  { "id": 12, "text": "In addition to speed and accuracy, muscle memory plays a big role in typing. The more you practice, the more natural it becomes." },
-  { "id": 13, "text": "Regular practice is the key to improving typing skills. Try to type for at least 15 minutes a day to see gradual improvements." },
-  { "id": 14, "text": "The spacebar is one of the most frequently used keys. Make sure to position your thumbs correctly to use it efficiently." },
-  { "id": 15, "text": "Typing games are a fun way to practice and improve. They add a competitive element and can make learning to type more enjoyable." },
-  { "id": 16, "text": "While typing, try to minimize errors by focusing on accuracy. Mistakes can slow you down more than they save you time." },
-  { "id": 17, "text": "Ergonomics is important for typists. Using an adjustable chair and keyboard can reduce strain and improve comfort during long typing sessions." },
-  { "id": 18, "text": "The home row is where your fingers should rest when not typing. This position ensures you can reach all other keys with minimal movement." },
-  { "id": 19, "text": "Many people find that they type faster when they stop looking at the keyboard. This is a result of muscle memory and hand-eye coordination." },
-  { "id": 20, "text": "Typing with all ten fingers is more efficient than using just a few. Learning to use all fingers will help you type faster and more comfortably." },
-  { "id": 21, "text": "Proper finger placement is crucial. Your index fingers should rest on the F and J keys, while your other fingers fall on the corresponding home row keys." },
-  { "id": 22, "text": "It's common to experience finger fatigue when you first start learning to type. With time and practice, your fingers will become stronger and more agile." },
-  { "id": 23, "text": "Some typing programs and applications use gamification to make learning to type fun and engaging. They provide challenges and rewards to motivate learners." },
-  { "id": 24, "text": "As you improve your typing skills, you'll be able to focus more on the content you're typing rather than the mechanics of hitting the right keys." },
-  { "id": 25, "text": "The more you type, the faster and more accurately you'll be able to complete tasks. This is why typing practice is so important." },
-  { "id": 26, "text": "Technology has made typing easier than ever. With speech-to-text software, people can type without touching the keyboard." },
-  { "id": 27, "text": "Typing on a tablet or smartphone can be challenging due to the small size of the screen. However, practice can help you type more accurately and quickly." },
-  { "id": 28, "text": "While typing, avoid unnecessary movements. The less your hands move, the faster you'll be able to type." },
-  { "id": 29, "text": "There are many online typing tests available that can help you track your progress and compete against others for the highest typing speed." },
-  { "id": 30, "text": "When typing long pieces of text, take breaks to avoid strain. It's important to rest your hands and stretch your fingers regularly." },
-  { "id": 31, "text": "Touch typing is all about developing muscle memory so that your fingers can find the keys without thinking about them." },
-  { "id": 32, "text": "One of the most important tips for typing fast is to focus on the rhythm of your typing. Typing should be a fluid and consistent motion." },
-  { "id": 33, "text": "To master typing, it's essential to have a comfortable and quiet environment. Distractions can slow you down and reduce accuracy." },
-  { "id": 34, "text": "Learning to type faster will help you complete tasks more quickly. Whether you're typing emails, reports, or code, faster typing means more efficiency." },
-  { "id": 35, "text": "Many typing programs offer feedback and suggestions on how to improve speed and accuracy. These tools can be invaluable for beginners." },
-  { "id": 36, "text": "Did you know that the average person types about 40 words per minute? With practice, this number can grow significantly." },
-  { "id": 37, "text": "Typing at high speeds is often seen as a sign of proficiency. However, it's important to balance speed with accuracy to avoid making mistakes." },
-  { "id": 38, "text": "While typing tests can help you improve speed, typing real-world documents will provide a better sense of how your typing skills translate into productivity." },
-  { "id": 39, "text": "Online typing lessons can help improve your skills. Many websites offer structured lessons that break down the process into manageable parts." },
-  { "id": 40, "text": "There are different typing styles to explore, including the standard touch typing and the hunt-and-peck method, where you type by looking at the keys." },
-  { "id": 41, "text": "Increasing typing speed requires practice. The more you practice typing, the faster and more accurately you will type." },
-  { "id": 42, "text": "Proper posture while typing includes sitting with your feet flat on the floor and your back straight. This prevents discomfort during long typing sessions." },
-  { "id": 43, "text": "It's important to have good lighting when typing. Bright lighting can reduce eye strain and make it easier to see the keys clearly." },
-  { "id": 44, "text": "Touch typing courses often use drills and exercises to help you develop the muscle memory needed to type efficiently and quickly." },
-  { "id": 45, "text": "Keeping your hands relaxed while typing is crucial to prevent strain. Avoid tense fingers and wrists when you type." },
-  { "id": 46, "text": "Accuracy is the key to efficient typing. Typing quickly without focusing on accuracy can lead to mistakes that take more time to correct." },
-  { "id": 47, "text": "One tip to improve typing speed is to increase the length of your typing sessions gradually. Start with short sessions and work up to longer ones." },
-  { "id": 48, "text": "In typing, the goal is to develop fluid motion with your hands. Each keystroke should flow seamlessly into the next without pausing or hesitating." },
-  { "id": 49, "text": "Many people find it helpful to use typing software or applications that track their progress and provide feedback on how to improve." },
-  { "id": 50, "text": "The faster you type, the more you'll be able to focus on other tasks, like editing your work or thinking critically about what you're writing." },
-  { "id": 51, "text": "Typing tests can help improve speed and accuracy, but they also offer a fun challenge. Competing against others can motivate you to improve." },
-  { "id": 52, "text": "It's important to practice typing on different types of documents, such as essays, reports, and emails, to prepare for a variety of typing scenarios." },
-  { "id": 53, "text": "Typing practice doesn't have to be boring. You can turn it into a game by racing against your previous records or competing with others." },
-  { "id": 54, "text": "Using proper finger placement ensures that you can reach all the keys quickly and efficiently. Practice until it feels natural to use all your fingers." },
-  { "id": 55, "text": "A great way to improve typing speed is to challenge yourself to type faster with fewer errors. Tracking your progress can be very motivating." },
-  { "id": 56, "text": "Consistent typing practice will gradually increase your typing speed and reduce your mistakes, making you more efficient in the long run." },
-  { "id": 57, "text": "Typing efficiently requires good coordination between your eyes and fingers. Practice will help your fingers find the right keys without looking." },
-  { "id": 58, "text": "Sometimes, the best way to improve typing speed is simply to slow down and focus on typing accurately, rather than rushing to type quickly." },
-  { "id": 59, "text": "The standard QWERTY layout is not the only layout available. Alternatives like Dvorak are designed to reduce finger movement and increase typing speed." },
-  { "id": 60, "text": "Many professional typists aim to reach speeds of over 100 words per minute. With time and dedication, anyone can improve their typing speed." },
-  { "id": 61, "text": "The best way to develop a consistent typing rhythm is to practice typing the same letters or words repeatedly until your fingers memorize the pattern." },
-  { "id": 62, "text": "The keyboard layout you use can impact your typing efficiency. Experiment with different layouts to find the one that works best for you." },
-  { "id": 63, "text": "Typing is a skill that improves with practice. It's important to set small goals, such as typing 10 words per minute faster each week." },
-  { "id": 64, "text": "Typing without making mistakes is just as important as typing fast. Inaccurate typing can be more time-consuming than taking your time to type accurately." },
-  { "id": 65, "text": "The home row position for your fingers is a key concept in touch typing. Returning your fingers to the home row after each keystroke increases efficiency." },
-  { "id": 66, "text": "Most typing tests focus on both speed and accuracy. It's important to balance these two factors to achieve the best results." },
-  { "id": 67, "text": "Typing should be a fluid, almost automatic process. With enough practice, you'll be able to type without even thinking about the keys." },
-  { "id": 68, "text": "The ability to type quickly is a useful skill in many professions. Whether you're a writer, developer, or customer service representative, typing speed can improve your performance." },
-  { "id": 69, "text": "Improving your typing skills will make you more efficient and reduce stress. Knowing you can type quickly without errors helps you stay focused on the task at hand." },
-  { "id": 70, "text": "Even though many people use smartphones to type now, the fundamentals of typing on a traditional keyboard remain important for productivity." },
-  { "id": 71, "text": "When typing long paragraphs, try to stay focused and avoid distractions. Typing for extended periods requires concentration and discipline." },
-  { "id": 72, "text": "The more you practice typing, the less you'll need to look at the keys. This frees up your mental energy for focusing on your work." },
-  { "id": 73, "text": "Using a proper typing technique will help you avoid developing bad habits, such as looking at the keyboard or using only a few fingers." },
-  { "id": 74, "text": "Typing speed can vary from person to person, but with regular practice, you can significantly increase your speed over time." },
-  { "id": 75, "text": "Proper hand and finger positioning is key to avoiding discomfort. Try not to rest your hands on the keyboard when you're not typing." },
-  { "id": 76, "text": "While typing, focus on maintaining consistent finger movement. Try to avoid unnecessary pauses between key presses." },
-  { "id": 77, "text": "Typing at a consistent pace can improve both speed and accuracy. Try to maintain a steady rhythm instead of typing in spurts." },
-  { "id": 78, "text": "Using both hands while typing reduces the strain on individual fingers and increases speed by allowing you to type faster and more efficiently." },
-  { "id": 79, "text": "Some typing exercises help improve finger dexterity. Practicing with words or phrases that require frequent use of each finger can help you get better." },
-  { "id": 80, "text": "The ideal typing speed varies depending on your needs. For personal use, a speed of 40-60 words per minute is a good target." },
-  { "id": 81, "text": "Many online platforms offer typing tests where you can see how many words you can type per minute, helping you track your progress." },
-  { "id": 82, "text": "It's important to maintain good posture while typing. Slouching or typing with your wrists bent can lead to discomfort and long-term issues." },
-  { "id": 83, "text": "Typing without looking at the keys may take some time to master, but the effort pays off in the form of improved speed and accuracy." },
-  { "id": 84, "text": "Touch typing can be a great way to improve your productivity. When you don't have to look at the keys, you can focus entirely on the task at hand." },
-  { "id": 85, "text": "Try typing out passages from your favorite book or article to practice. This will help you become more accustomed to typing in a more natural setting." },
-  { "id": 86, "text": "Avoid using too many shortcuts when typing for the first time. Start slow and focus on building proper habits before trying to speed things up." },
-  { "id": 87, "text": "Typing tests that measure accuracy rather than speed can be a good way to challenge yourself and improve your overall skills." },
-  { "id": 88, "text": "By typing every day, even for short periods, you'll gradually improve your typing skills and reduce errors." },
-  { "id": 89, "text": "Try using a keyboard that feels comfortable for your hands and fingers. Ergonomic keyboards can help reduce strain and improve typing comfort." },
-  { "id": 90, "text": "Some people prefer typing on mechanical keyboards because of the tactile feedback they provide, while others opt for quieter, membrane keyboards." },
-  { "id": 91, "text": "The more you practice typing, the more your fingers will instinctively find the correct keys without needing to look." },
-  { "id": 92, "text": "Typing accuracy is a key factor in improving overall typing speed. Always correct mistakes promptly to avoid building bad habits." },
-  { "id": 93, "text": "One of the most important typing tips is to keep your hands relaxed. Tension in your fingers or wrists can slow you down." },
-  { "id": 94, "text": "Typing isn't just about speed. The real challenge is maintaining both speed and accuracy while typing without looking at the keyboard." },
-  { "id": 95, "text": "The keyboard layout can influence your typing speed. QWERTY may not be the fastest layout, but it's the most widely used and known to most people." },
-  { "id": 96, "text": "When typing long documents, it's important to take breaks to avoid strain. Stretch your fingers, wrists, and neck to avoid repetitive stress injuries." },
-  { "id": 97, "text": "Many typing programs offer a variety of drills and challenges to help you improve. These exercises often focus on increasing speed and reducing mistakes." },
-  { "id": 98, "text": "The key to typing faster is to reduce unnecessary movements. The less time you spend moving your fingers, the faster you can type." },
-  { "id": 99, "text": "Learning to type efficiently is like learning any other skill. It takes patience, practice, and a commitment to improving over time." },
-  { "id": 100, "text": "Speed typing is a fun and useful skill that can improve productivity. With regular practice and focused exercises, you can become a master of the keyboard." },
-  { "id": 101, "text": "The Amazon rainforest produces 20% of the world's oxygen, making it essential to global ecological health." },
-  { "id": 102, "text": "A single teaspoon of honey represents the lifetime work of 12 bees." },
-  { "id": 103, "text": "Octopuses have three hearts, and two of them stop beating when they swim." },
-  { "id": 104, "text": "Bananas are berries, but strawberries are not, according to botanical definitions." },
-  { "id": 105, "text": "Sharks existed before trees, having been around for over 400 million years." },
-  { "id": 106, "text": "Venus is the hottest planet in our solar system, with surface temperatures reaching 900°F (475°C)." },
-  { "id": 107, "text": "Wombat feces are cube-shaped, helping them mark territory without rolling away." },
-  { "id": 108, "text": "The Eiffel Tower can grow more than 6 inches taller in summer due to metal expansion from heat." },
-  { "id": 109, "text": "The Great Wall of China is not a single wall but a series of interconnected structures." },
-  { "id": 110, "text": "Cats can make over 100 different sounds, while dogs can make only about 10." },
-  { "id": 111, "text": "Human noses can detect about one trillion different smells, making them highly sensitive." },
-  { "id": 112, "text": "Jellyfish have survived for over 500 million years without a brain or heart." },
-  { "id": 113, "text": "Elephants are the only mammals that cannot jump due to their weight and anatomy." },
-  { "id": 114, "text": "Antarctica is the driest, coldest, and windiest continent, yet it holds 70% of Earth's freshwater." },
-  { "id": 115, "text": "The moon is slowly drifting away from Earth at a rate of about 1.5 inches per year." },
-  { "id": 116, "text": "Koalas have unique fingerprints that are nearly identical to humans'." },
-  { "id": 117, "text": "The world's largest desert is not the Sahara but Antarctica, which is classified as a cold desert." },
-  { "id": 118, "text": "Dolphins have names for each other and use specific whistles to call individuals." },
-  { "id": 119, "text": "The human brain generates enough electricity to power a small light bulb." },
-  { "id": 120, "text": "A day on Venus is longer than a year on Venus due to its slow rotation." },
-  { "id": 121, "text": "Pineapples take about two years to grow and reach maturity for harvesting." },
-  { "id": 122, "text": "The fingerprints of a koala are so indistinguishable from humans that they can confuse crime scene investigations." },
-  { "id": 123, "text": "Sloths can take up to a month to digest their food due to their slow metabolism." },
-  { "id": 124, "text": "Bees can recognize human faces, distinguishing one person from another." },
-  { "id": 125, "text": "There are more stars in the universe than grains of sand on Earth." },
-  { "id": 126, "text": "Sharks are immune to all known diseases, including cancer, making them unique among animals." },
-  { "id": 127, "text": "Water can boil and freeze at the same time in a phenomenon called the triple point." },
-  { "id": 128, "text": "Owls can rotate their heads 270 degrees without injuring themselves." },
-  { "id": 129, "text": "A blue whale's tongue weighs as much as an elephant, demonstrating its massive size." },
-  { "id": 130, "text": "Butterflies taste with their feet, using receptors to sample their food sources." },
-  { "id": 131, "text": "A group of flamingos is called a 'flamboyance,' reflecting their bright colors." },
-  { "id": 132, "text": "Apples float in water because they are 25% air by volume." },
-  { "id": 133, "text": "Ants can carry objects up to 50 times their body weight, showcasing their strength." },
-  { "id": 134, "text": "The shortest war in history was between Britain and Zanzibar on August 27, 1896. It lasted only 38 minutes." },
-  { "id": 135, "text": "Sea otters hold hands while sleeping to keep from drifting apart in the water." },
-  { "id": 136, "text": "Honey never spoils; archaeologists have found edible honey in ancient Egyptian tombs." },
-  { "id": 137, "text": "A bolt of lightning contains enough energy to toast 100,000 slices of bread." },
-  { "id": 138, "text": "Bamboo can grow up to 35 inches in a single day under optimal conditions." },
-  { "id": 139, "text": "Cows have best friends and become stressed when separated from them." },
-  { "id": 140, "text": "A snail can sleep for three years if conditions are unfavorable for survival." },
-  
-  { "id": 141, "text": "it should form her at animal went away way now over live big home its also until light but the should take it's miss get begin keep mother under" },
-  { "id": 141, "text": "list man now carry me these say so earth live hand young she at car year why below same where home we example group left get play around mean" },
-  { "id": 141, "text": "know tree look once not eat or girl live one when put girl thought enough show can animal on work play people children time together of learn" }
+  {
+    "id": 1,
+    "text": "The quick brown fox jumps over the lazy dog. This is a well-known sentence in the world of typing. It contains all the letters of the English alphabet."
+  },
+  {
+    "id": 2,
+    "text": "Learning how to type without looking at the keyboard is one of the most valuable skills a person can have in today's digital age."
+  },
+  {
+    "id": 3,
+    "text": "Efficient typing allows people to communicate more quickly and complete tasks with ease, making them more productive and effective."
+  },
+  {
+    "id": 4,
+    "text": "The ability to type quickly without errors can significantly improve a person's workflow, especially in a professional environment."
+  },
+  {
+    "id": 5,
+    "text": "While typing, it's important to maintain a comfortable posture to avoid strain and injury to your wrists and hands."
+  },
+  {
+    "id": 6,
+    "text": "The keyboard layout we use today, called QWERTY, was designed in the 19th century to reduce key jamming on mechanical typewriters."
+  },
+  {
+    "id": 7,
+    "text": "Touch typing, which involves typing without looking at the keys, is a skill that takes practice but can drastically improve your speed."
+  },
+  {
+    "id": 8,
+    "text": "Keyboard shortcuts are great for speeding up tasks. Learning common shortcuts for your operating system can save a lot of time."
+  },
+  {
+    "id": 9,
+    "text": "Effective typing involves not just speed but also accuracy. Focusing on both will help you become a better typist in the long run."
+  },
+  {
+    "id": 10,
+    "text": "A good typing technique can prevent fatigue and discomfort. Proper hand placement and posture are key to maintaining long-term comfort."
+  },
+  {
+    "id": 11,
+    "text": "Typing tests are often used to evaluate speed and accuracy. They are a fun way to challenge yourself and track your progress."
+  },
+  {
+    "id": 12,
+    "text": "In addition to speed and accuracy, muscle memory plays a big role in typing. The more you practice, the more natural it becomes."
+  },
+  {
+    "id": 13,
+    "text": "Regular practice is the key to improving typing skills. Try to type for at least 15 minutes a day to see gradual improvements."
+  },
+  {
+    "id": 14,
+    "text": "The spacebar is one of the most frequently used keys. Make sure to position your thumbs correctly to use it efficiently."
+  },
+  {
+    "id": 15,
+    "text": "Typing games are a fun way to practice and improve. They add a competitive element and can make learning to type more enjoyable."
+  },
+  {
+    "id": 16,
+    "text": "While typing, try to minimize errors by focusing on accuracy. Mistakes can slow you down more than they save you time."
+  },
+  {
+    "id": 17,
+    "text": "Ergonomics is important for typists. Using an adjustable chair and keyboard can reduce strain and improve comfort during long typing sessions."
+  },
+  {
+    "id": 18,
+    "text": "The home row is where your fingers should rest when not typing. This position ensures you can reach all other keys with minimal movement."
+  },
+  {
+    "id": 19,
+    "text": "Many people find that they type faster when they stop looking at the keyboard. This is a result of muscle memory and hand-eye coordination."
+  },
+  {
+    "id": 20,
+    "text": "Typing with all ten fingers is more efficient than using just a few. Learning to use all fingers will help you type faster and more comfortably."
+  },
+  {
+    "id": 21,
+    "text": "Proper finger placement is crucial. Your index fingers should rest on the F and J keys, while your other fingers fall on the corresponding home row keys."
+  },
+  {
+    "id": 22,
+    "text": "It's common to experience finger fatigue when you first start learning to type. With time and practice, your fingers will become stronger and more agile."
+  },
+  {
+    "id": 23,
+    "text": "Some typing programs and applications use gamification to make learning to type fun and engaging. They provide challenges and rewards to motivate learners."
+  },
+  {
+    "id": 24,
+    "text": "As you improve your typing skills, you'll be able to focus more on the content you're typing rather than the mechanics of hitting the right keys."
+  },
+  {
+    "id": 25,
+    "text": "The more you type, the faster and more accurately you'll be able to complete tasks. This is why typing practice is so important."
+  },
+  {
+    "id": 26,
+    "text": "Technology has made typing easier than ever. With speech-to-text software, people can type without touching the keyboard."
+  },
+  {
+    "id": 27,
+    "text": "Typing on a tablet or smartphone can be challenging due to the small size of the screen. However, practice can help you type more accurately and quickly."
+  },
+  {
+    "id": 28,
+    "text": "While typing, avoid unnecessary movements. The less your hands move, the faster you'll be able to type."
+  },
+  {
+    "id": 29,
+    "text": "There are many online typing tests available that can help you track your progress and compete against others for the highest typing speed."
+  },
+  {
+    "id": 30,
+    "text": "When typing long pieces of text, take breaks to avoid strain. It's important to rest your hands and stretch your fingers regularly."
+  },
+  {
+    "id": 31,
+    "text": "Touch typing is all about developing muscle memory so that your fingers can find the keys without thinking about them."
+  },
+  {
+    "id": 32,
+    "text": "One of the most important tips for typing fast is to focus on the rhythm of your typing. Typing should be a fluid and consistent motion."
+  },
+  {
+    "id": 33,
+    "text": "To master typing, it's essential to have a comfortable and quiet environment. Distractions can slow you down and reduce accuracy."
+  },
+  {
+    "id": 34,
+    "text": "Learning to type faster will help you complete tasks more quickly. Whether you're typing emails, reports, or code, faster typing means more efficiency."
+  },
+  {
+    "id": 35,
+    "text": "Many typing programs offer feedback and suggestions on how to improve speed and accuracy. These tools can be invaluable for beginners."
+  },
+  {
+    "id": 36,
+    "text": "Did you know that the average person types about 40 words per minute? With practice, this number can grow significantly."
+  },
+  {
+    "id": 37,
+    "text": "Typing at high speeds is often seen as a sign of proficiency. However, it's important to balance speed with accuracy to avoid making mistakes."
+  },
+  {
+    "id": 38,
+    "text": "While typing tests can help you improve speed, typing real-world documents will provide a better sense of how your typing skills translate into productivity."
+  },
+  {
+    "id": 39,
+    "text": "Online typing lessons can help improve your skills. Many websites offer structured lessons that break down the process into manageable parts."
+  },
+  {
+    "id": 40,
+    "text": "There are different typing styles to explore, including the standard touch typing and the hunt-and-peck method, where you type by looking at the keys."
+  },
+  {
+    "id": 41,
+    "text": "Increasing typing speed requires practice. The more you practice typing, the faster and more accurately you will type."
+  },
+  {
+    "id": 42,
+    "text": "Proper posture while typing includes sitting with your feet flat on the floor and your back straight. This prevents discomfort during long typing sessions."
+  },
+  {
+    "id": 43,
+    "text": "It's important to have good lighting when typing. Bright lighting can reduce eye strain and make it easier to see the keys clearly."
+  },
+  {
+    "id": 44,
+    "text": "Touch typing courses often use drills and exercises to help you develop the muscle memory needed to type efficiently and quickly."
+  },
+  {
+    "id": 45,
+    "text": "Keeping your hands relaxed while typing is crucial to prevent strain. Avoid tense fingers and wrists when you type."
+  },
+  {
+    "id": 46,
+    "text": "Accuracy is the key to efficient typing. Typing quickly without focusing on accuracy can lead to mistakes that take more time to correct."
+  },
+  {
+    "id": 47,
+    "text": "One tip to improve typing speed is to increase the length of your typing sessions gradually. Start with short sessions and work up to longer ones."
+  },
+  {
+    "id": 48,
+    "text": "In typing, the goal is to develop fluid motion with your hands. Each keystroke should flow seamlessly into the next without pausing or hesitating."
+  },
+  {
+    "id": 49,
+    "text": "Many people find it helpful to use typing software or applications that track their progress and provide feedback on how to improve."
+  },
+  {
+    "id": 50,
+    "text": "The faster you type, the more you'll be able to focus on other tasks, like editing your work or thinking critically about what you're writing."
+  },
+  {
+    "id": 51,
+    "text": "Typing tests can help improve speed and accuracy, but they also offer a fun challenge. Competing against others can motivate you to improve."
+  },
+  {
+    "id": 52,
+    "text": "It's important to practice typing on different types of documents, such as essays, reports, and emails, to prepare for a variety of typing scenarios."
+  },
+  {
+    "id": 53,
+    "text": "Typing practice doesn't have to be boring. You can turn it into a game by racing against your previous records or competing with others."
+  },
+  {
+    "id": 54,
+    "text": "Using proper finger placement ensures that you can reach all the keys quickly and efficiently. Practice until it feels natural to use all your fingers."
+  },
+  {
+    "id": 55,
+    "text": "A great way to improve typing speed is to challenge yourself to type faster with fewer errors. Tracking your progress can be very motivating."
+  },
+  {
+    "id": 56,
+    "text": "Consistent typing practice will gradually increase your typing speed and reduce your mistakes, making you more efficient in the long run."
+  },
+  {
+    "id": 57,
+    "text": "Typing efficiently requires good coordination between your eyes and fingers. Practice will help your fingers find the right keys without looking."
+  },
+  {
+    "id": 58,
+    "text": "Sometimes, the best way to improve typing speed is simply to slow down and focus on typing accurately, rather than rushing to type quickly."
+  },
+  {
+    "id": 59,
+    "text": "The standard QWERTY layout is not the only layout available. Alternatives like Dvorak are designed to reduce finger movement and increase typing speed."
+  },
+  {
+    "id": 60,
+    "text": "Many professional typists aim to reach speeds of over 100 words per minute. With time and dedication, anyone can improve their typing speed."
+  },
+  {
+    "id": 61,
+    "text": "The best way to develop a consistent typing rhythm is to practice typing the same letters or words repeatedly until your fingers memorize the pattern."
+  },
+  {
+    "id": 62,
+    "text": "The keyboard layout you use can impact your typing efficiency. Experiment with different layouts to find the one that works best for you."
+  },
+  {
+    "id": 63,
+    "text": "Typing is a skill that improves with practice. It's important to set small goals, such as typing 10 words per minute faster each week."
+  },
+  {
+    "id": 64,
+    "text": "Typing without making mistakes is just as important as typing fast. Inaccurate typing can be more time-consuming than taking your time to type accurately."
+  },
+  {
+    "id": 65,
+    "text": "The home row position for your fingers is a key concept in touch typing. Returning your fingers to the home row after each keystroke increases efficiency."
+  },
+  {
+    "id": 66,
+    "text": "Most typing tests focus on both speed and accuracy. It's important to balance these two factors to achieve the best results."
+  },
+  {
+    "id": 67,
+    "text": "Typing should be a fluid, almost automatic process. With enough practice, you'll be able to type without even thinking about the keys."
+  },
+  {
+    "id": 68,
+    "text": "The ability to type quickly is a useful skill in many professions. Whether you're a writer, developer, or customer service representative, typing speed can improve your performance."
+  },
+  {
+    "id": 69,
+    "text": "Improving your typing skills will make you more efficient and reduce stress. Knowing you can type quickly without errors helps you stay focused on the task at hand."
+  },
+  {
+    "id": 70,
+    "text": "Even though many people use smartphones to type now, the fundamentals of typing on a traditional keyboard remain important for productivity."
+  },
+  {
+    "id": 71,
+    "text": "When typing long paragraphs, try to stay focused and avoid distractions. Typing for extended periods requires concentration and discipline."
+  },
+  {
+    "id": 72,
+    "text": "The more you practice typing, the less you'll need to look at the keys. This frees up your mental energy for focusing on your work."
+  },
+  {
+    "id": 73,
+    "text": "Using a proper typing technique will help you avoid developing bad habits, such as looking at the keyboard or using only a few fingers."
+  },
+  {
+    "id": 74,
+    "text": "Typing speed can vary from person to person, but with regular practice, you can significantly increase your speed over time."
+  },
+  {
+    "id": 75,
+    "text": "Proper hand and finger positioning is key to avoiding discomfort. Try not to rest your hands on the keyboard when you're not typing."
+  },
+  {
+    "id": 76,
+    "text": "While typing, focus on maintaining consistent finger movement. Try to avoid unnecessary pauses between key presses."
+  },
+  {
+    "id": 77,
+    "text": "Typing at a consistent pace can improve both speed and accuracy. Try to maintain a steady rhythm instead of typing in spurts."
+  },
+  {
+    "id": 78,
+    "text": "Using both hands while typing reduces the strain on individual fingers and increases speed by allowing you to type faster and more efficiently."
+  },
+  {
+    "id": 79,
+    "text": "Some typing exercises help improve finger dexterity. Practicing with words or phrases that require frequent use of each finger can help you get better."
+  },
+  {
+    "id": 80,
+    "text": "The ideal typing speed varies depending on your needs. For personal use, a speed of 40-60 words per minute is a good target."
+  },
+  {
+    "id": 81,
+    "text": "Many online platforms offer typing tests where you can see how many words you can type per minute, helping you track your progress."
+  },
+  {
+    "id": 82,
+    "text": "It's important to maintain good posture while typing. Slouching or typing with your wrists bent can lead to discomfort and long-term issues."
+  },
+  {
+    "id": 83,
+    "text": "Typing without looking at the keys may take some time to master, but the effort pays off in the form of improved speed and accuracy."
+  },
+  {
+    "id": 84,
+    "text": "Touch typing can be a great way to improve your productivity. When you don't have to look at the keys, you can focus entirely on the task at hand."
+  },
+  {
+    "id": 85,
+    "text": "Try typing out passages from your favorite book or article to practice. This will help you become more accustomed to typing in a more natural setting."
+  },
+  {
+    "id": 86,
+    "text": "Avoid using too many shortcuts when typing for the first time. Start slow and focus on building proper habits before trying to speed things up."
+  },
+  {
+    "id": 87,
+    "text": "Typing tests that measure accuracy rather than speed can be a good way to challenge yourself and improve your overall skills."
+  },
+  {
+    "id": 88,
+    "text": "By typing every day, even for short periods, you'll gradually improve your typing skills and reduce errors."
+  },
+  {
+    "id": 89,
+    "text": "Try using a keyboard that feels comfortable for your hands and fingers. Ergonomic keyboards can help reduce strain and improve typing comfort."
+  },
+  {
+    "id": 90,
+    "text": "Some people prefer typing on mechanical keyboards because of the tactile feedback they provide, while others opt for quieter, membrane keyboards."
+  },
+  {
+    "id": 91,
+    "text": "The more you practice typing, the more your fingers will instinctively find the correct keys without needing to look."
+  },
+  {
+    "id": 92,
+    "text": "Typing accuracy is a key factor in improving overall typing speed. Always correct mistakes promptly to avoid building bad habits."
+  },
+  {
+    "id": 93,
+    "text": "One of the most important typing tips is to keep your hands relaxed. Tension in your fingers or wrists can slow you down."
+  },
+  {
+    "id": 94,
+    "text": "Typing isn't just about speed. The real challenge is maintaining both speed and accuracy while typing without looking at the keyboard."
+  },
+  {
+    "id": 95,
+    "text": "The keyboard layout can influence your typing speed. QWERTY may not be the fastest layout, but it's the most widely used and known to most people."
+  },
+  {
+    "id": 96,
+    "text": "When typing long documents, it's important to take breaks to avoid strain. Stretch your fingers, wrists, and neck to avoid repetitive stress injuries."
+  },
+  {
+    "id": 97,
+    "text": "Many typing programs offer a variety of drills and challenges to help you improve. These exercises often focus on increasing speed and reducing mistakes."
+  },
+  {
+    "id": 98,
+    "text": "The key to typing faster is to reduce unnecessary movements. The less time you spend moving your fingers, the faster you can type."
+  },
+  {
+    "id": 99,
+    "text": "Learning to type efficiently is like learning any other skill. It takes patience, practice, and a commitment to improving over time."
+  },
+  {
+    "id": 100,
+    "text": "Speed typing is a fun and useful skill that can improve productivity. With regular practice and focused exercises, you can become a master of the keyboard."
+  },
+  {
+    "id": 101,
+    "text": "The Amazon rainforest produces 20% of the world's oxygen, making it essential to global ecological health."
+  },
+  {
+    "id": 102,
+    "text": "A single teaspoon of honey represents the lifetime work of 12 bees."
+  },
+  {
+    "id": 103,
+    "text": "Octopuses have three hearts, and two of them stop beating when they swim."
+  },
+  {
+    "id": 104,
+    "text": "Bananas are berries, but strawberries are not, according to botanical definitions."
+  },
+  {
+    "id": 105,
+    "text": "Sharks existed before trees, having been around for over 400 million years."
+  },
+  {
+    "id": 106,
+    "text": "Venus is the hottest planet in our solar system, with surface temperatures reaching 900°F (475°C)."
+  },
+  {
+    "id": 107,
+    "text": "Wombat feces are cube-shaped, helping them mark territory without rolling away."
+  },
+  {
+    "id": 108,
+    "text": "The Eiffel Tower can grow more than 6 inches taller in summer due to metal expansion from heat."
+  },
+  {
+    "id": 109,
+    "text": "The Great Wall of China is not a single wall but a series of interconnected structures."
+  },
+  {
+    "id": 110,
+    "text": "Cats can make over 100 different sounds, while dogs can make only about 10."
+  },
+  {
+    "id": 111,
+    "text": "Human noses can detect about one trillion different smells, making them highly sensitive."
+  },
+  {
+    "id": 112,
+    "text": "Jellyfish have survived for over 500 million years without a brain or heart."
+  },
+  {
+    "id": 113,
+    "text": "Elephants are the only mammals that cannot jump due to their weight and anatomy."
+  },
+  {
+    "id": 114,
+    "text": "Antarctica is the driest, coldest, and windiest continent, yet it holds 70% of Earth's freshwater."
+  },
+  {
+    "id": 115,
+    "text": "The moon is slowly drifting away from Earth at a rate of about 1.5 inches per year."
+  },
+  {
+    "id": 116,
+    "text": "Koalas have unique fingerprints that are nearly identical to humans'."
+  },
+  {
+    "id": 117,
+    "text": "The world's largest desert is not the Sahara but Antarctica, which is classified as a cold desert."
+  },
+  {
+    "id": 118,
+    "text": "Dolphins have names for each other and use specific whistles to call individuals."
+  },
+  {
+    "id": 119,
+    "text": "The human brain generates enough electricity to power a small light bulb."
+  },
+  {
+    "id": 120,
+    "text": "A day on Venus is longer than a year on Venus due to its slow rotation."
+  },
+  {
+    "id": 121,
+    "text": "Pineapples take about two years to grow and reach maturity for harvesting."
+  },
+  {
+    "id": 122,
+    "text": "The fingerprints of a koala are so indistinguishable from humans that they can confuse crime scene investigations."
+  },
+  {
+    "id": 123,
+    "text": "Sloths can take up to a month to digest their food due to their slow metabolism."
+  },
+  {
+    "id": 124,
+    "text": "Bees can recognize human faces, distinguishing one person from another."
+  },
+  {
+    "id": 125,
+    "text": "There are more stars in the universe than grains of sand on Earth."
+  },
+  {
+    "id": 126,
+    "text": "Sharks are immune to all known diseases, including cancer, making them unique among animals."
+  },
+  {
+    "id": 127,
+    "text": "Water can boil and freeze at the same time in a phenomenon called the triple point."
+  },
+  {
+    "id": 128,
+    "text": "Owls can rotate their heads 270 degrees without injuring themselves."
+  },
+  {
+    "id": 129,
+    "text": "A blue whale's tongue weighs as much as an elephant, demonstrating its massive size."
+  },
+  {
+    "id": 130,
+    "text": "Butterflies taste with their feet, using receptors to sample their food sources."
+  },
+  {
+    "id": 131,
+    "text": "A group of flamingos is called a 'flamboyance,' reflecting their bright colors."
+  },
+  {
+    "id": 132,
+    "text": "Apples float in water because they are 25% air by volume."
+  },
+  {
+    "id": 133,
+    "text": "Ants can carry objects up to 50 times their body weight, showcasing their strength."
+  },
+  {
+    "id": 134,
+    "text": "The shortest war in history was between Britain and Zanzibar on August 27, 1896. It lasted only 38 minutes."
+  },
+  {
+    "id": 135,
+    "text": "Sea otters hold hands while sleeping to keep from drifting apart in the water."
+  },
+  {
+    "id": 136,
+    "text": "Honey never spoils; archaeologists have found edible honey in ancient Egyptian tombs."
+  },
+  {
+    "id": 137,
+    "text": "A bolt of lightning contains enough energy to toast 100,000 slices of bread."
+  },
+  {
+    "id": 138,
+    "text": "Bamboo can grow up to 35 inches in a single day under optimal conditions."
+  },
+  {
+    "id": 139,
+    "text": "Cows have best friends and become stressed when separated from them."
+  },
+  {
+    "id": 140,
+    "text": "A snail can sleep for three years if conditions are unfavorable for survival."
+  },
+
+  {
+    "id": 141,
+    "text": "it should form her at animal went away way now over live big home its also until light but the should take it's miss get begin keep mother under"
+  },
+  {
+    "id": 141,
+    "text": "list man now carry me these say so earth live hand young she at car year why below same where home we example group left get play around mean"
+  },
+  {
+    "id": 141,
+    "text": "know tree look once not eat or girl live one when put girl thought enough show can animal on work play people children time together of learn"
+  },
+  {
+    "id": 142,
+    "text": ""
+  },
+  {
+    "id": 143,
+    "text": "I wake up early in the morning. The sun shines through my window. I brush my teeth, wash my face, and get dressed. Then, I eat breakfast and head out for the day. A good morning routine sets the tone for a productive day."
+  },
+  {
+    "id": 144,
+    "text": "Apples, bananas, oranges, and grapes fill the fruit basket. Fresh milk, eggs, cheese, and bread are on the shopping list. The market is busy, but finding everything quickly is easy. Don't forget to buy some vegetables for a healthy meal."
+  },
+  {
+    "id": 145,
+    "text": "The wind blows through the trees, rustling the leaves. The birds chirp in the distance, and the sun shines through the clouds. It's a beautiful day for a walk in the park."
+  },
+  {
+    "id": 146,
+    "text": "Today is sunny, but tomorrow might bring rain. The wind is strong, and the leaves are dancing. A rainbow appears after the storm, painting the sky with beautiful colors. The weather changes often, so it's good to be prepared."
+  },
+  {
+    "id": 147,
+    "text": "On Saturday, we will go to the park. A picnic with sandwiches and lemonade sounds perfect. Later, we might watch a movie or play board games. Sunday is for rest and preparing for the new week."
+  },
+  {
+    "id": 148,
+    "text": "Walking through the dense forest, I hear birds singing in the trees. The path is narrow, covered in soft moss. Sunlight peeks through the leaves, creating dancing shadows. The sound of a distant stream makes the journey peaceful."
+  },
+  {
+    "id": 149,
+    "text": "While strolling in the city, I met an old friend. We hadn't seen each other in years. Time had changed our lives, but our laughter remained the same. We shared memories over a cup of steaming coffee."
+  },
+  {
+    "id": 150,
+    "text": "The curtains rise, and the audience grows silent. The actors perform with passion, bringing the story to life. Applause fills the theater as the final scene ends. A great play leaves the audience both entertained and inspired."
+  },
+  {
+    "id": 151,
+    "text": "A letter arrived in the mail with no return address. The handwriting was familiar but slightly different. Curiosity took over as I carefully opened the envelope. Inside, a short note read, 'Meet me at our favorite place at sunset.'"
+  },
+  {
+    "id": 152,
+    "text": "Twisting corridors, deceptive turns, and concealed passages create an intricate labyrinth. Each step demands vigilance as echoes distort reality. The key to escape lies within one's wit and perseverance. Only the cunning find their way out."
+  },
+  {
+    "id": 153,
+    "text": "Computers have transformed the way we live. From typewriters to touchscreens, technology keeps advancing. Artificial intelligence, robotics, and automation shape the future. Who knows what the next big invention will be?"
+  },
+  {
+    "id": 154,
+    "text": "The vast cosmos is an enigmatic spectacle. Galaxies swirl in mesmerizing spirals, stars flicker in celestial harmony, and nebulae radiate ethereal luminescence. Astronomers unravel the universe’s secrets, yet countless mysteries persist."
+  },
+  {
+    "id": 155,
+    "text": "Deciphering encrypted messages requires acute perception. Patterns emerge through meticulous examination, while anomalies suggest hidden complexities. Precision and patience yield progress, revealing veiled information layer by layer."
+  },
+  {
+    "id": 156,
+    "text": "Gothic cathedrals boast intricate stained glass windows, while modern skyscrapers defy gravity with steel and glass. Ancient ruins whisper tales of forgotten civilizations. Architecture blends artistry, science, and ingenuity to shape skylines."
+  },
+  {
+    "id": 157,
+    "text": "The human body is a complex system. It has 206 bones, 639 muscles, and 20,000 miles of blood vessels. The human body is a complex system. It has 206 bones, 639 muscles, and 20,000 miles of blood vessels."
+  },
+  {
+    "id": 158,
+    "text": "Scaling an unforgiving peak requires unyielding determination. Frostbitten fingers clutch jagged ledges, while icy winds howl mercilessly. The summit promises breathtaking vistas, but only the resolute conquer nature’s formidable challenge."
+  }
 ]

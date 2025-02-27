@@ -73,12 +73,44 @@
   transform: translateX(0);
 }
 
-.radio-group {
-  gap: 10px 30px;
+.settings__details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   color: #fff;
   position: fixed;
   top: 10px;
   left: 10px;
+}
+
+.settings__details summary {
+  cursor: pointer;
+  font-size: 14px;
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background: none;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+}
+
+.settings__details summary::-webkit-details-marker {
+  display: none;
+}
+
+.settings__details summary svg {
+  width: 24px;
+  height: 24px;
+}
+
+.radio-group {
+  gap: 10px 30px;
 }
 
 .radio {

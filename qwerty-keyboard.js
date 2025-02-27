@@ -150,6 +150,9 @@ class QwertyKeyboard extends HTMLElement {
         this.initializeTyping(tempTextArea);
       });
     }
+
+    // Check for shared results in URL
+    this.checkForSharedResults();
   }
 
   initializePreview(textarea) {
@@ -471,12 +474,51 @@ class QwertyKeyboard extends HTMLElement {
       "[data-accuracy]"
     ).textContent = `${accuracyPercentage.toFixed(2)}%`;
 
+    // Generate shareable URL
+    const shareableUrl = this.generateShareableUrl(
+      finalScore,
+      wpm,
+      accuracyPercentage
+    );
+
+    // Add share button and URL to modal
+    const shareContainer = this.modal.querySelector("[data-share-container]");
+    if (shareContainer) {
+      shareContainer.innerHTML = `
+        <input type="text" readonly value="${shareableUrl}" class="share-url" />
+        <button class="share-button" onclick="navigator.clipboard.writeText('${shareableUrl}')">
+          Copy URL
+        </button>
+      `;
+    }
+
     this.modal.classList.remove("hidden");
     this.startTime = null;
 
     if (this.soundsEnabled()) {
       this.playSpeedSound(finalScore);
     }
+  }
+
+  generateShareableUrl(score, wpm, accuracy) {
+    const baseUrl = window.location.origin + window.location.pathname;
+
+    // Combine values and add a timestamp to make each share unique
+    const timestamp = Date.now();
+    const values = `${score}|${wpm}|${accuracy.toFixed(2)}|${timestamp}`;
+
+    // Simple encoding: Convert to base64 and add a basic checksum
+    const encoded = btoa(values); // Convert to base64
+    const checksum = this.calculateChecksum(values);
+
+    return `${baseUrl}#${encoded}.${checksum}`;
+  }
+
+  calculateChecksum(str) {
+    // Simple checksum function
+    return Array.from(str)
+      .reduce((sum, char) => sum + char.charCodeAt(0), 0)
+      .toString(16);
   }
 
   playSpeedSound(wpm) {
@@ -750,6 +792,44 @@ class QwertyKeyboard extends HTMLElement {
     this.querySelectorAll(".modal").forEach((modal) => {
       modal.classList.add("hidden");
     });
+  }
+
+  checkForSharedResults() {
+    if (window.location.hash) {
+      const [encoded, checksum] = window.location.hash.slice(1).split(".");
+
+      try {
+        // Verify checksum
+        const decoded = atob(encoded);
+        if (checksum !== this.calculateChecksum(decoded)) {
+          console.error("Invalid shared result");
+          return;
+        }
+
+        // Parse the values
+        const [score, wpm, accuracy] = decoded.split("|");
+
+        // Display shared results
+        this.displaySharedResults(
+          parseInt(score),
+          parseInt(wpm),
+          parseFloat(accuracy)
+        );
+      } catch (e) {
+        console.error("Invalid shared result format");
+      }
+    }
+  }
+
+  displaySharedResults(score, wpm, accuracy) {
+    // Show the modal with shared results
+    this.displayScore(score, wpm, accuracy);
+
+    // Add a "shared result" indicator
+    const sharedBadge = document.createElement("div");
+    sharedBadge.className = "shared-badge";
+    sharedBadge.textContent = "Shared Result";
+    this.modal.querySelector("[data-score]").parentNode.prepend(sharedBadge);
   }
 }
 
