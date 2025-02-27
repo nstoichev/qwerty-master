@@ -4,7 +4,7 @@ class QwertyKeyboard extends HTMLElement {
     this.textAreaRandom = this.querySelector("[data-random-text]");
     this.textAreaDefault = this.querySelector("[data-default-text]");
     this.textAreaCustom = this.querySelector("[data-custom-text]");
-    
+
     this.previewArea = this.querySelector("[data-preview]");
     this.keyboard = this.querySelector("[data-keyboard]");
 
@@ -26,7 +26,7 @@ class QwertyKeyboard extends HTMLElement {
     this.wordsArray = [];
 
     // Add new property to store last used text
-    this.lastUsedText = '';
+    this.lastUsedText = "";
 
     // Load all data
     this.loadData();
@@ -86,15 +86,15 @@ class QwertyKeyboard extends HTMLElement {
 
   connectedCallback() {
     this.keyboard.classList.toggle("hidden", !this.keyboardEnabled());
-    
+
     // Add click handler for buttons with data-target attribute
-    this.querySelectorAll('[data-target]').forEach(button => {
-      button.addEventListener('click', (event) => {
+    this.querySelectorAll("[data-target]").forEach((button) => {
+      button.addEventListener("click", (event) => {
         event.preventDefault();
-        const targetId = button.getAttribute('data-target');
+        const targetId = button.getAttribute("data-target");
         const targetModal = this.querySelector(`#${targetId}`);
         if (targetModal) {
-          targetModal.classList.remove('hidden');
+          targetModal.classList.remove("hidden");
         }
       });
     });
@@ -104,12 +104,14 @@ class QwertyKeyboard extends HTMLElement {
       initButton.addEventListener("click", (event) => {
         event.preventDefault();
 
-        const source = this.querySelector(`[${initButton.getAttribute("data-source")}]`);
-        
+        const source = this.querySelector(
+          `[${initButton.getAttribute("data-source")}]`
+        );
+
         this.initializeTyping(source);
       });
     });
-    
+
     this.textAreaCustom.addEventListener("click", (event) => {
       this.previewArea.classList.remove("active");
     });
@@ -129,15 +131,15 @@ class QwertyKeyboard extends HTMLElement {
     document.addEventListener("keydown", this.handleKeydown.bind(this));
 
     // Add handler for "Try again (with the same text)" button
-    const sameTextButton = this.querySelector('[data-same]');
+    const sameTextButton = this.querySelector("[data-same]");
     if (sameTextButton) {
-      sameTextButton.addEventListener('click', (event) => {
+      sameTextButton.addEventListener("click", (event) => {
         event.preventDefault();
-        
+
         // Create temporary textarea with last used text
-        const tempTextArea = document.createElement('textarea');
+        const tempTextArea = document.createElement("textarea");
         tempTextArea.value = this.lastUsedText;
-        
+
         this.initializeTyping(tempTextArea);
       });
     }
@@ -367,10 +369,11 @@ class QwertyKeyboard extends HTMLElement {
       currentRect.top - scrollOffset < parentRect.top ||
       currentRect.bottom + scrollOffset > parentRect.bottom
     ) {
-      const targetScroll = (parent.scrollTop + currentRect.top - parentRect.top - scrollOffset) - 60;
+      const targetScroll =
+        parent.scrollTop + currentRect.top - parentRect.top - scrollOffset - 60;
       parent.scrollTo({
         top: targetScroll,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
 
@@ -381,10 +384,11 @@ class QwertyKeyboard extends HTMLElement {
         updatedRect.top - scrollOffset < parentRect.top ||
         updatedRect.bottom + scrollOffset > parentRect.bottom
       ) {
-        const targetScroll = parent.scrollTop + updatedRect.top - parentRect.top - scrollOffset;
+        const targetScroll =
+          parent.scrollTop + updatedRect.top - parentRect.top - scrollOffset;
         parent.scrollTo({
           top: targetScroll,
-          behavior: 'smooth'
+          behavior: "smooth",
         });
       }
     });
@@ -498,7 +502,7 @@ class QwertyKeyboard extends HTMLElement {
   initializeTyping(textAreaElement) {
     // Store the text content before initializing
     this.lastUsedText = textAreaElement.value;
-    
+
     this.insertContent();
     this.initializePreview(textAreaElement);
     this.highlightWord();
@@ -509,7 +513,7 @@ class QwertyKeyboard extends HTMLElement {
     setTimeout(() => {
       this.previewArea.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }, 10);
   }
@@ -613,11 +617,11 @@ class QwertyKeyboard extends HTMLElement {
       });
       const data = await response.json();
       const quote = data[0].quote + "\n- " + data[0].author;
-      
+
       if (this.textAreaRandom) {
         this.textAreaRandom.value = quote;
       }
-      
+
       return quote;
     } catch (error) {
       console.error("Error:", error);
@@ -627,9 +631,11 @@ class QwertyKeyboard extends HTMLElement {
 
   async contentFromWikipedia() {
     try {
-      const response = await fetch("https://en.wikipedia.org/api/rest_v1/page/random/summary");
+      const response = await fetch(
+        "https://en.wikipedia.org/api/rest_v1/page/random/summary"
+      );
       const data = await response.json();
-      
+
       if (this.isValidText(data.extract)) {
         this.textAreaRandom.value = data.extract;
       } else {
@@ -734,8 +740,8 @@ class QwertyKeyboard extends HTMLElement {
 
   closeModals() {
     // Close all modals by adding 'hidden' class
-    this.querySelectorAll('.modal').forEach(modal => {
-      modal.classList.add('hidden');
+    this.querySelectorAll(".modal").forEach((modal) => {
+      modal.classList.add("hidden");
     });
   }
 }

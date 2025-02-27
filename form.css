@@ -78,7 +78,7 @@
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
-  gap: 10px;
+  gap: 10px 30px;
   color: #fff;
 }
 
@@ -88,6 +88,13 @@
   flex-wrap: nowrap;
   gap: 5px;
   cursor: pointer;
+  position: relative;
+}
+
+.radio input {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
 }
 
 .radio input,
@@ -95,4 +102,22 @@
   cursor: pointer;
 }
 
+.radio label {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.3s;
+  opacity: 0.5;
+}
 
+.radio input:checked ~ label {
+  opacity: 1;
+}
+
+.radio label svg {
+  width: 34px;
+  height: auto;
+  display: block;
+}
