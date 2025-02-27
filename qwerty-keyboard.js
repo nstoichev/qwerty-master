@@ -1,6 +1,7 @@
 class QwertyKeyboard extends HTMLElement {
   constructor() {
     super();
+    this.closeButtons = this.querySelectorAll("[data-close]");
     this.textAreaRandom = this.querySelector("[data-random-text]");
     this.textAreaDefault = this.querySelector("[data-default-text]");
     this.textAreaCustom = this.querySelector("[data-custom-text]");
@@ -125,6 +126,12 @@ class QwertyKeyboard extends HTMLElement {
     this.querySelectorAll("form input[name='source']").forEach((input) => {
       input.addEventListener("change", () => {
         this.insertContent();
+      });
+    });
+
+    this.closeButtons.forEach((closeButton) => {
+      closeButton.addEventListener("click", () => {
+        this.closeModals();
       });
     });
 

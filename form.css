@@ -74,21 +74,15 @@
 }
 
 .radio-group {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
   gap: 10px 30px;
   color: #fff;
+  position: fixed;
+  top: 10px;
+  left: 10px;
 }
 
 .radio {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  gap: 5px;
   cursor: pointer;
-  position: relative;
 }
 
 .radio input {
@@ -110,14 +104,25 @@
   gap: 5px;
   transition: all 0.3s;
   opacity: 0.5;
+  position: relative;
+  padding-left: 50px;
+  min-height: 50px;
 }
 
 .radio input:checked ~ label {
   opacity: 1;
 }
 
+.radio small {
+  display: block;
+}
+
 .radio label svg {
   width: 34px;
   height: auto;
   display: block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
