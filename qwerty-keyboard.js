@@ -1,3 +1,5 @@
+import { TypingProgress } from "./typing-progress.js";
+
 class QwertyKeyboard extends HTMLElement {
   constructor() {
     super();
@@ -31,6 +33,9 @@ class QwertyKeyboard extends HTMLElement {
 
     // Load all data
     this.loadData();
+
+    // Add progress tracker
+    this.progress = new TypingProgress();
   }
 
   async loadData() {
@@ -441,6 +446,14 @@ class QwertyKeyboard extends HTMLElement {
     // Calculate final score
     const finalScore = this.calculateFinalScore(wpm, accuracyPercentage);
 
+    // Save progress
+    this.progress.saveResult({
+      paragraphId: this.getCurrentParagraphId(), // You'll need to implement this
+      wpm,
+      accuracy: accuracyPercentage,
+      score: finalScore,
+    });
+
     this.displayScore(finalScore, wpm, accuracyPercentage);
   }
 
@@ -497,6 +510,36 @@ class QwertyKeyboard extends HTMLElement {
 
     if (this.soundsEnabled()) {
       this.playSpeedSound(finalScore);
+    }
+
+    console.log("this.progress");
+    console.log(this.progress);
+
+    // Add progress information
+    const stats = this.progress.getProgress().overallStats;
+    const progressHtml = `
+      <div class="progress-stats">
+        <h3>Your Progress</h3>
+        <p>Best WPM: ${stats.bestWPM}</p>
+        <p>Average WPM: ${stats.averageWPM}</p>
+        <p>Best Accuracy: ${stats.bestAccuracy.toFixed(2)}%</p>
+        <p>Total Attempts: ${stats.totalAttempts}</p>
+      </div>
+    `;
+
+    console.log("progressHtml");
+    console.log(progressHtml);
+
+    const progressContainer = this.modal.querySelector(
+      "[data-progress-container]"
+    );
+
+    console.log("progressContainer");
+    console.log(progressContainer);
+
+    if (progressContainer) {
+      progressContainer.innerHTML = progressHtml;
+      console.log(progressHtml);
     }
   }
 
@@ -830,6 +873,14 @@ class QwertyKeyboard extends HTMLElement {
     sharedBadge.className = "shared-badge";
     sharedBadge.textContent = "Shared Result";
     this.modal.querySelector("[data-score]").parentNode.prepend(sharedBadge);
+  }
+
+  // Add method to get current paragraph ID
+  getCurrentParagraphId() {
+    // If using JSON paragraphs, return the current paragraph's ID
+    // If using random text, you could generate a hash of the text
+    // For now, returning timestamp as a simple solution
+    return Date.now();
   }
 }
 

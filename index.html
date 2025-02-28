@@ -12,7 +12,8 @@
       rel="stylesheet"
     />
 
-    <script src="qwerty-keyboard.js" defer="defer"></script>
+    <script src="typing-progress.js" type="module"></script>
+    <script src="qwerty-keyboard.js" type="module"></script>
 
     <link rel="stylesheet" href="reset.css" type="text/css" media="all" />
     <link rel="stylesheet" href="base.css" type="text/css" media="all" />
@@ -171,6 +172,8 @@
 
               <div class="modal__share-container" data-share-container></div>
             </div>
+
+            <div data-progress-container></div>
           </div>
         </div>
       </div>
@@ -504,5 +507,9 @@
         </div>
       </form>
     </qwerty-keyboard>
+    <!-- 
+    <div class="modal modal--progress hidden" data-modal-progress>
+      
+    </div> -->
   </body>
 </html>
