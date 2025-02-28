@@ -568,7 +568,7 @@ class QwertyKeyboard extends HTMLElement {
   }
 
   fetchParagraphs() {
-    return fetch("paragraps.json")
+    return fetch("advanced_paragraphs.json")
       .then((response) => response.json())
       .then((paragraphs) => {
         return paragraphs;
