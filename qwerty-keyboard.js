@@ -485,9 +485,9 @@ class QwertyKeyboard extends HTMLElement {
     const shareContainer = this.modal.querySelector("[data-share-container]");
     if (shareContainer) {
       shareContainer.innerHTML = `
-        <input type="text" readonly value="${shareableUrl}" class="share-url" />
-        <button class="share-button" onclick="navigator.clipboard.writeText('${shareableUrl}')">
-          Copy URL
+        <input type="hidden" readonly value="${shareableUrl}" class="share-url" />
+        <button class="button button--share" onclick="navigator.clipboard.writeText('${shareableUrl}')">
+          Share result ➦
         </button>
       `;
     }

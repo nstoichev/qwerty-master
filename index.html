@@ -23,7 +23,7 @@
     <qwerty-keyboard>
       <div class="container">
         <textarea
-          class="textarea-placeholder hidden"
+          class="textarea-placeholder source-container hidden"
           rows="5"
           data-default-text
         >
@@ -157,18 +157,20 @@
 
             <p>Your overall score is <span data-score></span></p>
 
-            <div data-share-container></div>
+            <div class="modal__actions">
+              <button
+                class="button"
+                data-init
+                data-random
+                data-source="data-random-text"
+              >
+                generate text
+              </button>
 
-            <button
-              class="button"
-              data-init
-              data-random
-              data-source="data-random-text"
-            >
-              generate text
-            </button>
+              <button class="button" data-same>same text</button>
 
-            <button class="button" data-same>same text</button>
+              <div class="modal__share-container" data-share-container></div>
+            </div>
           </div>
         </div>
       </div>

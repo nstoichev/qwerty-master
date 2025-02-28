@@ -398,3 +398,18 @@ input:checked + .checkbox_label {
   left: -20%;
   bottom: -20%;
 }
+
+.modal__share-container {
+  display: block;
+}
+.modal__share-container .button {
+  display: block;
+}
+
+.modal__actions {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
