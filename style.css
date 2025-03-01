@@ -413,3 +413,12 @@ input:checked + .checkbox_label {
   align-items: center;
   gap: 10px;
 }
+
+.list-buttons {
+  display: block;
+}
+
+.list-buttons li {
+  display: block;
+  margin: 10px 0;
+}

@@ -33,7 +33,7 @@ body {
   position: relative;
 }
 
-.button:before {
+.button:after {
   content: "";
   position: absolute;
   top: 0;
@@ -45,7 +45,7 @@ body {
   z-index: 2;
 }
 
-.button:hover:before {
+.button:hover:after {
   box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.75);
 }
 
@@ -53,6 +53,41 @@ body {
   font-size: 14px;
   padding: 8px;
   text-transform: lowercase;
+}
+
+.button--full {
+  width: 100%;
+  display: block;
+}
+
+.button--radio {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px 10px;
+}
+
+.button--radio input {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.button--radio label {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.button--radio svg {
+  width: 22px;
+  height: 22px;
 }
 
 @keyframes blink {

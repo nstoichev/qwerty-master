@@ -115,6 +115,7 @@
 
 .radio {
   cursor: pointer;
+  position: relative;
 }
 
 .radio input {
@@ -129,32 +130,40 @@
 }
 
 .radio label {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  gap: 5px;
-  transition: all 0.3s;
   opacity: 0.5;
-  position: relative;
-  padding-left: 50px;
-  min-height: 50px;
 }
 
 .radio input:checked ~ label {
   opacity: 1;
 }
 
-.radio small {
-  display: block;
+label.button--radio {
+  padding-left: 10px;
 }
 
-.radio label svg {
-  width: 34px;
+label.button--radio span:not(.icon) {
+  flex-grow: 1;
+}
+
+label.button--radio .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 3px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  padding: 2px;
+}
+
+label.button--radio svg {
+  opacity: 0;
+  transition: opacity 0.3s;
+  width: 100%;
   height: auto;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+}
+
+.radio input:checked ~ label svg {
+  opacity: 1;
 }
