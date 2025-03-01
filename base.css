@@ -113,3 +113,20 @@ body {
 .link:hover {
   text-decoration: none;
 }
+
+.button--danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.button--danger:hover {
+  background-color: #c82333;
+}
+
+.checkbox_label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: #fff;
+}

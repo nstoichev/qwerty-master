@@ -162,6 +162,14 @@ class QwertyKeyboard extends HTMLElement {
 
     // Check for shared results in URL
     this.checkForSharedResults();
+
+    // Add clear history button handler
+    const clearHistoryButton = this.querySelector("[data-clear-history]");
+    if (clearHistoryButton) {
+      clearHistoryButton.addEventListener("click", () => {
+        this.handleClearHistory();
+      });
+    }
   }
 
   initializePreview(textarea) {
@@ -450,13 +458,15 @@ class QwertyKeyboard extends HTMLElement {
     // Calculate final score
     const finalScore = this.calculateFinalScore(wpm, accuracyPercentage);
 
-    // Save progress
-    this.progress.saveResult({
-      paragraphId: this.getCurrentParagraphId(), // You'll need to implement this
-      wpm,
-      accuracy: accuracyPercentage,
-      score: finalScore,
-    });
+    // Only save progress if tracking is enabled
+    if (this.isTrackingEnabled()) {
+      this.progress.saveResult({
+        paragraphId: this.getCurrentParagraphId(),
+        wpm,
+        accuracy: accuracyPercentage,
+        score: finalScore,
+      });
+    }
 
     this.displayScore(finalScore, wpm, accuracyPercentage);
   }
@@ -886,6 +896,22 @@ class QwertyKeyboard extends HTMLElement {
             <p>Total Attempts: ${stats.totalAttempts}</p>
         </div>
     `;
+  }
+
+  // Add this method to the QwertyKeyboard class
+  isTrackingEnabled() {
+    return this.querySelector("#track-history").checked;
+  }
+
+  // Add this method to handle history clearing
+  handleClearHistory() {
+    const confirmed = confirm(
+      "Are you sure you want to clear all typing history? This action cannot be undone."
+    );
+    if (confirmed) {
+      this.progress.clearProgress();
+      this.updateHistoryModal(); // Refresh the history modal
+    }
   }
 }
 
