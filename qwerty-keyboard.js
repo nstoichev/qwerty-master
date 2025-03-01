@@ -101,6 +101,10 @@ class QwertyKeyboard extends HTMLElement {
         const targetModal = this.querySelector(`#${targetId}`);
         if (targetModal) {
           targetModal.classList.remove("hidden");
+          // Update history modal when it's opened
+          if (targetId === "history") {
+            this.updateHistoryModal();
+          }
         }
       });
     });
@@ -512,35 +516,8 @@ class QwertyKeyboard extends HTMLElement {
       this.playSpeedSound(finalScore);
     }
 
-    console.log("this.progress");
-    console.log(this.progress);
-
-    // Add progress information
-    const stats = this.progress.getProgress().overallStats;
-    const progressHtml = `
-      <div class="progress-stats">
-        <h3>Your Progress</h3>
-        <p>Best WPM: ${stats.bestWPM}</p>
-        <p>Average WPM: ${stats.averageWPM}</p>
-        <p>Best Accuracy: ${stats.bestAccuracy.toFixed(2)}%</p>
-        <p>Total Attempts: ${stats.totalAttempts}</p>
-      </div>
-    `;
-
-    console.log("progressHtml");
-    console.log(progressHtml);
-
-    const progressContainer = this.modal.querySelector(
-      "[data-progress-container]"
-    );
-
-    console.log("progressContainer");
-    console.log(progressContainer);
-
-    if (progressContainer) {
-      progressContainer.innerHTML = progressHtml;
-      console.log(progressHtml);
-    }
+    // Add new method to update history modal
+    this.updateHistoryModal();
   }
 
   generateShareableUrl(score, wpm, accuracy) {
@@ -881,6 +858,34 @@ class QwertyKeyboard extends HTMLElement {
     // If using random text, you could generate a hash of the text
     // For now, returning timestamp as a simple solution
     return Date.now();
+  }
+
+  // Add new method to update history modal
+  updateHistoryModal() {
+    const progressContainer = this.querySelector("[data-progress-container]");
+    if (!progressContainer) return;
+
+    const stats = this.progress.getProgress().overallStats;
+
+    if (stats.totalAttempts === 0) {
+      progressContainer.innerHTML = `
+            <div class="progress-empty">
+                <p>You haven't completed any typing tests yet.</p>
+                <p>Complete a test to see your progress history!</p>
+            </div>
+        `;
+      return;
+    }
+
+    progressContainer.innerHTML = `
+        <div class="progress-stats">
+            <h3>Your Progress History</h3>
+            <p>Best WPM: ${stats.bestWPM}</p>
+            <p>Average WPM: ${stats.averageWPM}</p>
+            <p>Best Accuracy: ${stats.bestAccuracy.toFixed(2)}%</p>
+            <p>Total Attempts: ${stats.totalAttempts}</p>
+        </div>
+    `;
   }
 }
 
