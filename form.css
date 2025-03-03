@@ -107,6 +107,11 @@
 .settings__details summary svg {
   width: 24px;
   height: 24px;
+  transition: transform 0.3s;
+}
+
+.settings__details[open] summary svg {
+  transform: rotate(180deg);
 }
 
 .radio-group {
