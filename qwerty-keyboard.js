@@ -166,8 +166,20 @@ class QwertyKeyboard extends HTMLElement {
     // Add clear history button handler
     const clearHistoryButton = this.querySelector("[data-clear-history]");
     if (clearHistoryButton) {
-      clearHistoryButton.addEventListener("click", () => {
+      clearHistoryButton.addEventListener("click", (event) => {
+        event.preventDefault();
+
         this.handleClearHistory();
+      });
+    }
+
+    // Add restart button handler
+    const restartButtons = this.querySelectorAll("[data-restart]");
+    if (restartButtons) {
+      restartButtons.forEach((restartButton) => {
+        restartButton.addEventListener("click", () => {
+          this.handleRestart();
+        });
       });
     }
   }
@@ -905,13 +917,66 @@ class QwertyKeyboard extends HTMLElement {
 
   // Add this method to handle history clearing
   handleClearHistory() {
-    const confirmed = confirm(
-      "Are you sure you want to clear all typing history? This action cannot be undone."
-    );
-    if (confirmed) {
+    const confirmModal = this.querySelector("[data-modal-confirm]");
+    if (!confirmModal) return;
+
+    // Show the confirm modal
+    confirmModal.classList.remove("hidden");
+
+    // Get the buttons
+    const yesButton = confirmModal.querySelector(".button--danger");
+    const noButton = confirmModal.querySelector(".button:not(.button--danger)");
+
+    // Handle Yes button click
+    const handleYes = () => {
       this.progress.clearProgress();
-      this.updateHistoryModal(); // Refresh the history modal
-    }
+      this.updateHistoryModal();
+      confirmModal.classList.add("hidden");
+      // Remove event listeners
+      yesButton.removeEventListener("click", handleYes);
+      noButton.removeEventListener("click", handleNo);
+    };
+
+    // Handle No button click
+    const handleNo = () => {
+      confirmModal.classList.add("hidden");
+      // Remove event listeners
+      yesButton.removeEventListener("click", handleYes);
+      noButton.removeEventListener("click", handleNo);
+    };
+
+    // Add event listeners
+    yesButton.addEventListener("click", handleYes);
+    noButton.addEventListener("click", handleNo);
+  }
+
+  // Add this method to the QwertyKeyboard class
+  handleRestart() {
+    // Get the current text
+    const currentText = this.querySelector("[data-preview]").textContent;
+
+    // Reset the preview container
+    const previewContainer = this.querySelector("[data-preview]");
+    previewContainer.innerHTML = "";
+
+    // Reset typing state
+    this.currentIndex = 0;
+    this.startTime = null;
+    this.errors = 0;
+
+    // Initialize the preview with the same text
+    this.initializePreview({
+      value: currentText,
+    });
+
+    // Hide the modal
+    this.modal.classList.add("hidden");
+
+    // Focus the preview container
+    previewContainer.focus();
+
+    // Highlight the first character
+    this.highlightCurernt();
   }
 }
 

@@ -21,6 +21,19 @@
     <link rel="stylesheet" href="form.css" type="text/css" media="all" />
   </head>
   <body>
+    <!-- 
+    South Slough National Estuarine Research Reserve (SSNERR) is a 4,770-acre (19 km2) National Estuarine Research Reserve located on Coos Bay Estuary, in the U.S. state of Oregon. Its headquarters are in Charleston. Established in 1974, it was the first reserve in the United States created in response to the federal Coastal Zone Management Act of 1972.
+    
+SouthSloughNationalEstuarineResearch
+Reserve(SSNERR)isa4,770-acre(19 km2)
+NationalEstuarineResearchReservelocatedon
+CoosBayEstuary,intheU.S.stateofOregon.
+ItsheadquartersareinCharleston.
+Establishedin1974,itwasthefirstreserve
+intheUnitedStatescreatedinresponseto
+thefederalCoastalZoneManagementActof
+    -->
+
     <qwerty-keyboard>
       <div class="container">
         <textarea
@@ -46,6 +59,8 @@
           >
             generate text
           </button>
+
+          <button class="button" data-restart>restart</button>
         </div>
 
         <div class="keyboard hidden" data-keyboard>
@@ -165,10 +180,10 @@
                 data-random
                 data-source="data-random-text"
               >
-                generate text
+                New text
               </button>
 
-              <button class="button" data-same>same text</button>
+              <button class="button" data-restart>restart</button>
 
               <div class="modal__share-container" data-share-container></div>
             </div>
@@ -624,10 +639,18 @@
           </details>
         </div>
       </form>
+
+      <div class="modal modal--confirm hidden" data-modal-confirm>
+        <div class="modal__inner">
+          <div class="modal__content">
+            <h2>Are you sure?</h2>
+            <p>This action cannot be undone.</p>
+            <button class="button button--small button--danger">Yes</button>
+
+            <button class="button button--small">No</button>
+          </div>
+        </div>
+      </div>
     </qwerty-keyboard>
-    <!-- 
-    <div class="modal modal--progress hidden" data-modal-progress>
-      
-    </div> -->
   </body>
 </html>
