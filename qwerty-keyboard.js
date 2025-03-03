@@ -146,20 +146,6 @@ class QwertyKeyboard extends HTMLElement {
 
     document.addEventListener("keydown", this.handleKeydown.bind(this));
 
-    // Add handler for "Try again (with the same text)" button
-    const sameTextButton = this.querySelector("[data-same]");
-    if (sameTextButton) {
-      sameTextButton.addEventListener("click", (event) => {
-        event.preventDefault();
-
-        // Create temporary textarea with last used text
-        const tempTextArea = document.createElement("textarea");
-        tempTextArea.value = this.lastUsedText;
-
-        this.initializeTyping(tempTextArea);
-      });
-    }
-
     // Check for shared results in URL
     this.checkForSharedResults();
 

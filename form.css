@@ -137,15 +137,21 @@
   opacity: 1;
 }
 
-label.button--radio {
+.radio__button {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px 10px;
   padding-left: 10px;
 }
 
-label.button--radio span:not(.icon) {
+.radio__button span:not(.icon) {
   flex-grow: 1;
 }
 
-label.button--radio .icon {
+.radio__button .icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -153,11 +159,11 @@ label.button--radio .icon {
   height: 28px;
   padding: 3px;
   border-radius: 50%;
-  border: 2px solid #000;
+  border: 2px solid currentColor;
   padding: 2px;
 }
 
-label.button--radio svg {
+.radio__button svg {
   opacity: 0;
   transition: opacity 0.3s;
   width: 100%;
