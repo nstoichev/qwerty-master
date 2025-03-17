@@ -140,10 +140,10 @@ class QwertyKeyboard extends HTMLElement {
       input.addEventListener("change", async () => {
         // Wait for content to be inserted
         await this.insertContent();
-        
+
         // Check if textarea has content before initializing
         if (this.textAreaRandom.value) {
-          const generateButton = this.querySelector('[data-init][data-random]');
+          const generateButton = this.querySelector("[data-init][data-random]");
           if (generateButton) {
             generateButton.click();
           }
@@ -202,12 +202,12 @@ class QwertyKeyboard extends HTMLElement {
       normalizedLines.forEach((line, lineIndex, allLines) => {
         // Split line into words (keeping all characters)
         const words = line.split(/(?<=\s)/);
-        
-        words.forEach(word => {
+
+        words.forEach((word) => {
           // Create word container
           const wordContainer = document.createElement("span");
           wordContainer.classList.add("word");
-          
+
           // Create spans for each character in the word
           word.split("").forEach((char) => {
             const span = document.createElement("span");
@@ -216,7 +216,7 @@ class QwertyKeyboard extends HTMLElement {
             span.setAttribute("data-code", keyCode);
             wordContainer.appendChild(span);
           });
-          
+
           this.previewArea.appendChild(wordContainer);
         });
 
@@ -236,11 +236,11 @@ class QwertyKeyboard extends HTMLElement {
   insertNewLine() {
     const wordContainer = document.createElement("span");
     wordContainer.classList.add("word");
-    
+
     const enter = document.createElement("span");
     enter.textContent = "↵";
     enter.setAttribute("data-code", "Enter");
-    
+
     wordContainer.appendChild(enter);
     this.previewArea.appendChild(wordContainer);
     this.previewArea.appendChild(document.createElement("br"));
@@ -277,7 +277,8 @@ class QwertyKeyboard extends HTMLElement {
 
     // Add expected class to Shift key if character is uppercase
     const char = expectedChar.textContent;
-    const isUpperCase = char === char.toUpperCase() && char !== char.toLowerCase();
+    const isUpperCase =
+      char === char.toUpperCase() && char !== char.toLowerCase();
     const requiresShift = /[~!@#$%^&*()_+{}|:"<>?]/.test(char);
 
     if (isUpperCase || requiresShift) {
@@ -291,8 +292,10 @@ class QwertyKeyboard extends HTMLElement {
     }
 
     // Collect all characters until the next space
-    const currentWord = expectedChar.closest('.word');
-    const characters = Array.from(currentWord.querySelectorAll('span:not(.typed)'));
+    const currentWord = expectedChar.closest(".word");
+    const characters = Array.from(
+      currentWord.querySelectorAll("span:not(.typed)")
+    );
 
     // Highlight all characters in the word and add order classes
     this.addOrderClasses(characters);
@@ -369,7 +372,9 @@ class QwertyKeyboard extends HTMLElement {
     });
 
     // Update: Find the first untyped character within any word
-    const expectedChar = this.previewArea.querySelector(".word span:not(.typed)");
+    const expectedChar = this.previewArea.querySelector(
+      ".word span:not(.typed)"
+    );
 
     if (!expectedChar) {
       return;
@@ -399,30 +404,38 @@ class QwertyKeyboard extends HTMLElement {
 
     // Check if we just completed a word (space or enter key)
     const isWordComplete = event.code === "Space" || event.code === "Enter";
-    
+
     // Get the current word before the character is typed
-    const currentWord = this.previewArea.querySelector('.current')?.closest('.word');
-    
+    const currentWord = this.previewArea
+      .querySelector(".current")
+      ?.closest(".word");
+
     if (currentWord) {
-        // Get all characters except the last one (which would be space/enter)
-        const wordChars = Array.from(currentWord.querySelectorAll('span:not(:last-child)'));
-        const allWordCharsTyped = wordChars.length > 0 && wordChars.every(char => char.classList.contains('typed'));
-        
-        // If all word characters are typed (excluding space), calculate WPM
-        if (allWordCharsTyped && !currentWord.hasAttribute('data-wpm')) {
-            this.updateWordWPM();
-        }
+      // Get all characters except the last one (which would be space/enter)
+      const wordChars = Array.from(
+        currentWord.querySelectorAll("span:not(:last-child)")
+      );
+      const allWordCharsTyped =
+        wordChars.length > 0 &&
+        wordChars.every((char) => char.classList.contains("typed"));
+
+      // If all word characters are typed (excluding space), calculate WPM
+      if (allWordCharsTyped && !currentWord.hasAttribute("data-wpm")) {
+        this.updateWordWPM();
+      }
     }
 
     // Reset counters only on actual word completion
     if (isWordComplete) {
-        this.currentWordStartTime = Date.now();
-        this.currentWordCharCount = 0;
+      this.currentWordStartTime = Date.now();
+      this.currentWordCharCount = 0;
     }
 
     // Update: Count all characters, not just words
-    const allLettersCount = this.previewArea.querySelectorAll(".word span").length;
-    const typedLettersCount = this.previewArea.querySelectorAll(".word span.typed").length;
+    const allLettersCount =
+      this.previewArea.querySelectorAll(".word span").length;
+    const typedLettersCount =
+      this.previewArea.querySelectorAll(".word span.typed").length;
     const isSoundsEnabled = this.soundsEnabled();
 
     this.highlightWord();
@@ -434,17 +447,17 @@ class QwertyKeyboard extends HTMLElement {
     }
 
     if (allLettersCount === typedLettersCount) {
-        const current = this.previewArea.querySelector(".current");
-        if (current) {
-            current.classList.remove("current");
-            
-            // Add this: Calculate WPM for the last word before ending
-            this.updateWordWPM();
-        }
+      const current = this.previewArea.querySelector(".current");
+      if (current) {
+        current.classList.remove("current");
 
-        // Update: Get all character spans for the end calculation
-        const allletters = this.previewArea.querySelectorAll(".word span");
-        this.end(allletters);
+        // Add this: Calculate WPM for the last word before ending
+        this.updateWordWPM();
+      }
+
+      // Update: Get all character spans for the end calculation
+      const allletters = this.previewArea.querySelectorAll(".word span");
+      this.end(allletters);
     }
   }
 
@@ -493,20 +506,20 @@ class QwertyKeyboard extends HTMLElement {
     // Update: Find the current character within any word
     const current = this.previewArea.querySelector(".word span.current");
     if (current) {
-        current.classList.add("error");
+      current.classList.add("error");
     }
   }
 
   highlightCurernt() {
     // Remove current class from all characters
     this.previewArea.querySelectorAll(".current").forEach((current) => {
-        current.classList.remove("current");
+      current.classList.remove("current");
     });
 
     // Find the first untyped character within any word
     const nextChar = this.previewArea.querySelector(".word span:not(.typed)");
     if (nextChar) {
-        nextChar.classList.add("current");
+      nextChar.classList.add("current");
     }
   }
 
@@ -515,17 +528,17 @@ class QwertyKeyboard extends HTMLElement {
 
     // Count errors in character spans
     letters.forEach((letter) => {
-        if (letter.classList.contains("error")) {
-            errors++;
-        }
+      if (letter.classList.contains("error")) {
+        errors++;
+      }
     });
 
     const successRate = letters.length - errors;
 
     // Get accuracy percentage
     const accuracyPercentage = this.calculatePercentage(
-        successRate,
-        letters.length
+      successRate,
+      letters.length
     );
 
     // Get WPM
@@ -539,12 +552,12 @@ class QwertyKeyboard extends HTMLElement {
 
     // Only save progress if tracking is enabled
     if (this.isTrackingEnabled()) {
-        this.progress.saveResult({
-            paragraphId: this.getCurrentParagraphId(),
-            wpm,
-            accuracy: accuracyPercentage,
-            score: finalScore,
-        });
+      this.progress.saveResult({
+        paragraphId: this.getCurrentParagraphId(),
+        wpm,
+        accuracy: accuracyPercentage,
+        score: finalScore,
+      });
     }
 
     this.displayScore(finalScore, wpm, accuracyPercentage);
@@ -673,7 +686,7 @@ class QwertyKeyboard extends HTMLElement {
     this.previewArea.classList.add("active");
     this.closeModals();
     this.startTime = null;
-    
+
     // Reset WPM display
     this.updateCurrentElementStyle(0);
 
@@ -909,7 +922,7 @@ class QwertyKeyboard extends HTMLElement {
   closeModals() {
     // Close all modals by adding 'hidden' class
     this.querySelectorAll(".modal").forEach((modal) => {
-        modal.classList.add("hidden");
+      modal.classList.add("hidden");
     });
   }
 
@@ -1067,56 +1080,54 @@ class QwertyKeyboard extends HTMLElement {
   async contentFromAI() {
     try {
       // Get the textarea element where we'll put the generated text
-      const textArea = this.querySelector('[data-random-text]');
-      
+      const textArea = this.querySelector("[data-random-text]");
+
       // Show some loading state in the textarea
       textArea.value = "Generating text...";
-            
-      const response = await fetch(
-        "http://localhost:3000/generate-text",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          }
-        }
-      );
-      
+
+      const response = await fetch("http://localhost:3000/generate-text", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
       const data = await response.json();
-          
+
       if (data.error) {
-        console.error('Server error:', data.error, data.details);
+        console.error("Server error:", data.error, data.details);
         textArea.value = `Error: ${data.error}`;
         throw new Error(data.error);
       }
-      
+
       if (Array.isArray(data) && data[0]?.generated_text) {
         let text = data[0].generated_text;
-        
+
         // Ensure proper formatting
         text = text.charAt(0).toUpperCase() + text.slice(1);
         if (!text.match(/[.!?]$/)) {
-          text += '.';
+          text += ".";
         }
-        
+
         // Update the textarea with the generated text
         textArea.value = text;
-        
+
         // Initialize the preview with the new text
         this.initializePreview(textArea);
         this.highlightWord();
-        
+
         return text;
       } else {
-        console.error('Unexpected response format:', data);
+        console.error("Unexpected response format:", data);
         textArea.value = "Unable to generate text. Please try again.";
         return "Unable to generate text. Please try again.";
       }
     } catch (error) {
       console.error("Detailed error in contentFromAI:", error);
-      const textArea = this.querySelector('[data-random-text]');
+      const textArea = this.querySelector("[data-random-text]");
       textArea.value = `Error: ${error.message}`;
-      return `Error generating text: ${error.message}`;y
+      return `Error generating text: ${error.message}`;
+      y;
     }
   }
 
@@ -1124,73 +1135,85 @@ class QwertyKeyboard extends HTMLElement {
   updateWordWPM() {
     if (!this.currentWordStartTime) return;
 
-    const elapsedTimeInMinutes = (Date.now() - this.currentWordStartTime) / (1000 * 60);
-    
+    const elapsedTimeInMinutes =
+      (Date.now() - this.currentWordStartTime) / (1000 * 60);
+
     if (elapsedTimeInMinutes > 0) {
-        // Calculate WPM for just this word
-        const wordWPM = Math.round((this.currentWordCharCount / 5) / elapsedTimeInMinutes);
-        
-        // Ensure WPM is reasonable (between 0 and 250)
-        const finalWPM = Math.min(Math.max(wordWPM, 0), 250);
-        
-        // Update the display
-        // Find the current or last typed word
-        const currentChar = this.previewArea.querySelector('.current');
-        const currentWord = currentChar 
-            ? currentChar.closest('.word')
-            : this.previewArea.querySelector('.word:last-child');
-            
-        if (currentWord) {
-            this.updateCurrentElementStyle(finalWPM, currentWord);
-        }
+      // Calculate WPM for just this word
+      const wordWPM = Math.round(
+        this.currentWordCharCount / 5 / elapsedTimeInMinutes
+      );
+
+      // Ensure WPM is reasonable (between 0 and 250)
+      const finalWPM = Math.min(Math.max(wordWPM, 0), 250);
+
+      // Update the display
+      // Find the current or last typed word
+      const currentChar = this.previewArea.querySelector(".current");
+      const currentWord = currentChar
+        ? currentChar.closest(".word")
+        : this.previewArea.querySelector(".word:last-child");
+
+      if (currentWord) {
+        this.updateCurrentElementStyle(finalWPM, currentWord);
+      }
     }
   }
 
   // Add this new method to handle current element styling
   updateCurrentElementStyle(wpm = 0, specificWord = null) {
-    // Create or update the style element for dynamic pseudo-element content
-    let styleElement = document.getElementById('dynamic-current-style');
+    let styleElement = document.getElementById("dynamic-current-style");
     if (!styleElement) {
-      styleElement = document.createElement('style');
-      styleElement.id = 'dynamic-current-style';
+      styleElement = document.createElement("style");
+      styleElement.id = "dynamic-current-style";
       document.head.appendChild(styleElement);
     }
-    
-    // Get the word to update (either specific word or current word)
-    const wordToUpdate = specificWord || this.previewArea.querySelector('.current')?.closest('.word');
+
+    const wordToUpdate =
+      specificWord ||
+      this.previewArea.querySelector(".current")?.closest(".word");
     if (!wordToUpdate) return;
 
     // Remove any existing speed classes
-    wordToUpdate.classList.remove('speed-medium', 'speed-great', 'speed-excellent', 'speed-perfect', 'speed-master', 'speed-god');
+    wordToUpdate.classList.remove(
+      "speed-medium",
+      "speed-great",
+      "speed-excellent",
+      "speed-perfect",
+      "speed-master",
+      "speed-god"
+    );
 
     // Add a data attribute to store the WPM for this word
     if (wpm > 0) {
-        // Only set WPM if it's a real value (not the initial 0)
-        wordToUpdate.setAttribute('data-wpm', wpm);
-        
-        // Add appropriate speed class based on WPM
-        if (wpm >= 100) {
-            wordToUpdate.classList.add('speed-god');
-        } else if (wpm >= 90) {
-            wordToUpdate.classList.add('speed-master');
-        } else if (wpm >= 70) {
-            wordToUpdate.classList.add('speed-perfect');
-        } else if (wpm >= 60) {
-            wordToUpdate.classList.add('speed-excellent');
-        } else if (wpm >= 50) {
-            wordToUpdate.classList.add('speed-great');
-        } else if (wpm >= 40) {
-            wordToUpdate.classList.add('speed-medium');
-        }
+      wordToUpdate.setAttribute("data-wpm", wpm);
+
+      // Add appropriate speed class based on WPM
+      if (wpm >= 100) {
+        wordToUpdate.classList.add("speed-god");
+      } else if (wpm >= 90) {
+        wordToUpdate.classList.add("speed-master");
+      } else if (wpm >= 70) {
+        wordToUpdate.classList.add("speed-perfect");
+      } else if (wpm >= 60) {
+        wordToUpdate.classList.add("speed-excellent");
+      } else if (wpm >= 50) {
+        wordToUpdate.classList.add("speed-great");
+      } else if (wpm >= 40) {
+        wordToUpdate.classList.add("speed-medium");
+      }
     }
 
-    // Generate CSS rules for word WPM display
+    // Generate CSS rules for word WPM display with more specific selectors
     const cssRules = `
-      .textarea-preview .word[data-wpm]:before {
-        content: attr(data-wpm) " wpm" ${wpm >= 90 ? '" ★"' : ''};
+      .textarea-preview .word[data-wpm]:not(.speed-master):not(.speed-god):before {
+        content: attr(data-wpm) " wpm";
       }
 
-      .textarea-preview .word.speed-master[data-wpm]:before,
+      .textarea-preview .word.speed-master[data-wpm]:before {
+        content: attr(data-wpm) " wpm ★";
+      }
+
       .textarea-preview .word.speed-god[data-wpm]:before {
         content: attr(data-wpm) " wpm ★";
       }
