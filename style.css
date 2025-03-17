@@ -185,16 +185,68 @@ qwerty-keyboard {
   z-index: 10;
 }
 
+
+.textarea-preview .word {
+  position: relative;
+  display: inline-block;
+  margin: 0 0 25px;
+}
+
+.textarea-preview .word[data-wpm]:before {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+
+  background-color: rgba(255, 87, 34, 0.2);
+  color: #ff5722;  
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* Speed-based colors for WPM display */
+.textarea-preview .word.speed-medium:before {
+  background-color: rgba(33, 150, 243, 0.2);
+  color: #2196f3;
+}
+
+.textarea-preview .word.speed-great:before {
+  background-color: rgba(33, 150, 243, 0.2);
+  color: #2196f3;
+}
+
+.textarea-preview .word.speed-excellent:before {
+  background-color: rgba(33, 150, 243, 0.2);
+  color: #2196f3;
+}
+
+.textarea-preview .word.speed-perfect:before {
+  background-color: rgba(156, 39, 176, 0.2);
+  color: #9c27b0;
+}
+
+.textarea-preview .word.speed-master:before {
+  background-color: rgba(255, 0, 0, 0.2);
+  color: #f5ea50;
+}
+
+.textarea-preview .word.speed-god:before {
+  background-color: rgba(255, 0, 0, 0.2);
+  color: #f5ea50;
+}
+
 .textarea-preview span {
   display: inline-block;
   transition: color 0.2s, background 0.2s;
-  margin: 0 0 15px;
   display: inline-flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: stretch;
   justify-content: center;
-  /* height: 45px; */
   line-height: 1;
   min-height: 30px;
   vertical-align: middle;
@@ -227,16 +279,6 @@ qwerty-keyboard {
   z-index: 2;
   animation: blink 0.5s infinite;
   animation-delay: 0.5s;
-}
-
-.textarea-preview span.current:before {
-  content: "";
-  position: absolute;
-  bottom: calc(100% + 10px);
-  left: -50px;
-  width: 100px;
-  height: 20px;
-  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .textarea-preview span.error {
