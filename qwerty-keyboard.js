@@ -31,6 +31,10 @@ class QwertyKeyboard extends HTMLElement {
     // Add new property to store last used text
     this.lastUsedText = "";
 
+    // Add properties for per-word WPM tracking
+    this.currentWordStartTime = null;
+    this.currentWordCharCount = 0;
+
     // Load all data
     this.loadData();
 
@@ -201,6 +205,10 @@ class QwertyKeyboard extends HTMLElement {
       });
 
       this.formatTextWithLineBreaks(this.previewArea);
+
+      setTimeout(() => {
+        this.updateCurrentElementStyle(0);
+      }, 20);
     }
   }
 
@@ -324,6 +332,8 @@ class QwertyKeyboard extends HTMLElement {
 
       if (!timeIsTheSame) {
         this.startTime = Date.now();
+        // Initialize the first word's start time
+        this.currentWordStartTime = Date.now();
       }
     }
 
@@ -345,6 +355,9 @@ class QwertyKeyboard extends HTMLElement {
 
     expectedChar.classList.add("typed");
 
+    // Increment the character count for the current word
+    this.currentWordCharCount++;
+
     let isCorrect = true;
 
     if (event.key != expectedCharText) {
@@ -357,6 +370,15 @@ class QwertyKeyboard extends HTMLElement {
 
     if (!isCorrect) {
       this.displayError();
+    }
+
+    // Check if we just completed a word (space or enter key)
+    const isWordComplete = event.code === "Space" || event.code === "Enter";
+    if (isWordComplete) {
+      this.updateWordWPM();
+      // Reset for next word
+      this.currentWordStartTime = Date.now();
+      this.currentWordCharCount = 0;
     }
 
     const allLettersCount = this.previewArea.querySelectorAll("span").length;
@@ -453,6 +475,9 @@ class QwertyKeyboard extends HTMLElement {
     // Get WPM
     const wpm = this.calculateWPM(letters.length, this.startTime, Date.now());
 
+    // Reset WPM display
+    this.updateCurrentElementStyle(0);
+
     // Calculate final score
     const finalScore = this.calculateFinalScore(wpm, accuracyPercentage);
 
@@ -467,6 +492,9 @@ class QwertyKeyboard extends HTMLElement {
     }
 
     this.displayScore(finalScore, wpm, accuracyPercentage);
+
+    // Reset WPM display
+    this.updateCurrentElementStyle(0);
   }
 
   calculatePercentage(x, total) {
@@ -526,6 +554,9 @@ class QwertyKeyboard extends HTMLElement {
 
     // Add new method to update history modal
     this.updateHistoryModal();
+
+    // Reset WPM display
+    this.updateCurrentElementStyle(0);
   }
 
   generateShareableUrl(score, wpm, accuracy) {
@@ -586,6 +617,13 @@ class QwertyKeyboard extends HTMLElement {
     this.previewArea.classList.add("active");
     this.closeModals();
     this.startTime = null;
+    
+    // Reset WPM display
+    this.updateCurrentElementStyle(0);
+
+    // Reset word-specific tracking
+    this.currentWordStartTime = null;
+    this.currentWordCharCount = 0;
 
     setTimeout(() => {
       this.previewArea.scrollTo({
@@ -618,6 +656,8 @@ class QwertyKeyboard extends HTMLElement {
       this.contentFromNinja();
     } else if (source === "wikipedia") {
       this.contentFromWikipedia();
+    } else if (source === "ai") {
+      this.contentFromAI();
     }
     // Paragraphs from json files
     // this.contentFromJson();
@@ -818,7 +858,7 @@ class QwertyKeyboard extends HTMLElement {
   closeModals() {
     // Close all modals by adding 'hidden' class
     this.querySelectorAll(".modal").forEach((modal) => {
-      modal.classList.add("hidden");
+        modal.classList.add("hidden");
     });
   }
 
@@ -950,6 +990,9 @@ class QwertyKeyboard extends HTMLElement {
     this.startTime = null;
     this.errors = 0;
 
+    // Reset WPM display
+    this.updateCurrentElementStyle(0);
+
     // Initialize the preview with the same text
     this.initializePreview({
       value: currentText,
@@ -963,6 +1006,117 @@ class QwertyKeyboard extends HTMLElement {
 
     // Highlight the first character
     this.highlightCurernt();
+
+    // Reset word-specific tracking
+    this.currentWordStartTime = null;
+    this.currentWordCharCount = 0;
+  }
+
+  async contentFromAI() {
+    try {
+      // Get the textarea element where we'll put the generated text
+      const textArea = this.querySelector('[data-random-text]');
+      
+      // Show some loading state in the textarea
+      textArea.value = "Generating text...";
+            
+      const response = await fetch(
+        "http://localhost:3000/generate-text",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          }
+        }
+      );
+      
+      const data = await response.json();
+          
+      if (data.error) {
+        console.error('Server error:', data.error, data.details);
+        textArea.value = `Error: ${data.error}`;
+        throw new Error(data.error);
+      }
+      
+      if (Array.isArray(data) && data[0]?.generated_text) {
+        let text = data[0].generated_text;
+        
+        // Ensure proper formatting
+        text = text.charAt(0).toUpperCase() + text.slice(1);
+        if (!text.match(/[.!?]$/)) {
+          text += '.';
+        }
+        
+        // Update the textarea with the generated text
+        textArea.value = text;
+        
+        // Initialize the preview with the new text
+        this.initializePreview(textArea);
+        this.highlightWord();
+        
+        return text;
+      } else {
+        console.error('Unexpected response format:', data);
+        textArea.value = "Unable to generate text. Please try again.";
+        return "Unable to generate text. Please try again.";
+      }
+    } catch (error) {
+      console.error("Detailed error in contentFromAI:", error);
+      const textArea = this.querySelector('[data-random-text]');
+      textArea.value = `Error: ${error.message}`;
+      return `Error generating text: ${error.message}`;y
+    }
+  }
+
+  // Add new method for calculating per-word WPM
+  updateWordWPM() {
+    if (!this.currentWordStartTime) return;
+
+    const elapsedTimeInMinutes = (Date.now() - this.currentWordStartTime) / (1000 * 60);
+    
+    if (elapsedTimeInMinutes > 0) {
+      // Calculate WPM for just this word
+      const wordWPM = Math.round((this.currentWordCharCount / 5) / elapsedTimeInMinutes);
+      
+      // Ensure WPM is reasonable (between 0 and 250)
+      const finalWPM = Math.min(Math.max(wordWPM, 0), 250);
+      
+      // Update the display
+      this.updateCurrentElementStyle(finalWPM);
+    }
+  }
+
+  // Add this new method to handle current element styling
+  updateCurrentElementStyle(wpm = 0) {
+    const current = this.previewArea.querySelector('.current');
+    if (!current) return;
+    
+    // Create or update the style element for dynamic pseudo-element content
+    let styleElement = document.getElementById('dynamic-current-style');
+    if (!styleElement) {
+      styleElement = document.createElement('style');
+      styleElement.id = 'dynamic-current-style';
+      document.head.appendChild(styleElement);
+    }
+    
+    // Update the pseudo-element style with WPM
+    styleElement.textContent = `
+      .textarea-preview span.current:before {
+        content: "${wpm} wpm";
+        position: absolute;
+        bottom: calc(100% + 10px);
+        left: -50px;
+        width: 100px;
+        height: 20px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+      }
+    `;
   }
 }
 

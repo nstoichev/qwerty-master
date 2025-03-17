@@ -175,7 +175,8 @@ qwerty-keyboard {
   font-size: 30px;
   line-height: 1.6;
   background: #222;
-  padding: 10px;
+  padding: 30px 10px 10px 10px;
+  padding: 30px;
   white-space: pre-wrap;
   vertical-align: bottom;
   height: 300px;
@@ -226,6 +227,16 @@ qwerty-keyboard {
   z-index: 2;
   animation: blink 0.5s infinite;
   animation-delay: 0.5s;
+}
+
+.textarea-preview span.current:before {
+  content: "";
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: -50px;
+  width: 100px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .textarea-preview span.error {
@@ -421,4 +432,17 @@ input:checked + .checkbox_label {
 .list-buttons li {
   display: block;
   margin: 10px 0;
+}
+
+.wpm-container {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  font-size: 20px;
+  font-family: "Droid Sans Mono", sans-serif;
+  text-transform: uppercase;
+  border: 1px solid #fff;
+  padding: 10px;
+  border-radius: 10px;
 }
