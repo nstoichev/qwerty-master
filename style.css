@@ -176,7 +176,6 @@ qwerty-keyboard {
   line-height: 1.6;
   background: #222;
   padding: 30px 10px 10px 10px;
-  padding: 30px;
   white-space: pre-wrap;
   vertical-align: bottom;
   height: 300px;
@@ -196,10 +195,7 @@ qwerty-keyboard {
   position: absolute;
   top: -20px;
   left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #fff;
-
+  transform: translateX(calc(-50% - 18px));
   background-color: rgba(255, 87, 34, 0.2);
   color: #ff5722;  
   font-size: 12px;
@@ -225,8 +221,8 @@ qwerty-keyboard {
 }
 
 .textarea-preview .word.speed-perfect:before {
-  background-color: rgba(156, 39, 176, 0.2);
-  color: #9c27b0;
+  background-color: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
 }
 
 .textarea-preview .word.speed-master:before {

@@ -137,8 +137,17 @@ class QwertyKeyboard extends HTMLElement {
     });
 
     this.querySelectorAll("form input[name='source']").forEach((input) => {
-      input.addEventListener("change", () => {
-        this.insertContent();
+      input.addEventListener("change", async () => {
+        // Wait for content to be inserted
+        await this.insertContent();
+        
+        // Check if textarea has content before initializing
+        if (this.textAreaRandom.value) {
+          const generateButton = this.querySelector('[data-init][data-random]');
+          if (generateButton) {
+            generateButton.click();
+          }
+        }
       });
     });
 
@@ -390,11 +399,25 @@ class QwertyKeyboard extends HTMLElement {
 
     // Check if we just completed a word (space or enter key)
     const isWordComplete = event.code === "Space" || event.code === "Enter";
+    
+    // Get the current word before the character is typed
+    const currentWord = this.previewArea.querySelector('.current')?.closest('.word');
+    
+    if (currentWord) {
+        // Get all characters except the last one (which would be space/enter)
+        const wordChars = Array.from(currentWord.querySelectorAll('span:not(:last-child)'));
+        const allWordCharsTyped = wordChars.length > 0 && wordChars.every(char => char.classList.contains('typed'));
+        
+        // If all word characters are typed (excluding space), calculate WPM
+        if (allWordCharsTyped && !currentWord.hasAttribute('data-wpm')) {
+            this.updateWordWPM();
+        }
+    }
+
+    // Reset counters only on actual word completion
     if (isWordComplete) {
-      this.updateWordWPM();
-      // Reset for next word
-      this.currentWordStartTime = Date.now();
-      this.currentWordCharCount = 0;
+        this.currentWordStartTime = Date.now();
+        this.currentWordCharCount = 0;
     }
 
     // Update: Count all characters, not just words
@@ -678,28 +701,23 @@ class QwertyKeyboard extends HTMLElement {
       });
   }
 
-  insertContent() {
+  async insertContent() {
     const source = this.getSource();
+    let result;
 
     if (source === "array") {
-      this.contentFormArray();
+      result = this.contentFormArray();
     } else if (source === "json") {
-      this.contentFromJson();
+      result = await this.contentFromJson();
     } else if (source === "ninja") {
-      this.contentFromNinja();
+      result = await this.contentFromNinja();
     } else if (source === "wikipedia") {
-      this.contentFromWikipedia();
+      result = await this.contentFromWikipedia();
     } else if (source === "ai") {
-      this.contentFromAI();
+      result = await this.contentFromAI();
     }
-    // Paragraphs from json files
-    // this.contentFromJson();
 
-    // Quotes from Ninja API
-    // this.contentFromNinja();
-
-    // Quotes from Wikipedia API
-    // this.contentFromWikipedia();
+    return result;
   }
 
   getSource() {
@@ -1037,8 +1055,9 @@ class QwertyKeyboard extends HTMLElement {
     // Focus the preview container
     previewContainer.focus();
 
-    // Highlight the first character
+    // Highlight the first character and keyboard keys
     this.highlightCurernt();
+    this.highlightWord();
 
     // Reset word-specific tracking
     this.currentWordStartTime = null;
