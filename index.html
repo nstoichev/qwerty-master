@@ -19,23 +19,33 @@
     <link rel="stylesheet" href="base.css" type="text/css" media="all" />
     <link rel="stylesheet" href="style.css" type="text/css" media="all" />
     <link rel="stylesheet" href="form.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="hands.css" type="text/css" media="all" />
   </head>
   <body>
+    <!-- 
+
+    tgbrfv45 edc3 2wsx `1qaz yhn67ujm 8ik, 9ol. 0p;/=[]\'
+     -->
     <qwerty-keyboard>
       <div class="container">
         <textarea
           class="textarea-placeholder source-container hidden"
           rows="5"
           data-default-text
+        >swsxs2s a1aqa`aza edc3 2wsx yhn67ujm 8ik, 9ol. 0p;/=[]\'</textarea
         >
-          This is a typing test. Type the text in this box as fast and accurately as possible. The timer starts when you start typing.</textarea
-        >
+
+        <!-- 
+        This is a typing test. Type the text in this box as fast and accurately as possible. The timer starts when you start typing.
+        swsxs2s a1aqa`aza edc3 2wsx yhn67ujm 8ik, 9ol. 0p;/=[]\'
+        -->
         <textarea
           class="textarea-placeholder hidden"
           rows="5"
           data-random-text
         ></textarea>
-        <div class="textarea-preview" data-preview></div>
+
+        <div class="textarea-preview" data-preview></div>        
 
         <div class="actions">
           <button
@@ -51,9 +61,18 @@
         </div>
 
         <div class="keyboard hidden" data-keyboard>
+          <div class="keyboard__legend">
+            <div class="keyboard__legend-item keyboard__legend-item--left">
+              Left hand keys
+            </div>
+            <div class="keyboard__legend-item keyboard__legend-item--right">
+              Right hand keys
+            </div>
+          </div>
+
           <!-- Row 1 -->
           <div class="row">
-            <div data-code="Backquote" class="key dark left">~<br />`</div>
+            <div data-code="Backquote" class="key dark key--left">~<br />`</div>
             <div data-code="Digit1" class="key key--left">!<br />1</div>
             <div data-code="Digit2" class="key key--left">@<br />2</div>
             <div data-code="Digit3" class="key key--left">#<br />3</div>
@@ -138,14 +157,24 @@
             </div>
           </div>
 
-          <div class="keyboard__legend">
-            <div class="keyboard__legend-item keyboard__legend-item--left">
-              Left hand keys
+          <div class="hands">
+            <div class="hand hand--left" data-hand-left>
+              <div class="hand__finger hand__finger--pinky" data-hand-left-pinky></div>
+              <div class="hand__finger hand__finger--ring" data-hand-left-ring></div>
+              <div class="hand__finger hand__finger--middle" data-hand-left-middle></div>
+              <div class="hand__finger hand__finger--index" data-hand-left-index></div>
+              <div class="hand__finger hand__finger--thumb" data-hand-left-thumb></div>
             </div>
-            <div class="keyboard__legend-item keyboard__legend-item--right">
-              Right hand keys
+    
+            <div class="hand hand--right" data-hand-right>
+              <div class="hand__finger hand__finger--thumb" data-hand-right-thumb></div>
+              
+              <div class="hand__finger hand__finger--index" data-hand-right-index></div>
+              <div class="hand__finger hand__finger--middle" data-hand-right-middle></div>
+              <div class="hand__finger hand__finger--ring" data-hand-right-ring></div>
+              <div class="hand__finger hand__finger--pinky" data-hand-right-pinky></div>
             </div>
-          </div>
+          </div>          
         </div>
       </div>
 

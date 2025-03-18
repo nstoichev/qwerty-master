@@ -35,6 +35,69 @@ class QwertyKeyboard extends HTMLElement {
     this.currentWordStartTime = null;
     this.currentWordCharCount = 0;
 
+    // Add finger mapping
+    this.fingerMap = {
+      // Left hand
+      Backquote: 'left-pinky',
+      Digit1: 'left-pinky',
+      Digit2: 'left-ring',
+      Digit3: 'left-middle',
+      Digit4: 'left-index',
+      Digit5: 'left-index',
+      
+      KeyQ: 'left-pinky',
+      KeyW: 'left-ring',
+      KeyE: 'left-middle',
+      KeyR: 'left-index',
+      KeyT: 'left-index',
+      
+      KeyA: 'left-pinky',
+      KeyS: 'left-ring',
+      KeyD: 'left-middle',
+      KeyF: 'left-index',
+      KeyG: 'left-index',
+      
+      KeyZ: 'left-pinky',
+      KeyX: 'left-ring',
+      KeyC: 'left-middle',
+      KeyV: 'left-index',
+      KeyB: 'left-index',
+      
+      // Right hand
+      Digit6: 'right-index',
+      Digit7: 'right-index',
+      Digit8: 'right-middle',
+      Digit9: 'right-ring',
+      Digit0: 'right-pinky',
+      Minus: 'right-pinky',
+      Equal: 'right-pinky',
+      
+      KeyY: 'right-index',
+      KeyU: 'right-index',
+      KeyI: 'right-middle',
+      KeyO: 'right-ring',
+      KeyP: 'right-pinky',
+      BracketLeft: 'right-pinky',
+      BracketRight: 'right-pinky',
+      Backslash: 'right-pinky',
+      
+      KeyH: 'right-index',
+      KeyJ: 'right-index',
+      KeyK: 'right-middle',
+      KeyL: 'right-ring',
+      Semicolon: 'right-pinky',
+      Quote: 'right-pinky',
+      
+      KeyN: 'right-index',
+      KeyM: 'right-index',
+      Comma: 'right-middle',
+      Period: 'right-ring',
+      Slash: 'right-pinky',
+      
+      // Space is handled by both thumbs
+      Space: 'thumb'
+    };
+
     // Load all data
     this.loadData();
 
@@ -261,6 +324,10 @@ class QwertyKeyboard extends HTMLElement {
 
     // Find the first untyped character within any word
     let expectedChar = this.previewArea.querySelector(".word span:not(.typed)");
+    if (!expectedChar) return;
+
+    // Add this line to highlight the appropriate finger
+    this.highlightFinger(expectedChar.dataset.code, expectedChar.textContent);
 
     this.keyboard.querySelectorAll(".expected").forEach((expected) => {
       expected.classList.remove("expected");
@@ -301,6 +368,13 @@ class QwertyKeyboard extends HTMLElement {
     this.addOrderClasses(characters);
 
     this.highlightCurernt();
+
+    // Find the next character to be typed
+    const nextChar = this.previewArea.querySelector(".word span:not(.typed)");
+    if (nextChar) {
+      const keyCode = nextChar.getAttribute('data-code');
+      this.highlightFinger(keyCode, nextChar.textContent);
+    }
   }
 
   addOrderClasses(characters) {
@@ -353,6 +427,13 @@ class QwertyKeyboard extends HTMLElement {
     if (!Object.values(this.keyCodeMap).includes(event.code)) return;
     if (!this.previewArea.classList.contains("active")) return;
 
+    // Using the existing expectedChar
+    const expectedChar = this.previewArea.querySelector(".word span:not(.typed)");
+    if (!expectedChar) return;
+
+    // Add this line to highlight the appropriate finger
+    this.highlightFinger(event.code, expectedChar.textContent);
+
     if (!this.startTime) {
       const timeIsTheSame = this.startTime === Date.now();
 
@@ -372,14 +453,6 @@ class QwertyKeyboard extends HTMLElement {
     });
 
     // Update: Find the first untyped character within any word
-    const expectedChar = this.previewArea.querySelector(
-      ".word span:not(.typed)"
-    );
-
-    if (!expectedChar) {
-      return;
-    }
-
     const expectedCharText = expectedChar.textContent;
 
     // Add typed class to the character span
@@ -1220,6 +1293,55 @@ class QwertyKeyboard extends HTMLElement {
     `;
 
     styleElement.textContent = cssRules;
+  }
+
+  // Add this new method
+  highlightFinger(keyCode, expectedCharText) {
+    // Remove active class from all fingers
+    this.querySelectorAll('.hand__finger').forEach(finger => {
+      finger.classList.remove('active');
+      // Also remove any key-specific classes
+      finger.className = finger.className.replace(/key-[A-Za-z0-9]+/g, '').trim();
+    });
+
+    const fingerType = this.fingerMap[keyCode];
+    if (!fingerType) return;
+
+    // Check if character requires shift
+    const isUpperCase = expectedCharText === expectedCharText?.toUpperCase() && 
+                       expectedCharText !== expectedCharText?.toLowerCase();
+    const requiresShift = /[~!@#$%^&*()_+{}|:"<>?]/.test(expectedCharText);
+
+    // If shift is required, determine which shift key and highlight corresponding pinky
+    if (isUpperCase || requiresShift) {
+      if (/[QWERTASDFGZXCV!@#$%]/.test(expectedCharText?.toUpperCase())) {
+        const rightPinky = this.querySelector('[data-hand-right-pinky]');
+        rightPinky.classList.add('active');
+        rightPinky.classList.add('key-ShiftRight');
+      } else {
+        const leftPinky = this.querySelector('[data-hand-left-pinky]');
+        leftPinky.classList.add('active');
+        leftPinky.classList.add('key-ShiftLeft');
+      }
+    }
+
+    // Handle the main character finger
+    if (fingerType === 'thumb') {
+      // Highlight both thumbs for space
+      const leftThumb = this.querySelector('[data-hand-left-thumb]');
+      const rightThumb = this.querySelector('[data-hand-right-thumb]');
+      leftThumb.classList.add('active');
+      rightThumb.classList.add('active');
+      leftThumb.classList.add('key-Space');
+      rightThumb.classList.add('key-Space');
+    } else {
+      const [hand, finger] = fingerType.split('-');
+      const fingerElement = this.querySelector(`[data-hand-${hand}-${finger}]`);
+      if (fingerElement) {
+        fingerElement.classList.add('active');
+        fingerElement.classList.add(`key-${keyCode}`);
+      }
+    }
   }
 }
 

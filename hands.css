@@ -1,0 +1,163 @@
+.hand {
+  display: inline-block;
+  width: 200px;
+  height: 170px;
+  background-color: rgba(255, 165, 0, 0.7);
+  position: absolute;
+  border-radius: 50px;
+  bottom: -90px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.hand__finger {
+  flex: 1;
+  background-color: rgba(255, 165, 0, 0.7);
+  border-radius: 15px;
+}
+
+.hand__finger--pinky {
+  height: 40px;
+}
+
+.hand__finger--ring {
+  height: 60px;
+}
+
+.hand__finger--middle {
+  height: 80px;
+}
+
+.hand__finger--index {
+  height: 60px;
+}
+
+.hand__finger:not(.hand__finger--thumb) {
+  transform: translateY(calc(-100% + 10px));
+  transform-origin: bottom center;
+}
+
+.hand__finger:not(.hand__finger--thumb):before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  border-radius: 15px;
+  background-color: rgba(255, 165, 0, 0.7);
+  bottom: 100%;
+}
+
+.hand__finger--thumb {
+  position: absolute;
+  width: 44px;
+  height: 80px;
+  bottom: 40px;
+}
+
+.hand__finger--thumb:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  border-radius: 15px;
+  background-color: rgba(255, 165, 0, 0.7);
+  bottom: 100%;
+  transform: rotate(-45deg);
+  transform-origin: bottom center;
+}
+
+/* Hand Left */
+.hand--left {
+  left: 80px;
+  transform: rotate(10deg);
+}
+
+.hand--left .hand__finger--thumb {
+  left: calc(100% - 40px);
+  transform: rotate(40deg);
+  transform-origin: bottom center;
+}
+
+.hand--left .hand__finger:not(.hand__finger--thumb):before {
+  transform-origin: bottom center;
+}
+
+.hand--left .hand__finger--index {
+  transform: translateY(calc(-100% + 10px)) rotate(23deg);
+}
+
+.hand--left .hand__finger--middle {
+  transform: translateY(calc(-100% + 20px)) rotate(15deg);
+}
+
+.hand--left .hand__finger--middle:before {
+  transform: rotate(15deg);
+  bottom: 80%;
+}
+
+.hand--left .hand__finger--ring {
+  transform: translateY(calc(-100% + 20px)) rotate(15deg);
+}
+
+.hand--left .hand__finger--ring:before {
+  transform: rotate(15deg);
+}
+
+.hand--left .hand__finger--pinky {
+  transform: translateY(calc(-100% + 20px)) rotate(15deg);
+}
+
+.hand--left .hand__finger--pinky:before {
+  transform: rotate(15deg);
+}
+
+
+/* Hand Right */
+.hand--right {
+  right: 140px;
+  transform: rotate(-10deg);
+}
+
+.hand--right .hand__finger--thumb {
+  right: calc(100% - 40px);
+  transform: rotate(-40deg);
+  transform-origin: bottom center;
+}
+
+.hand--right .hand__finger:not(.hand__finger--thumb):before {
+  transform-origin: bottom center;
+}
+
+.hand--right .hand__finger--index {
+  transform: translateY(calc(-100% + 10px)) rotate(-23deg);
+}
+
+.hand--right .hand__finger--middle {
+  transform: translateY(calc(-100% + 20px)) rotate(-15deg);
+}
+
+.hand--right .hand__finger--middle:before {
+  transform: rotate(-15deg);
+  bottom: 80%;
+}
+
+.hand--right .hand__finger--ring {
+  transform: translateY(calc(-100% + 20px)) rotate(-15deg);
+}
+
+.hand--right .hand__finger--ring:before {
+  transform: rotate(-15deg);
+}
+
+.hand--right .hand__finger--pinky {
+  transform: translateY(calc(-100% + 20px)) rotate(-15deg);
+}
+
+.hand--right .hand__finger--pinky:before {
+  transform: rotate(-15deg);
+}
+
+.hand--right .hand__finger--thumb:before {
+  transform: rotate(45deg);
+}

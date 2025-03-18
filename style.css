@@ -81,7 +81,7 @@ qwerty-keyboard {
   position: absolute;
   gap: 10px;
   padding: 10px;
-  top: 100%;
+  bottom: 100%;
   left: 0;
   width: 100%;
 }
