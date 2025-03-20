@@ -1115,11 +1115,11 @@ class QwertyKeyboard extends HTMLElement {
 
   // Add this method to the QwertyKeyboard class
   handleRestart() {
-    // Get the current text
-    const currentText = this.querySelector("[data-preview]").textContent;
+    // Get the current text but preserve line breaks
+    const previewContainer = this.querySelector("[data-preview]");
+    const textToRestore = this.lastUsedText || previewContainer.textContent;
 
     // Reset the preview container
-    const previewContainer = this.querySelector("[data-preview]");
     previewContainer.innerHTML = "";
 
     // Reset typing state
@@ -1132,7 +1132,7 @@ class QwertyKeyboard extends HTMLElement {
 
     // Initialize the preview with the same text
     this.initializePreview({
-      value: currentText,
+      value: textToRestore,
     });
 
     // Hide the modal
@@ -1297,11 +1297,11 @@ class QwertyKeyboard extends HTMLElement {
 
   // Add this new method
   highlightFinger(keyCode, expectedCharText) {
-    // Remove active class from all fingers
-    this.querySelectorAll('.hand__finger').forEach(finger => {
-      finger.classList.remove('active');
+    // Remove active class from all fingers and hands
+    this.querySelectorAll('.hand__finger, .hand').forEach(element => {
+      element.classList.remove('active');
       // Also remove any key-specific classes
-      finger.className = finger.className.replace(/key-[A-Za-z0-9]+/g, '').trim();
+      element.className = element.className.replace(/key-[A-Za-z0-9]+/g, '').trim();
     });
 
     const fingerType = this.fingerMap[keyCode];
@@ -1312,34 +1312,47 @@ class QwertyKeyboard extends HTMLElement {
                        expectedCharText !== expectedCharText?.toLowerCase();
     const requiresShift = /[~!@#$%^&*()_+{}|:"<>?]/.test(expectedCharText);
 
-    // If shift is required, determine which shift key and highlight corresponding pinky
+    // If shift is required, determine which shift key and highlight corresponding pinky and hand
     if (isUpperCase || requiresShift) {
       if (/[QWERTASDFGZXCV!@#$%]/.test(expectedCharText?.toUpperCase())) {
         const rightPinky = this.querySelector('[data-hand-right-pinky]');
+        const rightHand = this.querySelector('.hand--right');
         rightPinky.classList.add('active');
         rightPinky.classList.add('key-ShiftRight');
+        rightHand.classList.add('active');
+        rightHand.classList.add('key-ShiftRight');
       } else {
         const leftPinky = this.querySelector('[data-hand-left-pinky]');
+        const leftHand = this.querySelector('.hand--left');
         leftPinky.classList.add('active');
         leftPinky.classList.add('key-ShiftLeft');
+        leftHand.classList.add('active');
+        leftHand.classList.add('key-ShiftLeft');
       }
     }
 
     // Handle the main character finger
     if (fingerType === 'thumb') {
-      // Highlight both thumbs for space
+      // Highlight both thumbs and hands for space
       const leftThumb = this.querySelector('[data-hand-left-thumb]');
       const rightThumb = this.querySelector('[data-hand-right-thumb]');
-      leftThumb.classList.add('active');
-      rightThumb.classList.add('active');
-      leftThumb.classList.add('key-Space');
-      rightThumb.classList.add('key-Space');
+      const leftHand = this.querySelector('.hand--left');
+      const rightHand = this.querySelector('.hand--right');
+      
+      [leftThumb, rightThumb, leftHand, rightHand].forEach(element => {
+        element.classList.add('active');
+        element.classList.add('key-Space');
+      });
     } else {
       const [hand, finger] = fingerType.split('-');
       const fingerElement = this.querySelector(`[data-hand-${hand}-${finger}]`);
-      if (fingerElement) {
+      const handElement = this.querySelector(`.hand--${hand}`);
+      
+      if (fingerElement && handElement) {
         fingerElement.classList.add('active');
         fingerElement.classList.add(`key-${keyCode}`);
+        handElement.classList.add('active');
+        handElement.classList.add(`key-${keyCode}`);
       }
     }
   }

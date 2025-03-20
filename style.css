@@ -305,8 +305,16 @@ qwerty-keyboard {
   border-color: #0056b3;
 }
 
+.keyboard .key.highlight:not(.expected) {
+  background-color: rgba(0, 123, 255, 0.3);
+}
+
 .keyboard .key--left.highlight {
   background-color: #d10519;
+}
+
+.keyboard .key--left.highlight:not(.expected) {
+  background-color: rgba(209, 5, 25, 0.3);
 }
 
 .modal {
