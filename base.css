@@ -127,11 +127,3 @@ body {
 .button--danger:hover {
   background-color: #c82333;
 }
-
-.checkbox_label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  color: #fff;
-}

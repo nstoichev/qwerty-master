@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="form.css" type="text/css" media="all" />
     <link rel="stylesheet" href="hands.css" type="text/css" media="all" />
   </head>
+  
   <body>
     <qwerty-keyboard>
       <div class="container">
@@ -28,9 +29,19 @@
           class="textarea-placeholder source-container hidden"
           rows="5"
           data-default-text
-        >This is a typing test.
-Type the text in this box as fast and accurately as possible.
-The timer starts when you start typing.</textarea>
+        >Develop was a monthly UK trade magazine for the video game industry. Its online portal, complete with a digital version of the print publication, was active since July 2007.[1]
+
+        Develop 100 was an annual rating system for game developers produced by Develop. It was a ranking of the world's games development studios based on a variety of criteria including sales data, critical success and industry standing.[citation needed]
+        
+        The Develop Industry Excellence Awards, also annually, honoured the development of video games and award studios across a range of categories.[2]
+        
+        In November 2017, NewBay Media, the owner of Develop at the time, announced that the websites, magazines and events of Develop and sister magazine Esports Pro would be absorbed into MCV by early 2018, with the combined magazine moving to a monthly frequency.[3][4]
+        
+        References
+         Truta, Filip (17 July 2007). "Develop Mag – Online Portal for Everyone Involved with Game Development". Softpedia.
+         French, Michael (3 June 2008). "Develop Awards: the finalists are revealed". MCV.
+         Barton, Seth (20 November 2017). "NewBay unites video games group under MCV, Esports Pro to be incorporated into MCV brand". MCV.
+         Kerr, Chris (20 November 2017). </textarea>
         <!-- 
         This is a typing test. Type the text in this box as fast and accurately as possible. The timer starts when you start typing.
         swsxs2s a1aqa`aza edc3 2wsx yhn67ujm 8ik, 9ol. 0p;/=[]\'
@@ -153,22 +164,42 @@ The timer starts when you start typing.</textarea>
             </div>
           </div>
 
-          <div class="hands">
+          <div class="hands hidden" data-hands>
             <div class="hand hand--left" data-hand-left>
-              <div class="hand__finger hand__finger--pinky" data-hand-left-pinky></div>
-              <div class="hand__finger hand__finger--ring" data-hand-left-ring></div>
-              <div class="hand__finger hand__finger--middle" data-hand-left-middle></div>
-              <div class="hand__finger hand__finger--index" data-hand-left-index></div>
-              <div class="hand__finger hand__finger--thumb" data-hand-left-thumb></div>
+              <div class="hand__finger hand__finger--pinky" data-hand-left-pinky>
+                <span class="joint"></span>
+              </div>
+              <div class="hand__finger hand__finger--ring" data-hand-left-ring>
+                <span class="joint"></span>
+              </div>
+              <div class="hand__finger hand__finger--middle" data-hand-left-middle>
+                <span class="joint"></span>
+              </div>
+              <div class="hand__finger hand__finger--index" data-hand-left-index>
+                <span class="joint"></span>
+              </div>
+              <div class="hand__finger hand__finger--thumb" data-hand-left-thumb>
+                <span class="joint"></span>
+              </div>
             </div>
     
             <div class="hand hand--right" data-hand-right>
-              <div class="hand__finger hand__finger--thumb" data-hand-right-thumb></div>
-              
-              <div class="hand__finger hand__finger--index" data-hand-right-index></div>
-              <div class="hand__finger hand__finger--middle" data-hand-right-middle></div>
-              <div class="hand__finger hand__finger--ring" data-hand-right-ring></div>
-              <div class="hand__finger hand__finger--pinky" data-hand-right-pinky></div>
+              <div class="hand__finger hand__finger--thumb" data-hand-right-thumb>
+                <span class="joint"></span>
+              </div>
+
+              <div class="hand__finger hand__finger--index" data-hand-right-index>
+                <span class="joint"></span>
+              </div>
+              <div class="hand__finger hand__finger--middle" data-hand-right-middle>
+                <span class="joint"></span>
+              </div>
+              <div class="hand__finger hand__finger--ring" data-hand-right-ring>
+                <span class="joint"></span>
+              </div>
+              <div class="hand__finger hand__finger--pinky" data-hand-right-pinky>
+                <span class="joint"></span>
+              </div>
             </div>
           </div>          
         </div>
@@ -254,7 +285,7 @@ The timer starts when you start typing.</textarea>
 
               <label for="sounds" class="checkbox_label">
                 <svg
-                  fill="#000000"
+                  fill="#fff"
                   width="800px"
                   height="800px"
                   viewBox="0 0 24 24"
@@ -364,6 +395,27 @@ The timer starts when you start typing.</textarea>
               </label>
             </div>
           </div>
+
+          <div class="settings__field">
+            <div class="checkbox">
+              <input
+                type="checkbox"
+                id="hands"
+                name="hands"
+                value="off"
+              />
+
+              <label for="hands" class="checkbox_label checkbox_label--hands">
+                <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.9 11.4444V14.2222M6.9 11.4444V4.77778C6.9 3.8573 7.66112 3.11111 8.6 3.11111C9.53888 3.11111 10.3 3.8573 10.3 4.77778M6.9 11.4444C6.9 10.524 6.13888 9.77778 5.2 9.77778C4.26112 9.77778 3.5 10.524 3.5 11.4444V13.6667C3.5 18.269 7.30558 22 12 22C16.6944 22 20.5 18.269 20.5 13.6667V8.11111C20.5 7.19064 19.7389 6.44444 18.8 6.44444C17.8611 6.44444 17.1 7.19064 17.1 8.11111M10.3 4.77778V10.8889M10.3 4.77778V3.66667C10.3 2.74619 11.0611 2 12 2C12.9389 2 13.7 2.74619 13.7 3.66667V4.77778M13.7 4.77778V10.8889M13.7 4.77778C13.7 3.8573 14.4611 3.11111 15.4 3.11111C16.3389 3.11111 17.1 3.8573 17.1 4.77778V8.11111M17.1 8.11111V10.8889" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+
+                  <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.9 11.4444V14.2222M6.9 11.4444V4.77778C6.9 3.8573 7.66112 3.11111 8.6 3.11111C9.53888 3.11111 10.3 3.8573 10.3 4.77778M6.9 11.4444C6.9 10.524 6.13888 9.77778 5.2 9.77778C4.26112 9.77778 3.5 10.524 3.5 11.4444V13.6667C3.5 18.269 7.30558 22 12 22C16.6944 22 20.5 18.269 20.5 13.6667V8.11111C20.5 7.19064 19.7389 6.44444 18.8 6.44444C17.8611 6.44444 17.1 7.19064 17.1 8.11111M10.3 4.77778V10.8889M10.3 4.77778V3.66667C10.3 2.74619 11.0611 2 12 2C12.9389 2 13.7 2.74619 13.7 3.66667V4.77778M13.7 4.77778V10.8889M13.7 4.77778C13.7 3.8573 14.4611 3.11111 15.4 3.11111C16.3389 3.11111 17.1 3.8573 17.1 4.77778V8.11111M17.1 8.11111V10.8889" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>                   
+              </label>
+            </div>
+          </div>          
 
           <details class="settings__details">
             <summary>

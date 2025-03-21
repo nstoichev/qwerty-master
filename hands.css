@@ -1,715 +1,424 @@
+.hands {
+  /* display: none; */
+}
+
 .hand {
-  width: 200px;
-  height: 170px;
+  width: 26%;
+  height: 180px;
   position: absolute;
   border-radius: 50px;
-  bottom: -90px;
+  bottom: -100px;
   display: flex;
   flex-direction: row;
-  gap: 10px;
-  transition: all 0.1s ease-in-out;
+  gap: 2px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 50px;
 }
 
 .hand__finger {
   flex: 1;
-  border-radius: 15px;
-  transition: all 0.1s ease-in-out;
 }
 
-.hand__finger:before {
+.hand__finger .joint {
+  position: absolute;
+  transform-origin: bottom center;
+  height: 65%;
+  bottom: 0;
+  left: -2px;
+  right: -2px;
+  bottom: 100%;
+}
+
+.hand__finger .joint:after {
   content: "";
   position: absolute;
-  transition: all 0.1s ease-in-out;
   width: 100%;
-  border-radius: 15px;
+  height: 40px;
   bottom: 100%;
-  transform-origin: bottom center;
-  height: 60px;
+}
+
+.hand__finger,
+.hand__finger .joint,
+.hand__finger .joint:after {
+  border-radius: 15px;
 }
 
 .hand,
 .hand__finger,
-.hand__finger:before {
+.hand__finger .joint,
+.hand__finger .joint:after {
+  background-color: rgba(255, 165, 0, 0.5);
+  border-color: rgba(255, 165, 0, 1);
+  border: 2px solid rgba(255, 165, 0, 1);
   transition: all 0.1s ease-in-out;
-  border: 2px solid;
 }
 
-.hand--left,
-.hand--left .hand__finger,
-.hand--left .hand__finger:before {
-  background-color: rgba(255, 165, 0, 0.5); /* Light skin tone with opacity */
-  border-color: rgba(255, 165, 0, 1); /* Solid skin tone for border */
-}
-
-.hand--right,
-.hand--right .hand__finger,
-.hand--right .hand__finger:before {
-  background-color: rgba(255, 165, 0, 0.5); /* Light skin tone with opacity */
-  border-color: rgba(255, 165, 0, 1); /* Solid skin tone for border */
-}
-
-.hand.active,
-.hand__finger.active,
-.hand__finger.active:before {
-  /* background-color: rgba(255, 255, 255, 0.7); */
-}
-
-.hand--left.active,
-.hand--left .hand__finger.active,
-.hand--left .hand__finger.active:before {
-  animation: none;
-}
-
-.hand--right.active,
-.hand--right .hand__finger.active,
-.hand--right .hand__finger.active:before {
-  animation: none;
-}
-
-.hand__finger.active:before {
-  animation: none;
-}
-
-.hand__finger--thumb:before {
-  height: 50%;
-  transform: rotate(-45deg);
+.hand__finger--thumb .joint {
+  height: 70px;
+  transform: rotate(-65deg);
 }
 
 .hand__finger--pinky {
-  height: 40px;
+  height: 50px;
 }
 
 .hand__finger--ring {
-  height: 60px;
+  height: 90px;
 }
 
 .hand__finger--middle {
-  height: 80px;
+  height: 100px;
 }
 
 .hand__finger--index {
-  height: 60px;
+  height: 80px;
 }
 
 .hand__finger:not(.hand__finger--thumb) {
-  transform: translateY(calc(-100% + 10px));
   transform-origin: bottom center;
 }
 
 .hand__finger--thumb {
   position: absolute;
   width: 44px;
-  height: 80px;
+  height: 40px;
   bottom: 40px;
 }
 
-/* Hand Left */
+/* ======================================= Hand Left ======================================= */
+
 .hand--left {
-  left: 80px;
-  transform: rotate(10deg);
+  left: 60px;
+  transform: rotate(15deg);
+  animation: leftHandHomeRow 1s ease-in-out forwards;
 }
 
 .hand--left .hand__finger--thumb {
   left: calc(100% - 40px);
-  transform: rotate(40deg);
+  transform: rotate(80deg);
   transform-origin: bottom center;
 }
 
-.hand--left .hand__finger:not(.hand__finger--thumb):before {
+.hand--left .hand__finger:not(.hand__finger--thumb) .joint {
   transform-origin: bottom center;
 }
 
 .hand--left .hand__finger--index {
-  transform: translateY(calc(-100% + 0px)) rotate(23deg);
+  transform: translateY(calc(-100% + 20px));
 }
 
 .hand--left .hand__finger--middle {
-  transform: translateY(calc(-100% + 20px)) rotate(15deg);
-}
-
-.hand--left .hand__finger--middle:before {
-  transform: rotate(15deg);
-  bottom: 80%;
+  transform: translateY(calc(-100% + 20px));
 }
 
 .hand--left .hand__finger--ring {
-  transform: translateY(calc(-100% + 20px)) rotate(15deg);
-}
-
-.hand--left .hand__finger--ring:before {
-  transform: rotate(15deg);
+  transform: translateY(calc(-100% + 20px));
 }
 
 .hand--left .hand__finger--pinky {
-  transform: translateY(calc(-100% + 20px)) rotate(15deg);
-}
-
-.hand--left .hand__finger--pinky:before {
-  transform: rotate(15deg);
+  transform: translateY(calc(-100% + 20px));
 }
 
 
-/* Hand Right */
+/*  ------------------------------- Hand left home row ------------------------------- */
+
+.hand--left .hand__finger--index .joint {
+  bottom: 65%;
+}
+
+.hand--left .hand__finger--index .joint:after {
+  bottom: 30%;
+}
+
+.hand--left .hand__finger--middle .joint {
+  bottom: 30%;
+}
+
+.hand--left .hand__finger--middle .joint:after {
+  bottom: 30%;
+}
+
+.hand--left .hand__finger--ring .joint {
+  bottom: 30%;
+}
+
+.hand--left .hand__finger--ring .joint:after {
+  bottom: 30%;
+}
+
+.hand--left .hand__finger--pinky .joint {
+  bottom: 30%;
+}
+
+.hand--left .hand__finger--pinky .joint:after {
+  bottom: 30%;
+}
+
+
+/* ======================================= Hand Right ======================================= */
+
 .hand--right {
-  right: 140px;
-  transform: rotate(-10deg);
+  right: 120px;
+  transform: rotate(-15deg);
+  animation: rightHandHomeRow 1s ease-in-out forwards;
 }
 
 .hand--right .hand__finger--thumb {
   right: calc(100% - 40px);
-  transform: rotate(-40deg);
+  transform: rotate(-80deg);
   transform-origin: bottom center;
 }
 
-.hand--right .hand__finger:not(.hand__finger--thumb):before {
+.hand--right .hand__finger:not(.hand__finger--thumb) .joint {
   transform-origin: bottom center;
+}
+
+.hand--right .hand__finger--thumb .joint {
+  transform: rotate(65deg);
 }
 
 .hand--right .hand__finger--index {
-  transform: translateY(calc(-100% + 10px)) rotate(-23deg);
+  transform: translateY(calc(-100% + 20px));
 }
 
 .hand--right .hand__finger--middle {
-  transform: translateY(calc(-100% + 20px)) rotate(-15deg);
-}
-
-.hand--right .hand__finger--middle:before {
-  transform: rotate(-15deg);
-  bottom: 80%;
+  transform: translateY(calc(-100% + 20px));
 }
 
 .hand--right .hand__finger--ring {
-  transform: translateY(calc(-100% + 20px)) rotate(-15deg);
-}
-
-.hand--right .hand__finger--ring:before {
-  transform: rotate(-15deg);
+  transform: translateY(calc(-100% + 20px));
 }
 
 .hand--right .hand__finger--pinky {
-  transform: translateY(calc(-100% + 20px)) rotate(-15deg);
+  transform: translateY(calc(-100% + 20px));
 }
 
-.hand--right .hand__finger--pinky:before {
-  transform: rotate(-15deg);
-}
-
-.hand--right .hand__finger--thumb:before {
-  transform: rotate(45deg);
-}
-
-/* ------------------------------------------------------------------- *\
-  Hand Left
-\* ------------------------------------------------------------------- */
-
-.hand--left.key-ShiftLeft .hand__finger--pinky {
-  transform: translateY(calc(-100% + 30px)) rotate(0deg);
-}
-
-.hand--left.key-ShiftLeft .hand__finger--pinky:before {
-  bottom: 50%;
-  height: 30px;
-}
-
-
-
-/* ------------------------------ Key W ------------------------------ */
-
-.hand--left.key-KeyW .hand__finger--ring {
-  transform: translateY(calc(-100% + -2px)) rotate(0deg);
-}
-
-.hand--left.key-KeyW .hand__finger--ring:before {
-  transform: rotate(0deg);
-}
-
-.hand--left.key-KeyW .hand__finger--pinky {
-  transform: translateY(calc(-100% + 20px)) rotate(11deg);
-}
-
-.hand--left.key-KeyW .hand__finger--pinky:before {
-  transform: rotate(0deg);
-}
-
-
-/* ------------------------------ Key X ------------------------------ */
-
-.hand--left.key-KeyX {
-  bottom: -96px;
-  transform: rotate(15deg);
-}
-
-.hand--left.key-KeyX .hand__finger--ring {
-  transform: translateY(calc(-100% + 29px)) rotate(18deg);
-}
-
-.hand--left.key-KeyX .hand__finger--ring:before {
-  transform: rotate(56deg);
-}
-
-.hand--left.key-KeyX .hand__finger--middle {
-  transform: translateY(calc(-100% + 23px)) rotate(7deg);
-}
-
-.hand--left.key-KeyX .hand__finger--index {
-  transform: translateY(calc(-100% + 13px)) rotate(14deg);
-}
-
-/* ------------------------------ Key 2 ------------------------------ */
-
-.hand--left.key-Digit2 {
-  bottom: -57px;
-  transform: rotate(2deg);
-}
-
-.hand--left.key-Digit2 .hand__finger--ring {
-  transform: translateY(calc(-100% + -11px)) rotate(0deg);
-  height: 71px;
-}
-
-.hand--left.key-Digit2 .hand__finger--ring:before {
-  transform: rotate(0deg);
-  bottom: 118%
-}
-
-.hand--left.key-Digit2 .hand__finger--pinky {
-  transform: translateY(calc(-100% + 20px)) rotate(0deg);
-}
-
-.hand--left.key-Digit2 .hand__finger--pinky:before {
-  transform: rotate(0deg);
-}
-
-.hand--left.key-Digit2 .hand__finger--index {
-  transform: translateY(calc(-100% + 30px)) rotate(23deg);
-}
-
-.hand--left.key-Digit2 .hand__finger--index:before {
-  transform: rotate(52deg);
-}
-
-.hand--left.key-Digit2 .hand__finger--thumb {
-  transform: rotate(63deg);
-}
-
-.hand--left.key-Digit2 .hand__finger--middle {
-  transform: translateY(calc(-100% + 28px)) rotate(15deg);
-}
-
-.hand--left.key-Digit2 .hand__finger--middle:before {
-  transform: rotate(31deg);
-  /* bottom: 80%; */
-}
-
-/* ------------------------------ Key 1 ------------------------------ */
-
-.hand--left.key-Digit1 {
-  bottom: -35px;
-  transform: rotate(2deg);
-}
-
-.hand--left.key-Digit1 .hand__finger--pinky {
-  transform: translateY(calc(-100% + 0px)) rotate(-3deg);
-  height: 65px;
-}
-
-.hand--left.key-Digit1 .hand__finger--pinky:before {
-  transform: rotate(0deg);
-  height: 70px;
-}
-
-.hand--left.key-Digit1 .hand__finger--index {
-  transform: translateY(calc(-100% + 44px)) rotate(26deg);
-}
-
-.hand--left.key-Digit1 .hand__finger--index:before {
-  transform: rotate(52deg);
-}
-
-.hand--left.key-Digit1 .hand__finger--thumb {
-  transform: rotate(70deg);
-  bottom: 24px;
-}
-
-.hand--left.key-Digit1 .hand__finger--middle {
-  transform: translateY(calc(-100% + 30px)) rotate(0deg);
-}
-
-.hand--left.key-Digit1 .hand__finger--middle:before {
-  transform: rotate(35deg);
-}
-
-.hand--left.key-Digit1 .hand__finger--ring {
-  transform: translateY(calc(-100% + 32px)) rotate(0deg);
-}
-
-.hand--left.key-Digit1 .hand__finger--ring:before {
-  transform: rotate(36deg);
-}
-
-/* ------------------------------ Key Q ------------------------------ */
-
-.hand--left.key-KeyQ .hand__finger--pinky {
-  height: 56px;
-  transform: translateY(calc(-100% + 9px)) rotate(0deg);
-}
-
-.hand--left.key-KeyQ .hand__finger--pinky:before {
-  transform: rotate(0deg);
-  bottom: 118%;
-}
-
-/* ------------------------------ Key Backquote ------------------------------ */
-
-.hand--left.key-Backquote {
-  bottom: -17px;
-  left: 34px;
-  transform: rotate(-1deg);
-}
-
-.hand--left.key-Backquote .hand__finger--pinky {
-  height: 65px;
-  transform: translateY(calc(-100% + 9px)) rotate(-7deg);
-}
-
-.hand--left.key-Backquote .hand__finger--pinky:before {
-  transform: rotate(0deg);
-  bottom: 100%;
-}
-
-.hand--left.key-Backquote .hand__finger--thumb {
-  transform: rotate(82deg);
-  bottom: 23px;
-  left: calc(100% - 52px);
-}
-
-.hand--left.key-Backquote .hand__finger--index {
-  transform: translateY(calc(-100% + 31px)) rotate(66deg);
-  height: 70px;
-}
-
-.hand--left.key-Backquote .hand__finger--index:before {
-  transform: rotate(33deg);
-}
-
-/* ------------------------------ Key Z ------------------------------ */
-
-.hand--left.key-KeyZ .hand__finger--pinky {
-  transform: translateY(calc(-100% + 25px)) rotate(37deg);
-}
+/*  ------------------------------- Hand right home row ------------------------------- */
 
-.hand--left.key-KeyZ .hand__finger--pinky:before {
-  transform: rotate(41deg);
-  height: 47px;
+.hand--right .hand__finger--index .joint {
+  bottom: 65%;
 }
 
-/* ------------------------------ Key E ------------------------------ */
-
-.hand--left.key-KeyE .hand__finger--middle {
-  transform: translateY(calc(-100% + 10px)) rotate(0deg);
-}
-
-.hand--left.key-KeyE .hand__finger--middle:before {
-  transform: rotate(0deg);
-  bottom: 110%;
-}
-
-/* ------------------------------ Key C ------------------------------ */
-
-.hand--left.key-KeyC .hand__finger--middle {
-  transform: translateY(calc(-100% + 30px)) rotate(20deg);
-}
-
-.hand--left.key-KeyC .hand__finger--middle:before {
-  transform: rotate(50deg);
-}
-
-.hand--left.key-KeyC .hand__finger--index {
-  transform: translateY(calc(-100% + 30px)) rotate(20deg);
-}
-
-/* ------------------------------ Key 3 ------------------------------ */
-
-.hand--left.key-Digit3 {
-  bottom: -62px;
-  transform: rotate(2deg);
-}
-
-.hand--left.key-Digit3 .hand__finger--middle {
-  transform: translateY(-110%) rotate(0deg);
-}
-
-.hand--left.key-Digit3 .hand__finger--middle:before {
-  transform: rotate(0deg);
-  bottom: 110%;
-}
-
-.hand--left.key-Digit3 .hand__finger--index {
-  transform: translateY(calc(-100% + 30px)) rotate(20deg);
-}
-
-.hand--left.key-Digit3 .hand__finger--ring {
-  transform: translateY(calc(-100% + 10px)) rotate(0deg);
-}
-
-.hand--left.key-Digit3 .hand__finger--pinky {
-  transform: translateY(calc(-100% + 20px)) rotate(0deg);
-}
-
-.hand--left.key-Digit3 .hand__finger--index {
-  transform: translateY(calc(-100% + 30px)) rotate(30deg);
-}
-
-.hand--left.key-Digit3 .hand__finger--index:before {
-  transform: rotate(20deg);
-}
-
-.hand--left.key-Digit3 .hand__finger--thumb {
-  transform: rotate(60deg);
-}
-
-
-/* ------------------------------ Key R ------------------------------ */
-
-.hand--left.key-KeyR {
-  bottom: -80px;
-  transform: rotate(5deg);
-}
-
-.hand--left.key-KeyR .hand__finger--index {
-  transform: translateY(calc(-100% + 0px)) rotate(10deg);
-}
-
-.hand--left.key-KeyR .hand__finger--index:before {
-  height: 70px;
-  bottom: 110%;
-}
-
-.hand--left.key-KeyR .hand__finger--middle:before {
-  transform: rotate(30deg);
-  height: 50px;
-}
-
-.hand--left.key-KeyR .hand__finger--ring:before {
-  transform: rotate(30deg);
-  height: 50px;
-}
-
-.hand--left.key-KeyR .hand__finger--pinky:before {
-  transform: rotate(30deg);
-  height: 50px;
-}
-
-/* ------------------------------ Key 4 ------------------------------ */
-
-.hand--left.key-Digit4 {
-  bottom: -40px;
-  transform: rotate(2deg);
-}
-
-.hand--left.key-Digit4 .hand__finger--index {
-  transform: translateY(calc(-100% + 0px)) rotate(-1deg);
-}
-
-.hand--left.key-Digit4 .hand__finger--index:before {
-  transform: rotate(0deg);
-  bottom: 110%;
-  height: 70px;
-}
-
-.hand--left.key-Digit4 .hand__finger--ring,
-.hand--left.key-Digit4 .hand__finger--middle {
-  transform: translateY(calc(-100% + 30px)) rotate(5deg);
-  height: 70px;
-}
-
-.hand--left.key-Digit4 .hand__finger--ring:before,
-.hand--left.key-Digit4 .hand__finger--middle:before {
-  transform: rotate(60deg);
-  bottom: 80%;
-  height: 50px;
-}
-
-.hand--left.key-Digit4 .hand__finger--pinky:before {
-  transform: rotate(60deg);
-  height: 40px;
-}
-
-/* ------------------------------ Key 5 ------------------------------ */
-
-.hand--left.key-Digit5 {
-  bottom: -40px;
-  transform: rotate(2deg);
-}
-
-.hand--left.key-Digit5 .hand__finger--index {
-  transform: translateY(-110%) rotate(25deg);
-}
-
-.hand--left.key-Digit5 .hand__finger--index:before {
-  transform: rotate(0deg);
-  bottom: 115%;
-  height: 75px;
-}
-
-.hand--left.key-Digit5 .hand__finger--ring,
-.hand--left.key-Digit5 .hand__finger--middle {
-  transform: translateY(calc(-100% + 30px)) rotate(5deg);
-  height: 70px;
-}
-
-.hand--left.key-Digit5 .hand__finger--ring:before,
-.hand--left.key-Digit5 .hand__finger--middle:before {
-  transform: rotate(60deg);
-  bottom: 80%;
-  height: 50px;
-}
-
-.hand--left.key-Digit5 .hand__finger--pinky:before {
-  transform: rotate(60deg);
-  height: 40px;
-}
-
-/* ------------------------------ Key V ------------------------------ */
-
-.hand--left.key-KeyV .hand__finger--index {
-  transform: translateY(calc(-100% + 10px)) rotate(40deg);
-}
-
-.hand--left.key-KeyV .hand__finger--index:before {
-  transform: rotate(30deg);
-}
-
-/* ------------------------------ Key T ------------------------------ */
-
-.hand--left.key-KeyT {
-  bottom: -50px;
+.hand--right .hand__finger--index .joint:after {
+  bottom: 30%;
 }
 
-.hand--left.key-KeyT .hand__finger--index {
-  transform: translateY(calc(-100% + 0px)) rotate(30deg);
+.hand--right .hand__finger--middle .joint {
+  bottom: 30%;
 }
 
-.hand--left.key-KeyT .hand__finger--index:before {
-  bottom: 120%;
-  height: 70px;
+.hand--right .hand__finger--middle .joint:after {
+  bottom: 30%;
 }
 
-.hand--left.key-KeyT .hand__finger--ring:before,
-.hand--left.key-KeyT .hand__finger--middle:before,
-.hand--left.key-KeyT .hand__finger--pinky:before {
-  transform: rotate(54deg);
-  height: 41px;
+.hand--right .hand__finger--ring .joint {
+  bottom: 30%;
 }
 
-/* ------------------------------ Key G ------------------------------ */
-
-.hand--left.key-KeyG .hand__finger--index {
-  transform: translateY(calc(-100% + 0px)) rotate(45deg);
-  height: 70px;
-}
-
-.hand--left.key-KeyG .hand__finger--index:before {
-  transform: rotate(0deg);
-  bottom: 120%;
+.hand--right .hand__finger--ring .joint:after {
+  bottom: 30%;
 }
 
-/* ------------------------------ Key B ------------------------------ */
-
-.hand--left.key-KeyB .hand__finger--index {
-  transform: translateY(calc(-100% + 0px)) rotate(63deg);
-  position: relative;
-  left: 15px;
-  top: 10px;
+.hand--right .hand__finger--pinky .joint {
+  bottom: 30%;
 }
 
-.hand--left.key-KeyB .hand__finger--index:before {
-  bottom: 120%;
+.hand--right .hand__finger--pinky .joint:after {
+  bottom: 30%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Animations */
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
+/* Add these keyframe definitions at the end of the file */
+@keyframes moveToHomeRow {
+  from {
+    transform: translateY(0);
   }
-  50% {
-    transform: scale(0.9);
-  }
-  100% {
-    transform: scale(1);
+  to {
+    transform: translateY(calc(-100% + 20px));
   }
 }
 
-@keyframes pulseShadow {
-  0% {
-    box-shadow: 0 0 4px 0 rgba(255, 255, 255, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.8);
-  }
-  100% {
-    box-shadow: 0 0 4px 0 rgba(255, 255, 255, 0.5);
-  }
+@keyframes moveJointToHomeRow {
+  0% { bottom: 100%; }
+  66.66% { bottom: 100%; } /* Stay in place for 1s (66.66% of 1.5s) */
+  100% { bottom: 30%; }
 }
 
-@keyframes innerGlow {
-  0% {
-    box-shadow: inset 0 0 4px 0 currentColor;
-  }
-  50% {
-    box-shadow: inset 0 0 20px 0 currentColor;
-  }
-  100% {
-    box-shadow: inset 0 0 4px 0 currentColor;
-  }
+@keyframes moveJointToHomeRow65 {
+  0% { bottom: 100%; }
+  66.66% { bottom: 100%; } /* Stay in place for 1s (66.66% of 1.5s) */
+  100% { bottom: 65%; }
 }
 
-@keyframes bgColor {
-  0% {
-    background-color: rgba(255, 255, 255, 0.5);
-  }
-  50% {
-    background-color: rgba(255, 255, 255, 1);
-  }
-  100% {
-    background-color: rgba(255, 255, 255, 0.5);
-  }
+@keyframes moveIndexJointToHomeRow {
+  0% { bottom: 100%; }
+  66.66% { bottom: 100%; } /* Stay in place for 1s (66.66% of 1.5s) */
+  100% { bottom: 65%; }
 }
 
-@keyframes innerGlowRed {
-  0% {
-    box-shadow: inset 0 0 4px 0 rgba(209, 5, 25, 0.5);
-  }
-  50% {
-    box-shadow: inset 0 0 30px 0 rgba(209, 5, 25, 1);
-  }
-  100% {
-    box-shadow: inset 0 0 4px 0 rgba(209, 5, 25, 0.5);
-  }
+@keyframes moveJointAfterToHomeRow {
+  0% { bottom: 100%; }
+  66.66% { bottom: 100%; } /* Stay in place for 1s (66.66% of 1.5s) */
+  100% { bottom: 30%; }
 }
 
-@keyframes innerGlowBlue {
-  0% {
-    box-shadow: inset 0 0 4px 0 rgba(0, 123, 255, 0.5);
-  }
-  50% {
-    box-shadow: inset 0 0 30px 0 rgba(0, 123, 255, 1);
-  }
-  100% {
-    box-shadow: inset 0 0 4px 0 rgba(0, 123, 255, 0.5);
-  }
+/* Add these new keyframe animations for left hand */
+@keyframes tiltLeftPinky {
+  0% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+  50% { transform: translateY(calc(-100% + 20px)) rotate(-15deg); }
+  100% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+}
+
+@keyframes tiltLeftRing {
+  0% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+  50% { transform: translateY(calc(-100% + 20px)) rotate(-8deg); }
+  100% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+}
+
+@keyframes tiltLeftMiddle {
+  0% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+  50% { transform: translateY(calc(-100% + 20px)) rotate(8deg); }
+  100% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+}
+
+@keyframes tiltLeftIndex {
+  0% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+  50% { transform: translateY(calc(-100% + 20px)) rotate(15deg); }
+  100% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+}
+
+/* Update right hand keyframes with opposite rotations */
+@keyframes tiltRightPinky {
+  0% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+  50% { transform: translateY(calc(-100% + 20px)) rotate(15deg); }
+  100% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+}
+
+@keyframes tiltRightRing {
+  0% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+  50% { transform: translateY(calc(-100% + 20px)) rotate(8deg); }
+  100% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+}
+
+@keyframes tiltRightMiddle {
+  0% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+  50% { transform: translateY(calc(-100% + 20px)) rotate(-8deg); }
+  100% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+}
+
+@keyframes tiltRightIndex {
+  0% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+  50% { transform: translateY(calc(-100% + 20px)) rotate(-15deg); }
+  100% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+}
+
+@keyframes leftHandHomeRow {
+  0% { transform: rotate(0) scale(0.5); left: -100px; }
+  100% { transform: rotate(15deg) scale(1); left: 60px; }
+}
+
+@keyframes rightHandHomeRow {
+  0% { transform: rotate(0) scale(0.5); right: -100px; }
+  100% { transform: rotate(-15deg) scale(1); right: 120px; }
+}
+
+/* Animation states for active hands - Left hand */
+.hands.active .hand--left .hand__finger:not(.hand__finger--thumb):not(.hand__finger--index) .joint {
+  animation: moveJointToHomeRow 1.5s ease-in-out forwards;
+}
+
+.hands.active .hand--left .hand__finger:not(.hand__finger--thumb):not(.hand__finger--index) .joint:after {
+  animation: moveJointAfterToHomeRow 1.5s ease-in-out forwards;
+}
+
+.hands.active .hand--left .hand__finger--index .joint {
+  animation: moveJointToHomeRow65 1.5s ease-in-out forwards;
+}
+
+/* Animation states for active hands - Right hand */
+.hands.active .hand--right .hand__finger:not(.hand__finger--thumb):not(.hand__finger--index) .joint {
+  animation: moveJointToHomeRow 1.5s ease-in-out forwards;
+}
+
+.hands.active .hand--right .hand__finger:not(.hand__finger--thumb):not(.hand__finger--index) .joint:after {
+  animation: moveJointAfterToHomeRow 1.5s ease-in-out forwards;
+}
+
+.hands.active .hand--right .hand__finger--index .joint {
+  animation: moveJointToHomeRow65 1.5s ease-in-out forwards;
+}
+
+/* Add finger tilt animations for left hand */
+.hands.active .hand--left .hand__finger--pinky {
+  animation: tiltLeftPinky 1s ease-in-out;
+}
+
+.hands.active .hand--left .hand__finger--ring {
+  animation: tiltLeftRing 1s ease-in-out;
+}
+
+.hands.active .hand--left .hand__finger--middle {
+  animation: tiltLeftMiddle 1s ease-in-out;
+}
+
+.hands.active .hand--left .hand__finger--index {
+  animation: tiltLeftIndex 1s ease-in-out;
+}
+
+/* Keep existing right hand animations but they now use the updated keyframes */
+.hands.active .hand--right .hand__finger--pinky {
+  animation: tiltRightPinky 1s ease-in-out;
+}
+
+.hands.active .hand--right .hand__finger--ring {
+  animation: tiltRightRing 1s ease-in-out;
+}
+
+.hands.active .hand--right .hand__finger--middle {
+  animation: tiltRightMiddle 1s ease-in-out;
+}
+
+.hands.active .hand--right .hand__finger--index {
+  animation: tiltRightIndex 1s ease-in-out;
+}
+
+/* Optional: Add hover state to make hands semi-transparent */
+.hands.active .hand {
+  background-color: rgba(255, 165, 0, 0.3);
+  border-color: rgba(255, 165, 0, 0.6);
+}
+
+.hands.active .hand__finger,
+.hands.active .hand__finger .joint,
+.hands.active .hand__finger .joint:after {
+  background-color: rgba(255, 165, 0, 0.3);
+  border-color: rgba(255, 165, 0, 0.6);
+}
+
+/* ------------------------------- Hand left key-KeyT ------------------------------- */
+
+.hands.active .hand--left.key-KeyT .hand__finger--index {
+  transform: translateY(calc(-100% + 20px)) rotate(4deg);
+}
+
+.hands.active .hand--left.key-KeyT .hand__finger--index .joint {
+  bottom: 100% !important;
+}
+
+.hands.active .hand--left.key-KeyT .hand__finger--index .joint:after {
+  bottom: 90% !important;
+}
+
+/* ------------------------------- Hand left key-KeyV ------------------------------- */
+
+.hands.active .hand--left.key-KeyV .hand__finger--index {
+  transform: translateY(calc(-100% + 20px)) rotate(4deg);
+}
+
+.hands.active .hand--left.key-KeyV .hand__finger--index .joint {
+  bottom: 100% !important;
+
+}
+
+.hands.active .hand--left.key-KeyV .hand__finger--index .joint:after {
+  bottom: 90% !important;
 }

@@ -10,6 +10,7 @@ class QwertyKeyboard extends HTMLElement {
 
     this.previewArea = this.querySelector("[data-preview]");
     this.keyboard = this.querySelector("[data-keyboard]");
+    this.hands = this.querySelector("[data-hands]");
 
     this.initButtons = this.querySelectorAll("[data-init]");
 
@@ -35,69 +36,6 @@ class QwertyKeyboard extends HTMLElement {
     this.currentWordStartTime = null;
     this.currentWordCharCount = 0;
 
-    // Add finger mapping
-    this.fingerMap = {
-      // Left hand
-      Backquote: 'left-pinky',
-      Digit1: 'left-pinky',
-      Digit2: 'left-ring',
-      Digit3: 'left-middle',
-      Digit4: 'left-index',
-      Digit5: 'left-index',
-      
-      KeyQ: 'left-pinky',
-      KeyW: 'left-ring',
-      KeyE: 'left-middle',
-      KeyR: 'left-index',
-      KeyT: 'left-index',
-      
-      KeyA: 'left-pinky',
-      KeyS: 'left-ring',
-      KeyD: 'left-middle',
-      KeyF: 'left-index',
-      KeyG: 'left-index',
-      
-      KeyZ: 'left-pinky',
-      KeyX: 'left-ring',
-      KeyC: 'left-middle',
-      KeyV: 'left-index',
-      KeyB: 'left-index',
-      
-      // Right hand
-      Digit6: 'right-index',
-      Digit7: 'right-index',
-      Digit8: 'right-middle',
-      Digit9: 'right-ring',
-      Digit0: 'right-pinky',
-      Minus: 'right-pinky',
-      Equal: 'right-pinky',
-      
-      KeyY: 'right-index',
-      KeyU: 'right-index',
-      KeyI: 'right-middle',
-      KeyO: 'right-ring',
-      KeyP: 'right-pinky',
-      BracketLeft: 'right-pinky',
-      BracketRight: 'right-pinky',
-      Backslash: 'right-pinky',
-      
-      KeyH: 'right-index',
-      KeyJ: 'right-index',
-      KeyK: 'right-middle',
-      KeyL: 'right-ring',
-      Semicolon: 'right-pinky',
-      Quote: 'right-pinky',
-      
-      KeyN: 'right-index',
-      KeyM: 'right-index',
-      Comma: 'right-middle',
-      Period: 'right-ring',
-      Slash: 'right-pinky',
-      
-      // Space is handled by both thumbs
-      Space: 'thumb'
-    };
-
     // Load all data
     this.loadData();
 
@@ -107,17 +45,19 @@ class QwertyKeyboard extends HTMLElement {
 
   async loadData() {
     try {
-      // Load all data in parallel
+      // Update the Promise.all to include fingermap
       const [
         keycodeResponse,
         wordsResponse,
         speedSoundsResponse,
         keyboardSoundsResponse,
+        fingermapResponse,
       ] = await Promise.all([
         fetch("./keycode-map.json"),
         fetch("./words.json"),
         fetch("./speed-sounds.json"),
         fetch("./keyboard-sounds.json"),
+        fetch("./fingermap.json"),
       ]);
 
       // Check if all responses are ok
@@ -125,7 +65,8 @@ class QwertyKeyboard extends HTMLElement {
         !keycodeResponse.ok ||
         !wordsResponse.ok ||
         !speedSoundsResponse.ok ||
-        !keyboardSoundsResponse.ok
+        !keyboardSoundsResponse.ok ||
+        !fingermapResponse.ok
       ) {
         throw new Error("Failed to load one or more data files");
       }
@@ -133,9 +74,14 @@ class QwertyKeyboard extends HTMLElement {
       // Parse all responses
       const speedSoundsData = await speedSoundsResponse.json();
       const keyboardSoundsData = await keyboardSoundsResponse.json();
-      [this.keyCodeMap, this.wordsArray] = await Promise.all([
+      [
+        this.keyCodeMap,
+        this.wordsArray,
+        this.fingerMap,
+      ] = await Promise.all([
         keycodeResponse.json(),
         wordsResponse.json(),
+        fingermapResponse.json(),
       ]);
 
       // Initialize Audio objects for keyboard sounds
@@ -159,7 +105,8 @@ class QwertyKeyboard extends HTMLElement {
 
   connectedCallback() {
     this.keyboard.classList.toggle("hidden", !this.keyboardEnabled());
-
+    this.hands.classList.toggle("hidden", !this.handsEnabled());
+    
     // Add click handler for buttons with data-target attribute
     this.querySelectorAll("[data-target]").forEach((button) => {
       button.addEventListener("click", (event) => {
@@ -195,7 +142,9 @@ class QwertyKeyboard extends HTMLElement {
 
     this.settings.forEach((input) => {
       input.addEventListener("change", () => {
-        this.keyboard.classList.toggle("hidden", !this.keyboardEnabled());
+        this.keyboard.classList.toggle("hidden", !this.keyboardEnabled());  
+        this.hands.classList.toggle("hidden", !this.handsEnabled());
+        this.hands.classList.toggle("active", this.handsEnabled());
       });
     });
 
@@ -244,6 +193,11 @@ class QwertyKeyboard extends HTMLElement {
         });
       });
     }
+
+    // Set a timeout to remove active classes after 3 seconds
+    this.activeTimeout = setTimeout(() => {
+      // this.hands.classList.remove('active');
+    }, 3000);
   }
 
   initializePreview(textarea) {
@@ -537,7 +491,7 @@ class QwertyKeyboard extends HTMLElement {
   scrollToCurrentElement() {
     const parent = this.previewArea;
     const current = parent.querySelector(".current");
-    const scrollOffset = 50;
+    const scrollOffset = 70;
 
     if (!parent || !current) return;
 
@@ -981,6 +935,10 @@ class QwertyKeyboard extends HTMLElement {
     return this.querySelector("form #keyboard").checked;
   }
 
+  handsEnabled() {
+    return this.querySelector("form #hands").checked;
+  }
+
   calculateFinalScore(wpm, accuracyPercentage) {
     // Normalize WPM to max 60 points (assuming 70 WPM is the target)
     const wpmScore = Math.min((wpm / 70) * 60, 60);
@@ -1140,6 +1098,9 @@ class QwertyKeyboard extends HTMLElement {
 
     // Focus the preview container
     previewContainer.focus();
+
+    // Immediately scroll to top without smooth behavior
+    previewContainer.scrollTop = 0;
 
     // Highlight the first character and keyboard keys
     this.highlightCurernt();
