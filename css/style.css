@@ -760,14 +760,22 @@ input:checked + .checkbox_label {
 
 .engaged .settings__field .checkbox_label,
 .engaged .actions .button,
+.engaged .settings__details summary,
+.engaged .donate-button,
 .engaged .logo {
   transform: scale(0.8);
-  opacity: 0.3;
+  opacity: 0.1;
 }
 
-.engaged .settings__field .checkbox_label:hover,
+.engaged
+  .settings__field:not(.settings__field[data-tooltip])
+  .checkbox_label:hover,
 .engaged .actions .button:hover {
   transform: scale(1);
+  opacity: 1;
+}
+
+.engaged .settings__field[data-tooltip] {
   opacity: 1;
 }
 
