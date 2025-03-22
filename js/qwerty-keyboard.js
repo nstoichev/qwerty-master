@@ -1427,16 +1427,42 @@ class QwertyKeyboard extends HTMLElement {
     const revolutLink = this.querySelector("[data-revolut-link]");
     const copyButton = this.querySelector("[data-copy-revolut]");
 
-    // Replace this with your actual Revolut payment link
-    const REVOLUT_LINK = "https://revolut.me/nikola5j6b";
+    // Use the deep link format for Revolut
+    // Format: revolut://payment/r/<username>
+    const REVOLUT_USERNAME = "nikola5j6b";
+    const REVOLUT_DEEP_LINK = `revolut://payment/r/${REVOLUT_USERNAME}`;
+    const REVOLUT_WEB_LINK = `https://revolut.me/${REVOLUT_USERNAME}`;
 
-    // Set the Revolut link
-    revolutLink.textContent = REVOLUT_LINK;
+    // Set the Revolut link with fallback
+    revolutLink.href = REVOLUT_DEEP_LINK;
 
-    // Handle copy button
+    // Add click handler to try deep link first, then fall back to web
+    revolutLink.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      // Try to open the app first
+      window.location.href = REVOLUT_DEEP_LINK;
+
+      // If app doesn't open within 500ms, redirect to web version
+      const fallbackTimer = setTimeout(() => {
+        window.location.href = REVOLUT_WEB_LINK;
+      }, 500);
+
+      // Clear the timer if the page is hidden (app opened)
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          clearTimeout(fallbackTimer);
+        }
+      });
+    });
+
+    // Generate QR code with the deep link
+    this.generateRevolutQR(REVOLUT_DEEP_LINK);
+
+    // Update copy button to copy web link (more reliable for sharing)
     copyButton.addEventListener("click", () => {
       navigator.clipboard
-        .writeText(REVOLUT_LINK)
+        .writeText(REVOLUT_WEB_LINK)
         .then(() => {
           copyButton.textContent = "Copied!";
           setTimeout(() => {
@@ -1447,6 +1473,34 @@ class QwertyKeyboard extends HTMLElement {
           console.error("Failed to copy:", err);
         });
     });
+  }
+
+  generateRevolutQR(link) {
+    // Find QR container
+    const qrContainer = this.querySelector("[data-revolut-qr]");
+    if (!qrContainer) return;
+
+    // Clear any existing content
+    qrContainer.innerHTML = "";
+
+    // Create QR code using QRCode.js if available
+    if (typeof QRCode !== "undefined") {
+      new QRCode(qrContainer, {
+        text: link,
+        width: 200,
+        height: 200,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H,
+      });
+    } else {
+      // Fallback to using a QR code service API
+      const img = document.createElement("img");
+      img.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(
+        link
+      )}`;
+      qrContainer.appendChild(img);
+    }
   }
 
   closeTooltip() {

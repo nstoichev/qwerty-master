@@ -843,3 +843,19 @@ input:checked + .checkbox_label {
   opacity: 1;
   visibility: visible;
 }
+
+/* Add these styles to your existing CSS */
+.revolut-qr {
+  margin: 20px auto;
+  padding: 15px;
+  background: white;
+  border-radius: 8px;
+  width: fit-content;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.revolut-qr img {
+  display: block;
+  max-width: 200px;
+  height: auto;
+}
