@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap");
 
 @font-face {
   font-family: "Droid Sans Mono";
@@ -44,7 +44,7 @@ qwerty-keyboard {
   justify-content: flex-start;
   align-items: flex-start;
   gap: 10px;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
   font-size: 16px;
 }
 
@@ -88,20 +88,56 @@ qwerty-keyboard {
 }
 
 /* First row animation (QWERTY) */
-.logo > span:first-child span:nth-child(1) { animation: keyPress 0.3s ease forwards; animation-delay: 0.0s; }  /* Q */
-.logo > span:first-child span:nth-child(2) { animation: keyPress 0.3s ease forwards; animation-delay: 0.3s; }  /* W */
-.logo > span:first-child span:nth-child(3) { animation: keyPress 0.3s ease forwards; animation-delay: 0.6s; }  /* E */
-.logo > span:first-child span:nth-child(4) { animation: keyPress 0.3s ease forwards; animation-delay: 0.9s; }  /* R */
-.logo > span:first-child span:nth-child(5) { animation: keyPress 0.3s ease forwards; animation-delay: 1.2s; }  /* T */
-.logo > span:first-child span:nth-child(6) { animation: keyPress 0.3s ease forwards; animation-delay: 1.5s; }  /* Y */
+.logo > span:first-child span:nth-child(1) {
+  animation: keyPress 0.3s ease forwards;
+  animation-delay: 0s;
+} /* Q */
+.logo > span:first-child span:nth-child(2) {
+  animation: keyPress 0.3s ease forwards;
+  animation-delay: 0.3s;
+} /* W */
+.logo > span:first-child span:nth-child(3) {
+  animation: keyPress 0.3s ease forwards;
+  animation-delay: 0.6s;
+} /* E */
+.logo > span:first-child span:nth-child(4) {
+  animation: keyPress 0.3s ease forwards;
+  animation-delay: 0.9s;
+} /* R */
+.logo > span:first-child span:nth-child(5) {
+  animation: keyPress 0.3s ease forwards;
+  animation-delay: 1.2s;
+} /* T */
+.logo > span:first-child span:nth-child(6) {
+  animation: keyPress 0.3s ease forwards;
+  animation-delay: 1.5s;
+} /* Y */
 
 /* Second row animation (MASTER) - starts after first row is done */
-.logo > span:last-child span:nth-child(1) { animation: keyPress 0.3s ease forwards; animation-delay: 2.0s; }  /* M */
-.logo > span:last-child span:nth-child(2) { animation: keyPress 0.3s ease forwards; animation-delay: 2.3s; }  /* A */
-.logo > span:last-child span:nth-child(3) { animation: keyPress 0.3s ease forwards; animation-delay: 2.6s; }  /* S */
-.logo > span:last-child span:nth-child(4) { animation: keyPress 0.3s ease forwards; animation-delay: 2.9s; }  /* T */
-.logo > span:last-child span:nth-child(5) { animation: keyPress 0.3s ease forwards; animation-delay: 3.2s; }  /* E */
-.logo > span:last-child span:nth-child(6) { animation: keyPress 0.3s ease forwards; animation-delay: 3.5s; }  /* R */
+.logo > span:last-child span:nth-child(1) {
+  animation: keyPress 0.3s ease forwards;
+  animation-delay: 2s;
+} /* M */
+.logo > span:last-child span:nth-child(2) {
+  animation: keyPress 0.3s ease forwards;
+  animation-delay: 2.3s;
+} /* A */
+.logo > span:last-child span:nth-child(3) {
+  animation: keyPress 0.3s ease forwards;
+  animation-delay: 2.6s;
+} /* S */
+.logo > span:last-child span:nth-child(4) {
+  animation: keyPress 0.3s ease forwards;
+  animation-delay: 2.9s;
+} /* T */
+.logo > span:last-child span:nth-child(5) {
+  animation: keyPress 0.3s ease forwards;
+  animation-delay: 3.2s;
+} /* E */
+.logo > span:last-child span:nth-child(6) {
+  animation: keyPress 0.3s ease forwards;
+  animation-delay: 3.5s;
+} /* R */
 
 @keyframes keyPress {
   0% {
@@ -229,7 +265,7 @@ qwerty-keyboard {
   transition: all 0.2s;
   box-shadow: -2px 2px 0px 3px #000;
   position: relative;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   font-size: 14px;
 }
 
@@ -271,8 +307,6 @@ qwerty-keyboard {
   text-align: left;
 }
 
-
-
 /* ------------------------------------------------------------ *\
   Preview
 \* ------------------------------------------------------------ */
@@ -303,7 +337,7 @@ qwerty-keyboard {
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(255, 87, 34, 0.2);
-  color: #ff5722;  
+  color: #ff5722;
   font-size: 12px;
   padding: 2px 6px;
   border-radius: 4px;
@@ -613,16 +647,15 @@ input:checked + .checkbox_label {
 
 /* Add to existing CSS */
 .tooltip {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.2s;
-    width: 300px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+  width: 300px;
 }
-
 
 .tooltip__content a {
   text-decoration: underline;
@@ -633,31 +666,31 @@ input:checked + .checkbox_label {
 }
 
 .tooltip--active {
-    opacity: 1;
-    pointer-events: auto;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .tooltip__content {
-    background: #333;
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 4px;
-    font-size: 14px;
-    position: relative;
-    /* white-space: nowrap; */
+  background: #333;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  position: relative;
+  /* white-space: nowrap; */
 }
 
 .tooltip__content:after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid #333;
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #333;
 }
 
 /* Default checkbox style */
@@ -681,7 +714,7 @@ input:checked + .checkbox_label {
 }
 
 .checkbox-default .checkbox_label:before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 50%;
@@ -695,7 +728,7 @@ input:checked + .checkbox_label {
 }
 
 .checkbox-default .checkbox_label:after {
-  content: '';
+  content: "";
   position: absolute;
   left: 7px;
   top: 9px;
@@ -726,7 +759,6 @@ input:checked + .checkbox_label {
   border-color: #007bff;
 }
 
-
 .logo {
   transition: all 0.2s ease;
 }
@@ -737,7 +769,6 @@ input:checked + .checkbox_label {
   transform: scale(0.8);
   opacity: 0.3;
 }
-
 
 .engaged .settings__field .checkbox_label:hover,
 .engaged .actions .button:hover {
@@ -779,17 +810,16 @@ input:checked + .checkbox_label {
   flex: 1;
   font-family: monospace;
   word-break: break-all;
-  color: #FF5F5F;
+  color: #ff5f5f;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .revolut-link:hover {
-  color: #FF4040;
+  color: #ff4040;
   text-decoration: underline;
 }
 
 .button--copy {
   white-space: nowrap;
 }
-

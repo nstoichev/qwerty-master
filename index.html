@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="form.css" type="text/css" media="all" />
     <link rel="stylesheet" href="hands.css" type="text/css" media="all" />
   </head>
-  
+
   <body>
     <header class="header">
       <h1 class="logo">
@@ -33,7 +33,7 @@
           <span>T</span>
           <span>Y</span>
         </span>
-        
+
         <span>
           <span>M</span>
           <span>A</span>
@@ -51,32 +51,18 @@
           class="textarea-placeholder source-container hidden"
           rows="5"
           data-default-text
-        >This is a typing test simulator.
+        >
+This is a typing test simulator.
 Type the text you see as fast and accurately as possible.
-The timer starts when you start typing.</textarea>
-        <!-- 
-        The Senate of the United States shall be composed of two Senators from each State, chosen by the Legislature thereof, for six Years; and each Senator shall have one Vote.
-        Immediately after they shall be assembled in Consequence of the first Election, they shall be divided as equally as may be into three Classes. The Seats of the Senators of the first Class shall be vacated at the Expiration of the second Year, of the second Class at the Expiration of the fourth Year, and of the third Class at the Expiration of the sixth Year, so that one third may be chosen every second Year; and if Vacancies happen by Resignation, or otherwise, during the Recess of the Legislature of any State, the Executive thereof may make temporary Appointments until the next Meeting of the Legislature, which shall then fill such Vacancies.
-
-        No Person shall be a Senator who shall not have attained to the Age of thirty Years, and been nine Years a Citizen of the United States, and who shall not, when elected, be an Inhabitant of that State for which he shall be chosen.
-
-        The Vice President of the United States shall be President of the Senate, but shall have no Vote, unless they be equally divided.
-
-        The Senate shall chuse their other Officers, and also a President pro tempore, in the Absence of the Vice President, or when he shall exercise the Office of President of the United States.
-
-        The Senate shall have the sole Power to try all Impeachments. When sitting for that Purpose, they shall be on Oath or Affirmation. When the President of the United States is tried, the Chief Justice shall preside: And no Person shall be convicted without the Concurrence of two thirds of the Members present.
-
-        Judgment in Cases of Impeachment shall not extend further than to removal from Office, and disqualification to hold and enjoy any Office of honor, Trust or Profit under the United States: but the Party convicted shall nevertheless be liable and subject to Indictment, Trial, Judgment and Punishment, according to Law.        
-        This is a typing test. Type the text in this box as fast and accurately as possible. The timer starts when you start typing.
-        swsxs2s a1aqa`aza edc3 2wsx yhn67ujm 8ik, 9ol. 0p;/=[]\'
-        -->
+The timer starts when you start typing.</textarea
+        >
         <textarea
           class="textarea-placeholder hidden"
           rows="5"
           data-random-text
         ></textarea>
 
-        <div class="textarea-preview" data-preview></div>        
+        <div class="textarea-preview" data-preview></div>
 
         <div class="actions">
           <button
@@ -190,42 +176,66 @@ The timer starts when you start typing.</textarea>
 
           <div class="hands hidden" data-hands>
             <div class="hand hand--left" data-hand-left>
-              <div class="hand__finger hand__finger--pinky" data-hand-left-pinky>
+              <div
+                class="hand__finger hand__finger--pinky"
+                data-hand-left-pinky
+              >
                 <span class="joint"></span>
               </div>
               <div class="hand__finger hand__finger--ring" data-hand-left-ring>
                 <span class="joint"></span>
               </div>
-              <div class="hand__finger hand__finger--middle" data-hand-left-middle>
+              <div
+                class="hand__finger hand__finger--middle"
+                data-hand-left-middle
+              >
                 <span class="joint"></span>
               </div>
-              <div class="hand__finger hand__finger--index" data-hand-left-index>
+              <div
+                class="hand__finger hand__finger--index"
+                data-hand-left-index
+              >
                 <span class="joint"></span>
               </div>
-              <div class="hand__finger hand__finger--thumb" data-hand-left-thumb>
+              <div
+                class="hand__finger hand__finger--thumb"
+                data-hand-left-thumb
+              >
                 <span class="joint"></span>
               </div>
             </div>
-    
+
             <div class="hand hand--right" data-hand-right>
-              <div class="hand__finger hand__finger--thumb" data-hand-right-thumb>
+              <div
+                class="hand__finger hand__finger--thumb"
+                data-hand-right-thumb
+              >
                 <span class="joint"></span>
               </div>
 
-              <div class="hand__finger hand__finger--index" data-hand-right-index>
+              <div
+                class="hand__finger hand__finger--index"
+                data-hand-right-index
+              >
                 <span class="joint"></span>
               </div>
-              <div class="hand__finger hand__finger--middle" data-hand-right-middle>
+              <div
+                class="hand__finger hand__finger--middle"
+                data-hand-right-middle
+              >
                 <span class="joint"></span>
               </div>
               <div class="hand__finger hand__finger--ring" data-hand-right-ring>
                 <span class="joint"></span>
               </div>
-              <div class="hand__finger hand__finger--pinky" data-hand-right-pinky>
+              <div
+                class="hand__finger hand__finger--pinky"
+                data-hand-right-pinky
+              >
                 <span class="joint"></span>
               </div>
             </div>
-          </div>          
+          </div>
         </div>
       </div>
 
@@ -420,7 +430,13 @@ The timer starts when you start typing.</textarea>
             </div>
           </div>
 
-          <div class="settings__field" data-tooltip data-trigger="click" data-position="top" data-text="This feature is not available yet. If you <a href='#' data-target='donate-modal'>buy me a coffee</a>, I'll do my best to implement it.">
+          <div
+            class="settings__field"
+            data-tooltip
+            data-trigger="click"
+            data-position="top"
+            data-text="This feature is not available yet. If you <a href='#' data-target='donate-modal'>buy me a coffee</a>, I'll do my best to implement it."
+          >
             <div class="checkbox">
               <input
                 type="checkbox"
@@ -431,16 +447,40 @@ The timer starts when you start typing.</textarea>
               />
 
               <label for="hands" class="checkbox_label checkbox_label--hands">
-                <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M6.9 11.4444V14.2222M6.9 11.4444V4.77778C6.9 3.8573 7.66112 3.11111 8.6 3.11111C9.53888 3.11111 10.3 3.8573 10.3 4.77778M6.9 11.4444C6.9 10.524 6.13888 9.77778 5.2 9.77778C4.26112 9.77778 3.5 10.524 3.5 11.4444V13.6667C3.5 18.269 7.30558 22 12 22C16.6944 22 20.5 18.269 20.5 13.6667V8.11111C20.5 7.19064 19.7389 6.44444 18.8 6.44444C17.8611 6.44444 17.1 7.19064 17.1 8.11111M10.3 4.77778V10.8889M10.3 4.77778V3.66667C10.3 2.74619 11.0611 2 12 2C12.9389 2 13.7 2.74619 13.7 3.66667V4.77778M13.7 4.77778V10.8889M13.7 4.77778C13.7 3.8573 14.4611 3.11111 15.4 3.11111C16.3389 3.11111 17.1 3.8573 17.1 4.77778V8.11111M17.1 8.11111V10.8889" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                <svg
+                  width="800px"
+                  height="800px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6.9 11.4444V14.2222M6.9 11.4444V4.77778C6.9 3.8573 7.66112 3.11111 8.6 3.11111C9.53888 3.11111 10.3 3.8573 10.3 4.77778M6.9 11.4444C6.9 10.524 6.13888 9.77778 5.2 9.77778C4.26112 9.77778 3.5 10.524 3.5 11.4444V13.6667C3.5 18.269 7.30558 22 12 22C16.6944 22 20.5 18.269 20.5 13.6667V8.11111C20.5 7.19064 19.7389 6.44444 18.8 6.44444C17.8611 6.44444 17.1 7.19064 17.1 8.11111M10.3 4.77778V10.8889M10.3 4.77778V3.66667C10.3 2.74619 11.0611 2 12 2C12.9389 2 13.7 2.74619 13.7 3.66667V4.77778M13.7 4.77778V10.8889M13.7 4.77778C13.7 3.8573 14.4611 3.11111 15.4 3.11111C16.3389 3.11111 17.1 3.8573 17.1 4.77778V8.11111M17.1 8.11111V10.8889"
+                    stroke="#fff"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
 
-                  <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6.9 11.4444V14.2222M6.9 11.4444V4.77778C6.9 3.8573 7.66112 3.11111 8.6 3.11111C9.53888 3.11111 10.3 3.8573 10.3 4.77778M6.9 11.4444C6.9 10.524 6.13888 9.77778 5.2 9.77778C4.26112 9.77778 3.5 10.524 3.5 11.4444V13.6667C3.5 18.269 7.30558 22 12 22C16.6944 22 20.5 18.269 20.5 13.6667V8.11111C20.5 7.19064 19.7389 6.44444 18.8 6.44444C17.8611 6.44444 17.1 7.19064 17.1 8.11111M10.3 4.77778V10.8889M10.3 4.77778V3.66667C10.3 2.74619 11.0611 2 12 2C12.9389 2 13.7 2.74619 13.7 3.66667V4.77778M13.7 4.77778V10.8889M13.7 4.77778C13.7 3.8573 14.4611 3.11111 15.4 3.11111C16.3389 3.11111 17.1 3.8573 17.1 4.77778V8.11111M17.1 8.11111V10.8889" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>                   
+                <svg
+                  width="800px"
+                  height="800px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6.9 11.4444V14.2222M6.9 11.4444V4.77778C6.9 3.8573 7.66112 3.11111 8.6 3.11111C9.53888 3.11111 10.3 3.8573 10.3 4.77778M6.9 11.4444C6.9 10.524 6.13888 9.77778 5.2 9.77778C4.26112 9.77778 3.5 10.524 3.5 11.4444V13.6667C3.5 18.269 7.30558 22 12 22C16.6944 22 20.5 18.269 20.5 13.6667V8.11111C20.5 7.19064 19.7389 6.44444 18.8 6.44444C17.8611 6.44444 17.1 7.19064 17.1 8.11111M10.3 4.77778V10.8889M10.3 4.77778V3.66667C10.3 2.74619 11.0611 2 12 2C12.9389 2 13.7 2.74619 13.7 3.66667V4.77778M13.7 4.77778V10.8889M13.7 4.77778C13.7 3.8573 14.4611 3.11111 15.4 3.11111C16.3389 3.11111 17.1 3.8573 17.1 4.77778V8.11111M17.1 8.11111V10.8889"
+                    stroke="#fff"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
               </label>
             </div>
-          </div>          
+          </div>
 
           <details class="settings__details">
             <summary>
@@ -500,7 +540,7 @@ The timer starts when you start typing.</textarea>
                     </label>
                   </div>
                 </li>
-<!-- 
+                <!-- 
                 <li>
                   <div class="radio">
                     <input type="radio" id="ai" name="source" value="ai" />
@@ -533,12 +573,7 @@ The timer starts when you start typing.</textarea>
 
                 <li>
                   <div class="radio">
-                    <input
-                      type="radio"
-                      id="json"
-                      name="source"
-                      value="json"
-                    />
+                    <input type="radio" id="json" name="source" value="json" />
 
                     <label for="json" class="radio__button">
                       <span class="icon">
@@ -765,18 +800,37 @@ The timer starts when you start typing.</textarea>
       </div>
 
       <div class="tooltip">
-        <div class="tooltip__content" data-tooltip-content>
-        </div>
+        <div class="tooltip__content" data-tooltip-content></div>
       </div>
 
       <div class="donate-button">
         <a href="#" class="button button--donate" data-target="donate-modal">
           <span class="icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 15C12.7956 15 13.5587 14.6839 14.1213 14.1213C14.6839 13.5587 15 12.7956 15 12C15 11.2044 14.6839 10.4413 14.1213 9.87868C13.5587 9.31607 12.7956 9 12 9C11.2044 9 10.4413 9.31607 9.87868 9.87868C9.31607 10.4413 9 11.2044 9 12C9 12.7956 9.31607 13.5587 9.87868 14.1213C10.4413 14.6839 11.2044 15 12 15Z" fill="currentColor"/>
-              <path d="M2 12C2 13.6569 3.34315 15 5 15H5.16C5.06 14.44 5 13.86 5 13.27V10.73C5 10.14 5.06 9.56 5.16 9H5C3.34315 9 2 10.3431 2 12Z" fill="currentColor"/>
-              <path d="M19 12C19 10.3431 17.6569 9 16 9H15.84C15.94 9.56 16 10.14 16 10.73V13.27C16 13.86 15.94 14.44 15.84 15H16C17.6569 15 19 13.6569 19 12Z" fill="currentColor"/>
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M7 10.73C7 7.61 9.61 5 12.73 5H13.27C16.39 5 19 7.61 19 10.73V13.27C19 16.39 16.39 19 13.27 19H12.73C9.61 19 7 16.39 7 13.27V10.73ZM12 17C13.3261 17 14.5979 16.4732 15.5355 15.5355C16.4732 14.5979 17 13.3261 17 12C17 10.6739 16.4732 9.40215 15.5355 8.46447C14.5979 7.52678 13.3261 7 12 7C10.6739 7 9.40215 7.52678 8.46447 8.46447C7.52678 9.40215 7 10.6739 7 12C7 13.3261 7.52678 14.5979 8.46447 15.5355C9.40215 16.4732 10.6739 17 12 17Z" fill="currentColor"/>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 15C12.7956 15 13.5587 14.6839 14.1213 14.1213C14.6839 13.5587 15 12.7956 15 12C15 11.2044 14.6839 10.4413 14.1213 9.87868C13.5587 9.31607 12.7956 9 12 9C11.2044 9 10.4413 9.31607 9.87868 9.87868C9.31607 10.4413 9 11.2044 9 12C9 12.7956 9.31607 13.5587 9.87868 14.1213C10.4413 14.6839 11.2044 15 12 15Z"
+                fill="currentColor"
+              />
+              <path
+                d="M2 12C2 13.6569 3.34315 15 5 15H5.16C5.06 14.44 5 13.86 5 13.27V10.73C5 10.14 5.06 9.56 5.16 9H5C3.34315 9 2 10.3431 2 12Z"
+                fill="currentColor"
+              />
+              <path
+                d="M19 12C19 10.3431 17.6569 9 16 9H15.84C15.94 9.56 16 10.14 16 10.73V13.27C16 13.86 15.94 14.44 15.84 15H16C17.6569 15 19 13.6569 19 12Z"
+                fill="currentColor"
+              />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M7 10.73C7 7.61 9.61 5 12.73 5H13.27C16.39 5 19 7.61 19 10.73V13.27C19 16.39 16.39 19 13.27 19H12.73C9.61 19 7 16.39 7 13.27V10.73ZM12 17C13.3261 17 14.5979 16.4732 15.5355 15.5355C16.4732 14.5979 17 13.3261 17 12C17 10.6739 16.4732 9.40215 15.5355 8.46447C14.5979 7.52678 13.3261 7 12 7C10.6739 7 9.40215 7.52678 8.46447 8.46447C7.52678 9.40215 7 10.6739 7 12C7 13.3261 7.52678 14.5979 8.46447 15.5355C9.40215 16.4732 10.6739 17 12 17Z"
+                fill="currentColor"
+              />
             </svg>
           </span>
           <span>Buy me a coffee</span>
@@ -788,15 +842,26 @@ The timer starts when you start typing.</textarea>
         <div class="modal__inner">
           <div class="modal__content">
             <h2>Support this project</h2>
-            <p>If you find this typing practice tool helpful, consider buying me a coffee! ☕</p>
-            
+            <p>
+              If you find this typing practice tool helpful, consider buying me
+              a coffee! ☕
+            </p>
+
             <div class="donate-payment">
               <p>You can support this project via Revolut:</p>
               <div class="revolut-details">
-                <a href="https://revolut.me/nikola5j6b" target="_blank" class="button revolut-link" data-revolut-link>
+                <a
+                  href="https://revolut.me/nikola5j6b"
+                  target="_blank"
+                  class="button revolut-link"
+                  data-revolut-link
+                >
                   Donate
                 </a>
-                <button class="button button--small button--copy" data-copy-revolut>
+                <button
+                  class="button button--small button--copy"
+                  data-copy-revolut
+                >
                   Copy link
                 </button>
               </div>

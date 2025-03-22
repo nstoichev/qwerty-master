@@ -45,18 +45,18 @@ class QwertyKeyboard extends HTMLElement {
     // Add tooltip handling
     this.handleTooltipClick = this.handleTooltipClick.bind(this);
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
-    
+
     // Initialize tooltip elements
-    this.tooltipContent = this.querySelector('[data-tooltip-content]');
-    this.tooltipElements = this.querySelectorAll('[data-tooltip]');
-    
+    this.tooltipContent = this.querySelector("[data-tooltip-content]");
+    this.tooltipElements = this.querySelectorAll("[data-tooltip]");
+
     // Add click listeners for tooltips
-    this.tooltipElements.forEach(element => {
-        element.addEventListener('click', this.handleTooltipClick);
+    this.tooltipElements.forEach((element) => {
+      element.addEventListener("click", this.handleTooltipClick);
     });
-    
+
     // Add document click listener for closing tooltip
-    document.addEventListener('click', this.handleDocumentClick);
+    document.addEventListener("click", this.handleDocumentClick);
   }
 
   async loadData() {
@@ -90,11 +90,7 @@ class QwertyKeyboard extends HTMLElement {
       // Parse all responses
       const speedSoundsData = await speedSoundsResponse.json();
       const keyboardSoundsData = await keyboardSoundsResponse.json();
-      [
-        this.keyCodeMap,
-        this.wordsArray,
-        this.fingerMap,
-      ] = await Promise.all([
+      [this.keyCodeMap, this.wordsArray, this.fingerMap] = await Promise.all([
         keycodeResponse.json(),
         wordsResponse.json(),
         fingermapResponse.json(),
@@ -123,24 +119,24 @@ class QwertyKeyboard extends HTMLElement {
     this.setupSettingsDetailsClickHandler();
     this.keyboard.classList.toggle("hidden", !this.keyboardEnabled());
     this.hands.classList.toggle("hidden", !this.handsEnabled());
-    
+
     // Replace the existing button click handlers with event delegation
     this.addEventListener("click", (event) => {
-        const button = event.target.closest("[data-target]");
-        if (button) {
-            event.preventDefault();
-            const targetId = button.getAttribute("data-target");
-            const targetModal = this.querySelector(`#${targetId}`);
-            if (targetModal) {
-                // Close tooltip before showing modal
-                this.closeTooltip();
-                targetModal.classList.remove("hidden");
-                // Update history modal when it's opened
-                if (targetId === "history") {
-                    this.updateHistoryModal();
-                }
-            }
+      const button = event.target.closest("[data-target]");
+      if (button) {
+        event.preventDefault();
+        const targetId = button.getAttribute("data-target");
+        const targetModal = this.querySelector(`#${targetId}`);
+        if (targetModal) {
+          // Close tooltip before showing modal
+          this.closeTooltip();
+          targetModal.classList.remove("hidden");
+          // Update history modal when it's opened
+          if (targetId === "history") {
+            this.updateHistoryModal();
+          }
         }
+      }
     });
 
     // Update init button handler
@@ -162,7 +158,7 @@ class QwertyKeyboard extends HTMLElement {
 
     this.settings.forEach((input) => {
       input.addEventListener("change", () => {
-        this.keyboard.classList.toggle("hidden", !this.keyboardEnabled());  
+        this.keyboard.classList.toggle("hidden", !this.keyboardEnabled());
         this.hands.classList.toggle("hidden", !this.handsEnabled());
         this.hands.classList.toggle("active", this.handsEnabled());
       });
@@ -215,10 +211,10 @@ class QwertyKeyboard extends HTMLElement {
     }
 
     // Add click handler for disengage elements
-    document.querySelectorAll('.disengage').forEach(element => {
-        element.addEventListener('click', () => {
-            document.body.classList.remove("engaged");
-        });
+    document.querySelectorAll(".disengage").forEach((element) => {
+      element.addEventListener("click", () => {
+        document.body.classList.remove("engaged");
+      });
     });
 
     // Initialize donation handling
@@ -226,18 +222,18 @@ class QwertyKeyboard extends HTMLElement {
   }
 
   setupSettingsDetailsClickHandler() {
-    const settingsDetails = this.querySelector('.settings__details');
+    const settingsDetails = this.querySelector(".settings__details");
     if (!settingsDetails) return;
 
-    const summary = settingsDetails.querySelector('summary');
+    const summary = settingsDetails.querySelector("summary");
     if (!summary) return;
 
-    document.addEventListener('click', (event) => {
-        // If details is open and click is outside settings__details
-        if (settingsDetails.open && !settingsDetails.contains(event.target)) {
-            // Trigger click on summary to close it
-            summary.click();
-        }
+    document.addEventListener("click", (event) => {
+      // If details is open and click is outside settings__details
+      if (settingsDetails.open && !settingsDetails.contains(event.target)) {
+        // Trigger click on summary to close it
+        summary.click();
+      }
     });
   }
 
@@ -367,7 +363,7 @@ class QwertyKeyboard extends HTMLElement {
     // Find the next character to be typed
     const nextChar = this.previewArea.querySelector(".word span:not(.typed)");
     if (nextChar) {
-      const keyCode = nextChar.getAttribute('data-code');
+      const keyCode = nextChar.getAttribute("data-code");
       this.highlightFinger(keyCode, nextChar.textContent);
     }
   }
@@ -424,11 +420,13 @@ class QwertyKeyboard extends HTMLElement {
 
     // Add engaged class to body when typing starts
     if (!this.startTime) {
-        document.body.classList.add("engaged");
+      document.body.classList.add("engaged");
     }
 
     // Using the existing expectedChar
-    const expectedChar = this.previewArea.querySelector(".word span:not(.typed)");
+    const expectedChar = this.previewArea.querySelector(
+      ".word span:not(.typed)"
+    );
     if (!expectedChar) return;
 
     // Add this line to highlight the appropriate finger
@@ -1004,10 +1002,10 @@ class QwertyKeyboard extends HTMLElement {
     this.querySelectorAll(".modal").forEach((modal) => {
       modal.classList.add("hidden");
     });
-    
+
     // Close tooltip when modals are closed
     this.closeTooltip();
-    
+
     // Remove engaged class when modal is closed
     document.body.classList.remove("engaged");
   }
@@ -1314,60 +1312,63 @@ class QwertyKeyboard extends HTMLElement {
   // Add this new method
   highlightFinger(keyCode, expectedCharText) {
     // Remove active class from all fingers and hands
-    this.querySelectorAll('.hand__finger, .hand').forEach(element => {
-      element.classList.remove('active');
+    this.querySelectorAll(".hand__finger, .hand").forEach((element) => {
+      element.classList.remove("active");
       // Also remove any key-specific classes
-      element.className = element.className.replace(/key-[A-Za-z0-9]+/g, '').trim();
+      element.className = element.className
+        .replace(/key-[A-Za-z0-9]+/g, "")
+        .trim();
     });
 
     const fingerType = this.fingerMap[keyCode];
     if (!fingerType) return;
 
     // Check if character requires shift
-    const isUpperCase = expectedCharText === expectedCharText?.toUpperCase() && 
-                       expectedCharText !== expectedCharText?.toLowerCase();
+    const isUpperCase =
+      expectedCharText === expectedCharText?.toUpperCase() &&
+      expectedCharText !== expectedCharText?.toLowerCase();
     const requiresShift = /[~!@#$%^&*()_+{}|:"<>?]/.test(expectedCharText);
 
     // If shift is required, determine which shift key and highlight corresponding pinky and hand
     if (isUpperCase || requiresShift) {
       if (/[QWERTASDFGZXCV!@#$%]/.test(expectedCharText?.toUpperCase())) {
-        const rightPinky = this.querySelector('[data-hand-right-pinky]');
-        const rightHand = this.querySelector('.hand--right');
-        rightPinky.classList.add('active');
-        rightPinky.classList.add('key-ShiftRight');
-        rightHand.classList.add('active');
-        rightHand.classList.add('key-ShiftRight');
+        const rightPinky = this.querySelector("[data-hand-right-pinky]");
+        const rightHand = this.querySelector(".hand--right");
+        rightPinky.classList.add("active");
+        rightPinky.classList.add("key-ShiftRight");
+        rightHand.classList.add("active");
+        rightHand.classList.add("key-ShiftRight");
       } else {
-        const leftPinky = this.querySelector('[data-hand-left-pinky]');
-        const leftHand = this.querySelector('.hand--left');
-        leftPinky.classList.add('active');
-        leftPinky.classList.add('key-ShiftLeft');
-        leftHand.classList.add('active');
-        leftHand.classList.add('key-ShiftLeft');
+        const leftPinky = this.querySelector("[data-hand-left-pinky]");
+        const leftHand = this.querySelector(".hand--left");
+        leftPinky.classList.add("active");
+        leftPinky.classList.add("key-ShiftLeft");
+        leftHand.classList.add("active");
+        leftHand.classList.add("key-ShiftLeft");
       }
     }
 
     // Handle the main character finger
-    if (fingerType === 'thumb') {
+    if (fingerType === "thumb") {
       // Highlight both thumbs and hands for space
-      const leftThumb = this.querySelector('[data-hand-left-thumb]');
-      const rightThumb = this.querySelector('[data-hand-right-thumb]');
-      const leftHand = this.querySelector('.hand--left');
-      const rightHand = this.querySelector('.hand--right');
-      
-      [leftThumb, rightThumb, leftHand, rightHand].forEach(element => {
-        element.classList.add('active');
-        element.classList.add('key-Space');
+      const leftThumb = this.querySelector("[data-hand-left-thumb]");
+      const rightThumb = this.querySelector("[data-hand-right-thumb]");
+      const leftHand = this.querySelector(".hand--left");
+      const rightHand = this.querySelector(".hand--right");
+
+      [leftThumb, rightThumb, leftHand, rightHand].forEach((element) => {
+        element.classList.add("active");
+        element.classList.add("key-Space");
       });
     } else {
-      const [hand, finger] = fingerType.split('-');
+      const [hand, finger] = fingerType.split("-");
       const fingerElement = this.querySelector(`[data-hand-${hand}-${finger}]`);
       const handElement = this.querySelector(`.hand--${hand}`);
-      
+
       if (fingerElement && handElement) {
-        fingerElement.classList.add('active');
+        fingerElement.classList.add("active");
         fingerElement.classList.add(`key-${keyCode}`);
-        handElement.classList.add('active');
+        handElement.classList.add("active");
         handElement.classList.add(`key-${keyCode}`);
       }
     }
@@ -1375,78 +1376,81 @@ class QwertyKeyboard extends HTMLElement {
 
   handleTooltipClick(event) {
     event.stopPropagation();
-    const tooltipElement = event.target.closest('[data-tooltip]');
+    const tooltipElement = event.target.closest("[data-tooltip]");
     if (!tooltipElement) return;
 
     const text = tooltipElement.dataset.text;
-    const position = tooltipElement.dataset.position || 'top';
+    const position = tooltipElement.dataset.position || "top";
     const closeAfter = tooltipElement.dataset.close;
-    
+
     // Update tooltip content
     this.tooltipContent.innerHTML = text;
-    
+
     // Get tooltip and element positions
-    const tooltip = this.tooltipContent.closest('.tooltip');
+    const tooltip = this.tooltipContent.closest(".tooltip");
     const elementRect = tooltipElement.getBoundingClientRect();
-    
+
     // Position tooltip based on data-position
     switch (position) {
-        case 'top':
-            tooltip.style.top = `${elementRect.top - tooltip.offsetHeight - 10}px`;
-            tooltip.style.left = `${elementRect.left + (elementRect.width / 2) - (tooltip.offsetWidth / 2)}px`;
-            break;
-        // Add other positions as needed
+      case "top":
+        tooltip.style.top = `${elementRect.top - tooltip.offsetHeight - 10}px`;
+        tooltip.style.left = `${
+          elementRect.left + elementRect.width / 2 - tooltip.offsetWidth / 2
+        }px`;
+        break;
+      // Add other positions as needed
     }
-    
+
     // Show tooltip
-    tooltip.classList.add('tooltip--active');
+    tooltip.classList.add("tooltip--active");
 
     // If data-close is present, automatically close after specified seconds
     if (closeAfter) {
-        const milliseconds = parseInt(closeAfter) * 1000;
-        setTimeout(() => {
-            tooltip.classList.remove('tooltip--active');
-        }, milliseconds);
+      const milliseconds = parseInt(closeAfter) * 1000;
+      setTimeout(() => {
+        tooltip.classList.remove("tooltip--active");
+      }, milliseconds);
     }
   }
 
   handleDocumentClick(event) {
     // Don't close if clicking the tooltip itself
-    if (event.target.closest('.tooltip')) return;
-    
+    if (event.target.closest(".tooltip")) return;
+
     // Use the new closeTooltip method
     this.closeTooltip();
   }
 
   handleDonation() {
-    const revolutLink = this.querySelector('[data-revolut-link]');
-    const copyButton = this.querySelector('[data-copy-revolut]');
-    
+    const revolutLink = this.querySelector("[data-revolut-link]");
+    const copyButton = this.querySelector("[data-copy-revolut]");
+
     // Replace this with your actual Revolut payment link
-    const REVOLUT_LINK = 'https://revolut.me/nikola5j6b';
-    
+    const REVOLUT_LINK = "https://revolut.me/nikola5j6b";
+
     // Set the Revolut link
     revolutLink.textContent = REVOLUT_LINK;
 
     // Handle copy button
-    copyButton.addEventListener('click', () => {
-      navigator.clipboard.writeText(REVOLUT_LINK)
+    copyButton.addEventListener("click", () => {
+      navigator.clipboard
+        .writeText(REVOLUT_LINK)
         .then(() => {
-          copyButton.textContent = 'Copied!';
+          copyButton.textContent = "Copied!";
           setTimeout(() => {
-            copyButton.textContent = 'Copy link';
+            copyButton.textContent = "Copy link";
           }, 2000);
         })
-        .catch(err => {
-          console.error('Failed to copy:', err);
+        .catch((err) => {
+          console.error("Failed to copy:", err);
         });
     });
   }
 
   closeTooltip() {
-    const tooltip = this.querySelector('.tooltip');
+    const tooltip = this.querySelector(".tooltip");
     if (tooltip) {
-        tooltip.classList.remove('tooltip--active');
+      tooltip.classList.remove("tooltip--active");
     }
   }
 }
