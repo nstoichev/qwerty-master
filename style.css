@@ -623,6 +623,15 @@ input:checked + .checkbox_label {
     width: 300px;
 }
 
+
+.tooltip__content a {
+  text-decoration: underline;
+}
+
+.tooltip__content a:hover {
+  text-decoration: none;
+}
+
 .tooltip--active {
     opacity: 1;
     pointer-events: auto;
@@ -716,3 +725,71 @@ input:checked + .checkbox_label {
 .checkbox-default .checkbox_label:hover:before {
   border-color: #007bff;
 }
+
+
+.logo {
+  transition: all 0.2s ease;
+}
+
+.engaged .settings__field .checkbox_label,
+.engaged .actions .button,
+.engaged .logo {
+  transform: scale(0.8);
+  opacity: 0.3;
+}
+
+
+.engaged .settings__field .checkbox_label:hover,
+.engaged .actions .button:hover {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.donate-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.button--donate {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgb(15, 184, 15);
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.button--donate:hover {
+  background: rgb(20, 248, 20);
+}
+
+.revolut-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+.revolut-link {
+  flex: 1;
+  font-family: monospace;
+  word-break: break-all;
+  color: #FF5F5F;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.revolut-link:hover {
+  color: #FF4040;
+  text-decoration: underline;
+}
+
+.button--copy {
+  white-space: nowrap;
+}
+

@@ -124,20 +124,23 @@ class QwertyKeyboard extends HTMLElement {
     this.keyboard.classList.toggle("hidden", !this.keyboardEnabled());
     this.hands.classList.toggle("hidden", !this.handsEnabled());
     
-    // Add click handler for buttons with data-target attribute
-    this.querySelectorAll("[data-target]").forEach((button) => {
-      button.addEventListener("click", (event) => {
-        event.preventDefault();
-        const targetId = button.getAttribute("data-target");
-        const targetModal = this.querySelector(`#${targetId}`);
-        if (targetModal) {
-          targetModal.classList.remove("hidden");
-          // Update history modal when it's opened
-          if (targetId === "history") {
-            this.updateHistoryModal();
-          }
+    // Replace the existing button click handlers with event delegation
+    this.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-target]");
+        if (button) {
+            event.preventDefault();
+            const targetId = button.getAttribute("data-target");
+            const targetModal = this.querySelector(`#${targetId}`);
+            if (targetModal) {
+                // Close tooltip before showing modal
+                this.closeTooltip();
+                targetModal.classList.remove("hidden");
+                // Update history modal when it's opened
+                if (targetId === "history") {
+                    this.updateHistoryModal();
+                }
+            }
         }
-      });
     });
 
     // Update init button handler
@@ -210,6 +213,16 @@ class QwertyKeyboard extends HTMLElement {
         });
       });
     }
+
+    // Add click handler for disengage elements
+    document.querySelectorAll('.disengage').forEach(element => {
+        element.addEventListener('click', () => {
+            document.body.classList.remove("engaged");
+        });
+    });
+
+    // Initialize donation handling
+    this.handleDonation();
   }
 
   setupSettingsDetailsClickHandler() {
@@ -408,6 +421,11 @@ class QwertyKeyboard extends HTMLElement {
   handleKeydown(event) {
     if (!Object.values(this.keyCodeMap).includes(event.code)) return;
     if (!this.previewArea.classList.contains("active")) return;
+
+    // Add engaged class to body when typing starts
+    if (!this.startTime) {
+        document.body.classList.add("engaged");
+    }
 
     // Using the existing expectedChar
     const expectedChar = this.previewArea.querySelector(".word span:not(.typed)");
@@ -616,6 +634,9 @@ class QwertyKeyboard extends HTMLElement {
     }
 
     this.displayScore(finalScore, wpm, accuracyPercentage);
+
+    // Remove engaged class when typing challenge ends
+    document.body.classList.remove("engaged");
 
     // Reset WPM display
     this.updateCurrentElementStyle(0);
@@ -983,6 +1004,12 @@ class QwertyKeyboard extends HTMLElement {
     this.querySelectorAll(".modal").forEach((modal) => {
       modal.classList.add("hidden");
     });
+    
+    // Close tooltip when modals are closed
+    this.closeTooltip();
+    
+    // Remove engaged class when modal is closed
+    document.body.classList.remove("engaged");
   }
 
   checkForSharedResults() {
@@ -1356,7 +1383,7 @@ class QwertyKeyboard extends HTMLElement {
     const closeAfter = tooltipElement.dataset.close;
     
     // Update tooltip content
-    this.tooltipContent.textContent = text;
+    this.tooltipContent.innerHTML = text;
     
     // Get tooltip and element positions
     const tooltip = this.tooltipContent.closest('.tooltip');
@@ -1387,9 +1414,40 @@ class QwertyKeyboard extends HTMLElement {
     // Don't close if clicking the tooltip itself
     if (event.target.closest('.tooltip')) return;
     
-    // Close tooltip
+    // Use the new closeTooltip method
+    this.closeTooltip();
+  }
+
+  handleDonation() {
+    const revolutLink = this.querySelector('[data-revolut-link]');
+    const copyButton = this.querySelector('[data-copy-revolut]');
+    
+    // Replace this with your actual Revolut payment link
+    const REVOLUT_LINK = 'https://revolut.me/nikola5j6b';
+    
+    // Set the Revolut link
+    revolutLink.textContent = REVOLUT_LINK;
+
+    // Handle copy button
+    copyButton.addEventListener('click', () => {
+      navigator.clipboard.writeText(REVOLUT_LINK)
+        .then(() => {
+          copyButton.textContent = 'Copied!';
+          setTimeout(() => {
+            copyButton.textContent = 'Copy link';
+          }, 2000);
+        })
+        .catch(err => {
+          console.error('Failed to copy:', err);
+        });
+    });
+  }
+
+  closeTooltip() {
     const tooltip = this.querySelector('.tooltip');
-    tooltip.classList.remove('tooltip--active');
+    if (tooltip) {
+        tooltip.classList.remove('tooltip--active');
+    }
   }
 }
 
