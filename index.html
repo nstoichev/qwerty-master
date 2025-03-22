@@ -23,26 +23,48 @@
   </head>
   
   <body>
+    <header class="header">
+      <h1 class="logo">
+        <span>
+          <span>Q</span>
+          <span>W</span>
+          <span>E</span>
+          <span>R</span>
+          <span>T</span>
+          <span>Y</span>
+        </span>
+        
+        <span>
+          <span>M</span>
+          <span>A</span>
+          <span>S</span>
+          <span>T</span>
+          <span>E</span>
+          <span>R</span>
+        </span>
+      </h1>
+    </header>
+
     <qwerty-keyboard>
       <div class="container">
         <textarea
           class="textarea-placeholder source-container hidden"
           rows="5"
           data-default-text
-        >Develop was a monthly UK trade magazine for the video game industry. Its online portal, complete with a digital version of the print publication, was active since July 2007.[1]
-
-        Develop 100 was an annual rating system for game developers produced by Develop. It was a ranking of the world's games development studios based on a variety of criteria including sales data, critical success and industry standing.[citation needed]
-        
-        The Develop Industry Excellence Awards, also annually, honoured the development of video games and award studios across a range of categories.[2]
-        
-        In November 2017, NewBay Media, the owner of Develop at the time, announced that the websites, magazines and events of Develop and sister magazine Esports Pro would be absorbed into MCV by early 2018, with the combined magazine moving to a monthly frequency.[3][4]
-        
-        References
-         Truta, Filip (17 July 2007). "Develop Mag – Online Portal for Everyone Involved with Game Development". Softpedia.
-         French, Michael (3 June 2008). "Develop Awards: the finalists are revealed". MCV.
-         Barton, Seth (20 November 2017). "NewBay unites video games group under MCV, Esports Pro to be incorporated into MCV brand". MCV.
-         Kerr, Chris (20 November 2017). </textarea>
+        >This is a typing test. Type the text in this box as fast and accurately as possible. The timer starts when you start typing.</textarea>
         <!-- 
+        The Senate of the United States shall be composed of two Senators from each State, chosen by the Legislature thereof, for six Years; and each Senator shall have one Vote.
+        Immediately after they shall be assembled in Consequence of the first Election, they shall be divided as equally as may be into three Classes. The Seats of the Senators of the first Class shall be vacated at the Expiration of the second Year, of the second Class at the Expiration of the fourth Year, and of the third Class at the Expiration of the sixth Year, so that one third may be chosen every second Year; and if Vacancies happen by Resignation, or otherwise, during the Recess of the Legislature of any State, the Executive thereof may make temporary Appointments until the next Meeting of the Legislature, which shall then fill such Vacancies.
+
+        No Person shall be a Senator who shall not have attained to the Age of thirty Years, and been nine Years a Citizen of the United States, and who shall not, when elected, be an Inhabitant of that State for which he shall be chosen.
+
+        The Vice President of the United States shall be President of the Senate, but shall have no Vote, unless they be equally divided.
+
+        The Senate shall chuse their other Officers, and also a President pro tempore, in the Absence of the Vice President, or when he shall exercise the Office of President of the United States.
+
+        The Senate shall have the sole Power to try all Impeachments. When sitting for that Purpose, they shall be on Oath or Affirmation. When the President of the United States is tried, the Chief Justice shall preside: And no Person shall be convicted without the Concurrence of two thirds of the Members present.
+
+        Judgment in Cases of Impeachment shall not extend further than to removal from Office, and disqualification to hold and enjoy any Office of honor, Trust or Profit under the United States: but the Party convicted shall nevertheless be liable and subject to Indictment, Trial, Judgment and Punishment, according to Law.        
         This is a typing test. Type the text in this box as fast and accurately as possible. The timer starts when you start typing.
         swsxs2s a1aqa`aza edc3 2wsx yhn67ujm 8ik, 9ol. 0p;/=[]\'
         -->
@@ -396,13 +418,14 @@
             </div>
           </div>
 
-          <div class="settings__field">
+          <div class="settings__field" data-tooltip data-close="4" data-position="top" data-text="This feature is not available yet. If you buy me a beer, I'll do my best to implement it.">
             <div class="checkbox">
               <input
                 type="checkbox"
                 id="hands"
                 name="hands"
                 value="off"
+                disabled
               />
 
               <label for="hands" class="checkbox_label checkbox_label--hands">
@@ -419,8 +442,6 @@
 
           <details class="settings__details">
             <summary>
-              <span>Settings</span>
-
               <svg
                 width="800px"
                 height="800px"
@@ -702,7 +723,7 @@
                 </li>
 
                 <li>
-                  <div class="checkbox">
+                  <div class="checkbox checkbox-default">
                     <input
                       type="checkbox"
                       id="track-history"
@@ -738,6 +759,11 @@
 
             <button class="button button--small">No</button>
           </div>
+        </div>
+      </div>
+
+      <div class="tooltip">
+        <div class="tooltip__content" data-tooltip-content>
         </div>
       </div>
     </qwerty-keyboard>

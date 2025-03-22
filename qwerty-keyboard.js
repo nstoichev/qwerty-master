@@ -41,6 +41,22 @@ class QwertyKeyboard extends HTMLElement {
 
     // Add progress tracker
     this.progress = new TypingProgress();
+
+    // Add tooltip handling
+    this.handleTooltipClick = this.handleTooltipClick.bind(this);
+    this.handleDocumentClick = this.handleDocumentClick.bind(this);
+    
+    // Initialize tooltip elements
+    this.tooltipContent = this.querySelector('[data-tooltip-content]');
+    this.tooltipElements = this.querySelectorAll('[data-tooltip]');
+    
+    // Add click listeners for tooltips
+    this.tooltipElements.forEach(element => {
+        element.addEventListener('click', this.handleTooltipClick);
+    });
+    
+    // Add document click listener for closing tooltip
+    document.addEventListener('click', this.handleDocumentClick);
   }
 
   async loadData() {
@@ -104,6 +120,7 @@ class QwertyKeyboard extends HTMLElement {
   }
 
   connectedCallback() {
+    this.setupSettingsDetailsClickHandler();
     this.keyboard.classList.toggle("hidden", !this.keyboardEnabled());
     this.hands.classList.toggle("hidden", !this.handsEnabled());
     
@@ -193,11 +210,22 @@ class QwertyKeyboard extends HTMLElement {
         });
       });
     }
+  }
 
-    // Set a timeout to remove active classes after 3 seconds
-    this.activeTimeout = setTimeout(() => {
-      // this.hands.classList.remove('active');
-    }, 3000);
+  setupSettingsDetailsClickHandler() {
+    const settingsDetails = this.querySelector('.settings__details');
+    if (!settingsDetails) return;
+
+    const summary = settingsDetails.querySelector('summary');
+    if (!summary) return;
+
+    document.addEventListener('click', (event) => {
+        // If details is open and click is outside settings__details
+        if (settingsDetails.open && !settingsDetails.contains(event.target)) {
+            // Trigger click on summary to close it
+            summary.click();
+        }
+    });
   }
 
   initializePreview(textarea) {
@@ -491,7 +519,7 @@ class QwertyKeyboard extends HTMLElement {
   scrollToCurrentElement() {
     const parent = this.previewArea;
     const current = parent.querySelector(".current");
-    const scrollOffset = 70;
+    const scrollOffset = 52;
 
     if (!parent || !current) return;
 
@@ -1316,6 +1344,52 @@ class QwertyKeyboard extends HTMLElement {
         handElement.classList.add(`key-${keyCode}`);
       }
     }
+  }
+
+  handleTooltipClick(event) {
+    event.stopPropagation();
+    const tooltipElement = event.target.closest('[data-tooltip]');
+    if (!tooltipElement) return;
+
+    const text = tooltipElement.dataset.text;
+    const position = tooltipElement.dataset.position || 'top';
+    const closeAfter = tooltipElement.dataset.close;
+    
+    // Update tooltip content
+    this.tooltipContent.textContent = text;
+    
+    // Get tooltip and element positions
+    const tooltip = this.tooltipContent.closest('.tooltip');
+    const elementRect = tooltipElement.getBoundingClientRect();
+    
+    // Position tooltip based on data-position
+    switch (position) {
+        case 'top':
+            tooltip.style.top = `${elementRect.top - tooltip.offsetHeight - 10}px`;
+            tooltip.style.left = `${elementRect.left + (elementRect.width / 2) - (tooltip.offsetWidth / 2)}px`;
+            break;
+        // Add other positions as needed
+    }
+    
+    // Show tooltip
+    tooltip.classList.add('tooltip--active');
+
+    // If data-close is present, automatically close after specified seconds
+    if (closeAfter) {
+        const milliseconds = parseInt(closeAfter) * 1000;
+        setTimeout(() => {
+            tooltip.classList.remove('tooltip--active');
+        }, milliseconds);
+    }
+  }
+
+  handleDocumentClick(event) {
+    // Don't close if clicking the tooltip itself
+    if (event.target.closest('.tooltip')) return;
+    
+    // Close tooltip
+    const tooltip = this.querySelector('.tooltip');
+    tooltip.classList.remove('tooltip--active');
   }
 }
 

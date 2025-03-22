@@ -79,8 +79,8 @@
   gap: 10px;
   color: #fff;
   position: fixed;
-  top: 10px;
-  left: 10px;
+  top: 30px;
+  right: 30px;
 }
 
 .settings__details summary {
@@ -98,6 +98,10 @@
   align-items: center;
   gap: 10px;
   user-select: none;
+
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .settings__details summary::-webkit-details-marker {
@@ -105,8 +109,8 @@
 }
 
 .settings__details summary svg {
-  width: 24px;
-  height: 24px;
+  width: 44px;
+  height: 44px;
   transition: transform 0.3s;
 }
 
@@ -116,6 +120,13 @@
 
 .radio-group {
   gap: 10px 30px;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 240px;
+  padding: 10px;
+  background-color: #333;
+  border-radius: 10px;
 }
 
 .radio {
@@ -142,6 +153,23 @@
   opacity: 1;
 }
 
+.list-buttons {
+  display: block;
+}
+
+.list-buttons:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.list-buttons li {
+  display: block;
+  margin: 10px 0;
+}
+
+.list-buttons li:last-child {
+  margin-top: 20px;
+}
+
 .radio__button {
   display: flex;
   flex-direction: row;
@@ -149,7 +177,6 @@
   align-items: center;
   justify-content: space-between;
   gap: 5px 10px;
-  padding-left: 10px;
 }
 
 .radio__button span:not(.icon) {
