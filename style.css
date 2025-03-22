@@ -252,14 +252,14 @@ qwerty-keyboard {
   height: 40px;
   display: flex;
   flex-flow: column wrap;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  line-height: 1;
   color: #000;
   font-size: 12px;
-  line-height: 20px;
-  text-align: center;
   border: 1px solid #444;
   border-radius: 8px;
-  padding: 10px;
+  padding: 4px;
   margin: 4px;
   user-select: none;
   transition: all 0.2s;
@@ -822,4 +822,37 @@ input:checked + .checkbox_label {
 
 .button--copy {
   white-space: nowrap;
+}
+
+/* Add this to your existing CSS */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.radio__button--loading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: blue;
+  animation: spin 0.8s linear infinite;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  margin-top: 0;
+}
+
+.radio__button--loading.is-loading::after {
+  opacity: 1;
+  visibility: visible;
 }

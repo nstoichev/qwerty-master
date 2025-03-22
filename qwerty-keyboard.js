@@ -166,6 +166,9 @@ class QwertyKeyboard extends HTMLElement {
 
     this.querySelectorAll("form input[name='source']").forEach((input) => {
       input.addEventListener("change", async () => {
+        const button = input.closest(".radio").querySelector(".radio__button");
+        button.classList.add("is-loading");
+
         // Wait for content to be inserted
         await this.insertContent();
 
@@ -692,7 +695,7 @@ class QwertyKeyboard extends HTMLElement {
     this.startTime = null;
 
     if (this.soundsEnabled()) {
-      this.playSpeedSound(finalScore);
+      this.playSpeedSound(wpm);
     }
 
     // Add new method to update history modal
@@ -725,21 +728,16 @@ class QwertyKeyboard extends HTMLElement {
 
   playSpeedSound(wpm) {
     let soundArray;
-    if (wpm < 100) {
-      soundArray = this.speedSounds.speed20;
-    }
 
-    // if (wpm < 20) {
-    //   soundArray = this.speedSounds.speed20;
-    // } else if (wpm < 30) {
-    //   soundArray = this.speedSounds.speed20;
-    // } else if (wpm < 40) {
-    //   soundArray = this.speedSounds.speed30;
-    // } else if (wpm > 40 && wpm < 60) {
-    //   soundArray = this.speedSounds.speed60;
-    // } else if (wpm > 100) {
-    //   soundArray = this.speedSounds.speed100;
-    // }
+    if (wpm < 30) {
+      soundArray = this.speedSounds.speed20;
+    } else if (wpm >= 30 && wpm < 40) {
+      soundArray = this.speedSounds.speed30;
+    } else if (wpm >= 40 && wpm < 60) {
+      soundArray = this.speedSounds.speed60;
+    } else if (wpm >= 60 && wpm < 100) {
+      soundArray = this.speedSounds.speed100;
+    }
 
     if (soundArray && soundArray.length > 0) {
       const randomSound =
@@ -802,6 +800,10 @@ class QwertyKeyboard extends HTMLElement {
       result = await this.contentFromWikipedia();
     } else if (source === "ai") {
       result = await this.contentFromAI();
+    }
+
+    if (document.querySelector(".is-loading")) {
+      document.querySelector(".is-loading").classList.remove("is-loading");
     }
 
     return result;
