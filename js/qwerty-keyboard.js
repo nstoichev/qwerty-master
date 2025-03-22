@@ -69,11 +69,11 @@ class QwertyKeyboard extends HTMLElement {
         keyboardSoundsResponse,
         fingermapResponse,
       ] = await Promise.all([
-        fetch("/jsons/keycode-map.json"),
-        fetch("/jsons/words.json"),
-        fetch("/jsons/speed-sounds.json"),
-        fetch("/jsons/keyboard-sounds.json"),
-        fetch("/jsons/fingermap.json"),
+        fetch("./jsons/keycode-map.json"),
+        fetch("./jsons/words.json"),
+        fetch("./jsons/speed-sounds.json"),
+        fetch("./jsons/keyboard-sounds.json"),
+        fetch("./jsons/fingermap.json"),
       ]);
 
       // Check if all responses are ok
@@ -775,7 +775,7 @@ class QwertyKeyboard extends HTMLElement {
   }
 
   fetchParagraphs() {
-    return fetch("/jsons/advanced_paragraphs.json")
+    return fetch("./jsons/advanced_paragraphs.json")
       .then((response) => response.json())
       .then((paragraphs) => {
         return paragraphs;
