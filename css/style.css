@@ -177,10 +177,19 @@ qwerty-keyboard {
 @media (max-height: 900px) {
   .actions {
     bottom: auto;
-    top: 20px;
-    left: auto;
-    right: 20px;
+    top: 100px;
+    left: 20px;
+    right: auto;
     width: auto;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .actions .button {
+    width: 100%;
   }
 }
 

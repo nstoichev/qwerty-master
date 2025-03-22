@@ -119,7 +119,6 @@
   transform: translateY(calc(-100% + 20px));
 }
 
-
 /*  ------------------------------- Hand left home row ------------------------------- */
 
 .hand--left .hand__finger--index .joint {
@@ -153,7 +152,6 @@
 .hand--left .hand__finger--pinky .joint:after {
   bottom: 30%;
 }
-
 
 /* ======================================= Hand Right ======================================= */
 
@@ -238,95 +236,185 @@
 }
 
 @keyframes moveJointToHomeRow {
-  0% { bottom: 100%; }
-  66.66% { bottom: 100%; } /* Stay in place for 1s (66.66% of 1.5s) */
-  100% { bottom: 30%; }
+  0% {
+    bottom: 100%;
+  }
+  66.66% {
+    bottom: 100%;
+  } /* Stay in place for 1s (66.66% of 1.5s) */
+  100% {
+    bottom: 30%;
+  }
 }
 
 @keyframes moveJointToHomeRow65 {
-  0% { bottom: 100%; }
-  66.66% { bottom: 100%; } /* Stay in place for 1s (66.66% of 1.5s) */
-  100% { bottom: 65%; }
+  0% {
+    bottom: 100%;
+  }
+  66.66% {
+    bottom: 100%;
+  } /* Stay in place for 1s (66.66% of 1.5s) */
+  100% {
+    bottom: 65%;
+  }
 }
 
 @keyframes moveIndexJointToHomeRow {
-  0% { bottom: 100%; }
-  66.66% { bottom: 100%; } /* Stay in place for 1s (66.66% of 1.5s) */
-  100% { bottom: 65%; }
+  0% {
+    bottom: 100%;
+  }
+  66.66% {
+    bottom: 100%;
+  } /* Stay in place for 1s (66.66% of 1.5s) */
+  100% {
+    bottom: 65%;
+  }
 }
 
 @keyframes moveJointAfterToHomeRow {
-  0% { bottom: 100%; }
-  66.66% { bottom: 100%; } /* Stay in place for 1s (66.66% of 1.5s) */
-  100% { bottom: 30%; }
+  0% {
+    bottom: 100%;
+  }
+  66.66% {
+    bottom: 100%;
+  } /* Stay in place for 1s (66.66% of 1.5s) */
+  100% {
+    bottom: 30%;
+  }
 }
 
 /* Add these new keyframe animations for left hand */
 @keyframes tiltLeftPinky {
-  0% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
-  50% { transform: translateY(calc(-100% + 20px)) rotate(-15deg); }
-  100% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+  0% {
+    transform: translateY(calc(-100% + 20px)) rotate(0deg);
+  }
+  50% {
+    transform: translateY(calc(-100% + 20px)) rotate(-15deg);
+  }
+  100% {
+    transform: translateY(calc(-100% + 20px)) rotate(0deg);
+  }
 }
 
 @keyframes tiltLeftRing {
-  0% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
-  50% { transform: translateY(calc(-100% + 20px)) rotate(-8deg); }
-  100% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+  0% {
+    transform: translateY(calc(-100% + 20px)) rotate(0deg);
+  }
+  50% {
+    transform: translateY(calc(-100% + 20px)) rotate(-8deg);
+  }
+  100% {
+    transform: translateY(calc(-100% + 20px)) rotate(0deg);
+  }
 }
 
 @keyframes tiltLeftMiddle {
-  0% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
-  50% { transform: translateY(calc(-100% + 20px)) rotate(8deg); }
-  100% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+  0% {
+    transform: translateY(calc(-100% + 20px)) rotate(0deg);
+  }
+  50% {
+    transform: translateY(calc(-100% + 20px)) rotate(8deg);
+  }
+  100% {
+    transform: translateY(calc(-100% + 20px)) rotate(0deg);
+  }
 }
 
 @keyframes tiltLeftIndex {
-  0% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
-  50% { transform: translateY(calc(-100% + 20px)) rotate(15deg); }
-  100% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+  0% {
+    transform: translateY(calc(-100% + 20px)) rotate(0deg);
+  }
+  50% {
+    transform: translateY(calc(-100% + 20px)) rotate(15deg);
+  }
+  100% {
+    transform: translateY(calc(-100% + 20px)) rotate(0deg);
+  }
 }
 
 /* Update right hand keyframes with opposite rotations */
 @keyframes tiltRightPinky {
-  0% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
-  50% { transform: translateY(calc(-100% + 20px)) rotate(15deg); }
-  100% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+  0% {
+    transform: translateY(calc(-100% + 20px)) rotate(0deg);
+  }
+  50% {
+    transform: translateY(calc(-100% + 20px)) rotate(15deg);
+  }
+  100% {
+    transform: translateY(calc(-100% + 20px)) rotate(0deg);
+  }
 }
 
 @keyframes tiltRightRing {
-  0% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
-  50% { transform: translateY(calc(-100% + 20px)) rotate(8deg); }
-  100% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+  0% {
+    transform: translateY(calc(-100% + 20px)) rotate(0deg);
+  }
+  50% {
+    transform: translateY(calc(-100% + 20px)) rotate(8deg);
+  }
+  100% {
+    transform: translateY(calc(-100% + 20px)) rotate(0deg);
+  }
 }
 
 @keyframes tiltRightMiddle {
-  0% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
-  50% { transform: translateY(calc(-100% + 20px)) rotate(-8deg); }
-  100% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+  0% {
+    transform: translateY(calc(-100% + 20px)) rotate(0deg);
+  }
+  50% {
+    transform: translateY(calc(-100% + 20px)) rotate(-8deg);
+  }
+  100% {
+    transform: translateY(calc(-100% + 20px)) rotate(0deg);
+  }
 }
 
 @keyframes tiltRightIndex {
-  0% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
-  50% { transform: translateY(calc(-100% + 20px)) rotate(-15deg); }
-  100% { transform: translateY(calc(-100% + 20px)) rotate(0deg); }
+  0% {
+    transform: translateY(calc(-100% + 20px)) rotate(0deg);
+  }
+  50% {
+    transform: translateY(calc(-100% + 20px)) rotate(-15deg);
+  }
+  100% {
+    transform: translateY(calc(-100% + 20px)) rotate(0deg);
+  }
 }
 
 @keyframes leftHandHomeRow {
-  0% { transform: rotate(0) scale(0.5); left: -100px; }
-  100% { transform: rotate(15deg) scale(1); left: 60px; }
+  0% {
+    transform: rotate(0) scale(0.5);
+    left: -100px;
+  }
+  100% {
+    transform: rotate(15deg) scale(1);
+    left: 60px;
+  }
 }
 
 @keyframes rightHandHomeRow {
-  0% { transform: rotate(0) scale(0.5); right: -100px; }
-  100% { transform: rotate(-15deg) scale(1); right: 120px; }
+  0% {
+    transform: rotate(0) scale(0.5);
+    right: -100px;
+  }
+  100% {
+    transform: rotate(-15deg) scale(1);
+    right: 120px;
+  }
 }
 
 /* Animation states for active hands - Left hand */
-.hands.active .hand--left .hand__finger:not(.hand__finger--thumb):not(.hand__finger--index) .joint {
+.hands.active
+  .hand--left
+  .hand__finger:not(.hand__finger--thumb):not(.hand__finger--index)
+  .joint {
   animation: moveJointToHomeRow 1.5s ease-in-out forwards;
 }
 
-.hands.active .hand--left .hand__finger:not(.hand__finger--thumb):not(.hand__finger--index) .joint:after {
+.hands.active
+  .hand--left
+  .hand__finger:not(.hand__finger--thumb):not(.hand__finger--index)
+  .joint:after {
   animation: moveJointAfterToHomeRow 1.5s ease-in-out forwards;
 }
 
@@ -335,11 +423,17 @@
 }
 
 /* Animation states for active hands - Right hand */
-.hands.active .hand--right .hand__finger:not(.hand__finger--thumb):not(.hand__finger--index) .joint {
+.hands.active
+  .hand--right
+  .hand__finger:not(.hand__finger--thumb):not(.hand__finger--index)
+  .joint {
   animation: moveJointToHomeRow 1.5s ease-in-out forwards;
 }
 
-.hands.active .hand--right .hand__finger:not(.hand__finger--thumb):not(.hand__finger--index) .joint:after {
+.hands.active
+  .hand--right
+  .hand__finger:not(.hand__finger--thumb):not(.hand__finger--index)
+  .joint:after {
   animation: moveJointAfterToHomeRow 1.5s ease-in-out forwards;
 }
 
@@ -411,14 +505,50 @@
 /* ------------------------------- Hand left key-KeyV ------------------------------- */
 
 .hands.active .hand--left.key-KeyV .hand__finger--index {
-  transform: translateY(calc(-100% + 20px)) rotate(4deg);
+  transform: translateY(calc(-100% + 30px)) rotate(25deg);
 }
 
 .hands.active .hand--left.key-KeyV .hand__finger--index .joint {
-  bottom: 100% !important;
-
+  bottom: 0% !important;
 }
 
 .hands.active .hand--left.key-KeyV .hand__finger--index .joint:after {
-  bottom: 90% !important;
+  bottom: 40% !important;
+}
+
+/* ------------------------------- Hand left key-Digit5 ------------------------------- */
+
+.hands.active .hand--left.key-Digit5 {
+  bottom: -90px;
+}
+
+.hands.active .hand--left.key-Digit5 .hand__finger--index {
+  transform: translateY(calc(-100% + 20px)) rotate(-5deg);
+}
+
+.hands.active .hand--left.key-Digit5 .hand__finger--index .joint {
+  bottom: 110% !important;
+}
+
+.hands.active .hand--left.key-Digit5 .hand__finger--index .joint:after {
+  bottom: 110% !important;
+}
+
+/* ------------------------------- Hand left key-Digit4 ------------------------------- */
+
+.hands.active .hand--left.key-Digit4 {
+  bottom: -90px;
+  transform: rotate(12deg) scale(1) !important;
+}
+
+.hands.active .hand--left.key-Digit4 .hand__finger--index {
+  transform: translateY(calc(-100% + 20px)) rotate(-16deg);
+}
+
+.hands.active .hand--left.key-Digit4 .hand__finger--index .joint {
+  bottom: 110% !important;
+}
+
+.hands.active .hand--left.key-Digit4 .hand__finger--index .joint:after {
+  bottom: 110% !important;
 }
