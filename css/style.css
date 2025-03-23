@@ -415,7 +415,7 @@ qwerty-keyboard {
 }
 
 .textarea-preview span.current:after {
-  content: "";
+  /* content: ""; */
   position: absolute;
   top: 0;
   height: 100%;
@@ -423,6 +423,18 @@ qwerty-keyboard {
   width: 8px;
   background-color: #fff;
   z-index: 2;
+  animation: blink 0.5s infinite;
+  animation-delay: 0.5s;
+}
+
+.textarea-preview span.current:before {
+  content: "";
+  position: absolute;
+  top: calc(100% + 2px);
+  height: 4px;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
   animation: blink 0.5s infinite;
   animation-delay: 0.5s;
 }
