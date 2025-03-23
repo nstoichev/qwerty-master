@@ -418,6 +418,12 @@ class QwertyKeyboard extends HTMLElement {
   }
 
   handleKeydown(event) {
+    if (event.code === "Backspace") {
+      event.preventDefault();
+      this.handleBackspace();
+      return;
+    }
+
     if (!Object.values(this.keyCodeMap).includes(event.code)) return;
     if (!this.previewArea.classList.contains("active")) return;
 
@@ -1507,6 +1513,77 @@ class QwertyKeyboard extends HTMLElement {
     const tooltip = this.querySelector(".tooltip");
     if (tooltip) {
       tooltip.classList.remove("tooltip--active");
+    }
+  }
+
+  handleBackspace() {
+    const current = this.previewArea.querySelector(".current");
+    if (!current) return;
+
+    // Find the previous element before removing any classes
+    const findPreviousElement = (element) => {
+      // First try to get previous sibling in same word
+      if (element.previousElementSibling) {
+        return element.previousElementSibling;
+      }
+
+      // If no previous sibling in word, look for previous word
+      let currentNode = element.parentElement; // Current word span
+
+      while (currentNode) {
+        // If there's a previous sibling element
+        if (currentNode.previousElementSibling) {
+          // If it's a word, get its last character
+          if (currentNode.previousElementSibling.classList.contains("word")) {
+            return currentNode.previousElementSibling.lastElementChild;
+          }
+        }
+        // If there's a previous sibling node that's a BR
+        if (
+          currentNode.previousSibling &&
+          currentNode.previousSibling.nodeName === "BR"
+        ) {
+          // Get the word before BR (which should contain the Enter symbol)
+          const wordBeforeBr =
+            currentNode.previousSibling.previousElementSibling;
+          if (wordBeforeBr && wordBeforeBr.classList.contains("word")) {
+            return wordBeforeBr.lastElementChild;
+          }
+        }
+        currentNode = currentNode.previousElementSibling;
+      }
+      return null;
+    };
+
+    // Find the previous element
+    const foundElement = findPreviousElement(current);
+
+    // Only remove current class if we found a previous element
+    if (foundElement) {
+      current.classList.remove("current");
+      current.classList.remove("typed", "error");
+
+      // Clear WPM data from the current word
+      const currentWord = current.closest(".word");
+      if (currentWord) {
+        currentWord.removeAttribute("data-wpm");
+        currentWord.classList.remove(
+          "speed-medium",
+          "speed-great",
+          "speed-excellent",
+          "speed-perfect",
+          "speed-master",
+          "speed-god"
+        );
+      }
+
+      // Make the found element current and remove any existing classes
+      foundElement.classList.remove("typed", "error");
+      foundElement.classList.add("current");
+
+      // Update the display
+      this.scrollToCurrentElement();
+      this.highlightWord();
     }
   }
 }

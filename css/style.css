@@ -550,6 +550,10 @@ qwerty-keyboard {
   gap: 10px;
 }
 
+.checkbox.checkbox--info svg {
+  width: 50px;
+}
+
 .settings__field {
   display: flex;
   flex-flow: row wrap;
@@ -888,4 +892,24 @@ input:checked + .checkbox_label {
   display: block;
   max-width: 200px;
   height: auto;
+}
+
+.info-tooltip {
+  position: absolute;
+  z-index: 1000;
+  background: #555;
+  width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.info-tooltip--1 {
+  top: 50%;
+  transform: translateY(-50%);
+  right: calc(100% + 10px);
+}
+
+.info-tooltip p:last-child {
+  margin-bottom: 0;
 }
