@@ -1,9 +1,10 @@
 .settings {
   position: absolute;
-  bottom: 10px;
-  left: 10px;
   padding: 10px;
   z-index: 2;
+  position: fixed;
+  top: 30px;
+  right: 30px;
 }
 
 .settings__container {
@@ -78,9 +79,6 @@
   flex-direction: column;
   gap: 10px;
   color: #fff;
-  position: fixed;
-  top: 30px;
-  right: 30px;
 }
 
 .settings__details summary {
@@ -102,6 +100,7 @@
   position: absolute;
   top: 0;
   right: 0;
+  transition: transform 0.3s;
 }
 
 .settings__details summary::-webkit-details-marker {
@@ -172,11 +171,6 @@
 
 .radio__button {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 5px 10px;
 }
 
 .radio__button span:not(.icon) {

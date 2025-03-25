@@ -120,6 +120,11 @@ class QwertyKeyboard extends HTMLElement {
     this.keyboard.classList.toggle("hidden", !this.keyboardEnabled());
     this.hands.classList.toggle("hidden", !this.handsEnabled());
 
+    // Add mousemove event listener to remove engaged class
+    document.addEventListener('mousemove', () => {
+        document.body.classList.remove('engaged');
+    });
+
     // Replace the existing button click handlers with event delegation
     this.addEventListener("click", (event) => {
       const button = event.target.closest("[data-target]");
@@ -428,9 +433,9 @@ class QwertyKeyboard extends HTMLElement {
     if (!this.previewArea.classList.contains("active")) return;
 
     // Add engaged class to body when typing starts
-    if (!this.startTime) {
+    // if (!this.startTime) {
       document.body.classList.add("engaged");
-    }
+    // }
 
     // Using the existing expectedChar
     const expectedChar = this.previewArea.querySelector(
@@ -1397,16 +1402,27 @@ class QwertyKeyboard extends HTMLElement {
     // Get tooltip and element positions
     const tooltip = this.tooltipContent.closest(".tooltip");
     const elementRect = tooltipElement.getBoundingClientRect();
+    const viewportWidth = window.innerWidth;
 
-    // Position tooltip based on data-position
+    // Calculate initial position (centered above element)
+    let tooltipLeft = elementRect.left + elementRect.width / 2 - tooltip.offsetWidth / 2;
+    
+    // Prevent tooltip from going outside viewport
+    if (tooltipLeft + tooltip.offsetWidth > viewportWidth) {
+        // If tooltip would overflow right edge, adjust position
+        tooltipLeft = viewportWidth - tooltip.offsetWidth - 10; // 10px margin from edge
+    } else if (tooltipLeft < 0) {
+        // If tooltip would overflow left edge, adjust position
+        tooltipLeft = 10; // 10px margin from edge
+    }
+
+    // Position tooltip
     switch (position) {
-      case "top":
-        tooltip.style.top = `${elementRect.top - tooltip.offsetHeight - 10}px`;
-        tooltip.style.left = `${
-          elementRect.left + elementRect.width / 2 - tooltip.offsetWidth / 2
-        }px`;
-        break;
-      // Add other positions as needed
+        case "top":
+            tooltip.style.top = `${elementRect.top - tooltip.offsetHeight - 10}px`;
+            tooltip.style.left = `${tooltipLeft}px`;
+            break;
+        // Add other positions as needed
     }
 
     // Show tooltip
@@ -1414,10 +1430,10 @@ class QwertyKeyboard extends HTMLElement {
 
     // If data-close is present, automatically close after specified seconds
     if (closeAfter) {
-      const milliseconds = parseInt(closeAfter) * 1000;
-      setTimeout(() => {
-        tooltip.classList.remove("tooltip--active");
-      }, milliseconds);
+        const milliseconds = parseInt(closeAfter) * 1000;
+        setTimeout(() => {
+            tooltip.classList.remove("tooltip--active");
+        }, milliseconds);
     }
   }
 
